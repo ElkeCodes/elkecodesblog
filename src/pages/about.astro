@@ -1,6 +1,7 @@
 ---
-import Navigation from '../components/Navigation.astro';
-import '../styles/global.css';
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import "../styles/global.css";
 
 const pageTitle = "About Me";
 
@@ -36,10 +37,6 @@ const skillColor = "red";
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
     <style define:vars={{ skillColor }}>
-      h1 {
-        color: purple;
-        font-size: 4rem;
-      }
       .skill {
         color: green;
         color: var(--skillColor);
@@ -48,8 +45,7 @@ const skillColor = "red";
     </style>
   </head>
   <body>
-    <Navigation />
-    <h1>About Me</h1>
+    <Header pageTitle="About me" />
     <h2>... and my new Astro site!</h2>
 
     <p>
@@ -91,5 +87,6 @@ const skillColor = "red";
         <p>My goal is not 3 days.</p>
       )
     }
+    <Footer />
   </body>
 </html>

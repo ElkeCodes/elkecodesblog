@@ -1,0 +1,24 @@
+---
+import Hamburger from "./Hamburger.astro";
+import Navigation from "./Navigation.astro";
+
+const { pageTitle } = Astro.props;
+---
+
+<style>
+  header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  h1 {
+    color: purple;
+    font-size: 4rem;
+  }
+</style>
+
+<header>
+  <Hamburger />
+  <Navigation />
+  <h1>{pageTitle}</h1>
+</header>
