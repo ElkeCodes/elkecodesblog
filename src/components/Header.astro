@@ -7,18 +7,29 @@ const { pageTitle } = Astro.props;
 
 <style>
   header {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    margin-top: 2rem;
   }
-  h1 {
-    color: purple;
-    font-size: 4rem;
+  header .sitename-and-menu {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header .sitename-and-menu .sitename {
+    color: var(--color-white);
+    text-decoration: none;
+    font-family: var(--font-family-monospace);
+    font-weight: bold;
+    font-size: 1.5rem;
+    border-bottom: 0;
   }
 </style>
 
 <header>
   <Hamburger />
-  <Navigation />
+  <div class="sitename-and-menu">
+    <a href="/" class="sitename">&lt;ElkeCodes👩‍💻 /&gt;</a>
+    <Navigation />
+  </div>
   <h1>{pageTitle}</h1>
 </header>

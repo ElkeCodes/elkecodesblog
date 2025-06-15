@@ -2,15 +2,28 @@
 import Social from "./Social.astro";
 ---
 
+<footer>
+  <p>&copy; 2025 Elke Heymans</p>
+  <ul class="socials">
+    <Social platform="github" username="elkecodes" />
+    <Social platform="linkedin" username="in/elkeheymans" />
+  </ul>
+</footer>
+
 <style>
   footer {
     display: flex;
     gap: 1rem;
-    margin-top: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5rem;
+    border-top: 2px solid var(--color-secondary);
+    padding: 1rem 0;
+  }
+  footer ul.socials {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
   }
 </style>
-
-<footer>
-  <Social platform="github" username="elkecodes" />
-  <Social platform="linkedin" username="in/elkeheymans" />
-</footer>
