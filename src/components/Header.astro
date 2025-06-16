@@ -1,5 +1,4 @@
 ---
-import Hamburger from "./Hamburger.astro";
 import Navigation from "./Navigation.astro";
 
 const { pageTitle } = Astro.props;
@@ -7,7 +6,12 @@ const { pageTitle } = Astro.props;
 
 <style>
   header {
-    margin-top: 2rem;
+    margin-top: 1rem;
+  }
+  @media screen and (min-width: 636px) {
+    header {
+      margin-top: 2rem;
+    }
   }
   header .sitename-and-menu {
     display: flex;
@@ -26,7 +30,6 @@ const { pageTitle } = Astro.props;
 </style>
 
 <header>
-  <Hamburger />
   <div class="sitename-and-menu">
     <a href="/" class="sitename">&lt;ElkeCodes👩‍💻 /&gt;</a>
     <Navigation />

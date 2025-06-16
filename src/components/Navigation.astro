@@ -1,7 +1,134 @@
-<nav>
+---
+
+---
+
+<nav class="menu">
   <ul>
     <li><a href="/">Home</a></li>
     <li><a href="/about/">About</a></li>
     <li><a href="/blog/">Blog</a></li>
   </ul>
+  <div class="menu-close icon-close"></div>
 </nav>
+<div class="hamburger"></div>
+
+<style>
+  nav.menu {
+    display: none;
+    margin: 0;
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    background: var(--color-black);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    align-items: center;
+    justify-content: center;
+  }
+
+  nav.menu ul {
+    display: flex;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav.menu a {
+    display: block;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bold;
+    color: var(--color-white);
+    border-bottom: 0;
+    position: relative;
+  }
+
+  nav.menu li a:after {
+    content: "";
+    height: 0px;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    position: absolute;
+    transition: all 0.3s ease 0s;
+    -webkit-transition: all 0.3s ease 0s;
+    z-index: -1;
+    border-bottom: 0.2rem solid var(--color-primary);
+  }
+
+  nav.menu a:hover:after,
+  nav.menu a:focus:after {
+    background-color: var(--color-primary);
+    border-bottom: 0.2rem solid var(--color-primary-hover);
+    height: 100%;
+  }
+
+  nav.menu.expanded {
+    display: flex;
+  }
+
+  .hamburger {
+    cursor: pointer;
+    display: block;
+  }
+
+  .hamburger::after {
+    content: "";
+    background-image: url("/icons/menu.svg");
+    background-size: cover;
+    display: block;
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .menu-close {
+    position: fixed;
+    top: 2rem;
+    right: 1rem;
+  }
+
+  .icon-close {
+    cursor: pointer;
+    display: block;
+  }
+
+  .icon-close::after {
+    content: "";
+    background-image: url("/icons/close.svg");
+    background-size: cover;
+    display: block;
+    height: 2rem;
+    width: 2rem;
+  }
+
+  @media screen and (min-width: 636px) {
+    nav.menu {
+      display: block;
+      background: none;
+      position: unset;
+      height: auto;
+      width: auto;
+    }
+
+    nav.menu ul {
+      flex-direction: row;
+    }
+
+    nav.menu a {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+    }
+
+    .hamburger {
+      display: none;
+    }
+
+    .menu-close {
+      display: none;
+    }
+  }
+</style>
