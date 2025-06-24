@@ -1,6 +1,7 @@
 :root {
   --color-black: #0c0f11;
   --color-white: #e3e3e3;
+  --color-gray: #24292e;
   --color-primary: #ce4257;
   --color-primary-hover: color-mix(
     in oklab,
@@ -12,6 +13,7 @@
   --font-size-normal: 1rem;
   --font-size-small: 0.7rem;
 
+  --font-family-serif: "Newsreader", serif;
   --font-family-monospace: "Courier New", Courier, monospace;
 }
 
@@ -34,10 +36,41 @@ body {
 }
 
 h1 {
-  margin: 1rem 0 2rem 0;
+  margin: 3rem 0 2rem 0;
   font-size: 2.5rem;
-  border-bottom: 0.2rem solid var(--color-secondary);
-  font-family: var(--font-family-monospace);
+  border-bottom: 0.2rem double var(--color-secondary);
+  font-family: var(--font-family-serif);
+  font-weight: 500;
+}
+
+h2 {
+  margin: 2rem 0 0.5rem 0;
+  font-family: var(--font-family-serif);
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+h3 {
+  margin: 1rem 0 0.5rem 0;
+  font-family: var(--font-family-serif);
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: var(--font-size-normal);
+  line-height: 1.75rem;
+}
+
+p img {
+  object-fit: contain;
+  max-width: 100%;
+  height: auto;
+}
+
+ul li,
+ol li {
+  line-height: 1.75rem;
 }
 
 a {
@@ -46,3 +79,15 @@ a {
   border-bottom: 1px solid var(--color-primary);
 }
 
+pre {
+  padding: 0.5rem 0.6rem;
+  border-radius: 0.5rem;
+  background: var(--color-gray);
+}
+
+code {
+  border-radius: 0.2rem;
+  background: var(--color-gray);
+  font-size: 0.8rem;
+  padding: 0.1rem 0.3rem;
+}

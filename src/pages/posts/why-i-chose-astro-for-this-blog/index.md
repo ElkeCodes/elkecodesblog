@@ -1,0 +1,180 @@
+---
+layout: ../../../layouts/MarkdownPostLayout.astro
+title: "Why I chose Astro for this blog?"
+pubDate: 2025-06-24
+description: "I have never used Astro and decided to follow the blog tutorial. These are my first impressions about Astro."
+author: "Elke Heymans"
+image:
+  url: "https://docs.astro.build/assets/rose.webp"
+  alt: "The Astro logo on a dark background with a pink glow."
+tags: ["astro", "blog", "review", "frontend"]
+---
+
+## Some context
+
+At the time of writing, I'm on maternity leave.
+Besides supporting my wife and taking care of our newborn son, I like tinkering around with technology.
+I've decided to use this time to learn [Astro](https://astro.build/).
+Here are my key takeaways of what I like about Astro, in no particular order. 
+
+## Ease of setup
+
+When you initialize a new Astro project using:
+
+```shell
+npm create astro@latest
+```
+
+You'll get a couple of basic questions and that's it.
+No need to think too much about what extra framework you need to use, just a quick install and some info on what to do afterwards.
+Here's what the final setup prompt looks like:
+
+```shellscript
+❯ npm create astro@latest
+
+> elkecodes@0.0.1 npx
+> create-astro
+
+
+ astro   Launch sequence initiated.
+
+   dir   Where should we create your new project?
+         ./test
+
+  tmpl   How would you like to start your new project?
+         A basic, helpful starter project
+
+  deps   Install dependencies?
+         Yes
+
+   git   Initialize a new git repository?
+         Yes
+
+      ✔  Project initialized!
+         ■ Template copied
+         ■ Dependencies installed
+         ■ Git initialized
+
+  next   Liftoff confirmed. Explore your project!
+
+ Enter your project directory using cd ./test
+ Run npm run dev to start the dev server. CTRL+C to stop.
+ Add frameworks like react or tailwind using astro add.
+
+ Stuck? Join us at https://astro.build/chat
+
+╭─────╮  Houston:
+│ ◠ ◡ ◠  Good luck out there, astronaut! 🚀
+╰─────╯
+```
+
+## Extremely fast dev server
+
+The startup time is lightning fast!
+We're talking about 123ms on initial launch...
+Even with the knowledge that Astro is built on top of Vite, I was still impressed!
+
+```shellscript
+❯ npm run dev
+
+> test@0.0.1 dev
+> astro dev
+
+08:24:09 [types] Generated 1ms
+08:24:09 [content] Syncing content
+08:24:09 [content] Synced content
+
+ astro  v5.10.0 ready in 123 ms
+
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
+
+08:24:09 watching for file changes...
+```
+
+## Markdown with syntax highlighting
+
+By default, Astro has support for Markdown pages with the bonus that it directly incorporates syntax highlighting.
+In the past when I looked at other frameworks like [Gatsby](https://www.gatsbyjs.com/), [Gridsome](https://gridsome.org/), [NextJS](https://nextjs.org/), and others, I've had to add Markdown support and/or syntax highlighting support.
+Since this was going to be a blog where I don't want to use a CMS and where I'll share code, Markdown + syntax highlighting was a must for me.
+Having that natively supported is a win to quickly get going.
+
+An example of the syntax highlighting, with the code from [an interview question to get the previous Fibonacci number in a sequence](https://github.com/ElkeCodes/rendezvous-with-cassidoo-interview-questions/tree/main/src/days/0253-previous-fibonacci-number):
+
+```javascript
+function* fibonacci(): Generator<number, number> {
+  let x = 0;
+  let y = 1;
+  let result = 0;
+  while (true) {
+    yield result;
+    result = x + y;
+    x = y;
+    y = result;
+  }
+}
+
+export function previousFibonacciNumber(fibonacciNumber: number): number {
+  const fibonacciNumbers = fibonacci();
+  let current = 0;
+  do {
+    let next = fibonacciNumbers.next().value;
+    if (next === fibonacciNumber) {
+      return current;
+    }
+    current = next;
+  } while (current <= fibonacciNumber);
+  return -1;
+}
+```
+
+## Static Site Generation with partial hydration
+
+Many Static Site Generators produce fast websites, but they often rely on hydration to render content.
+Hydration is useful for highly dynamic websites like those with real-time user interactions such as comments.
+But it's overkill for a static blog where updates only occur when new posts are published.
+
+Full hydration forces the client to download and execute JavaScript just to render HTML and CSS, which is unnecessary for mostly static content.
+With [Astro's Islands architecture](https://docs.astro.build/en/concepts/islands/) (based on [Jason Miller's Islands Architecture concept](https://jasonformat.com/islands-architecture/), image also courtesy of him), Astro has introduced the concept of partial hydration.
+Instead of hydrating the entire page, Astro performs partial hydration, sending only the JavaScript required for interactive components or none at all if the page is entirely static.
+![Jason Miller's Islands Architecture concept](./islands-architecture.png)
+
+By default, Astro renders every component as pure HTML and CSS, eliminating unnecessary client-side JavaScript.
+When interactivity is needed, we can use the directive `client:load` to force Astro to ship the JavaScript to the client so that our interactivity is not lost:
+
+```vue
+<MyVueComponent client:load />
+```
+
+This approach keeps Astro sites lean by default while still supporting dynamic features when required.
+
+## No lock-in to a framework
+
+One of my favorite things about Astro is how flexible it is with JavaScript frameworks.
+You're not forced to use a specific one, Astro lets you [mix and match components](https://docs.astro.build/en/guides/framework-components/#mixing-frameworks) from React, Vue, Svelte, and more.
+
+```js
+import MyReactComponent from '../components/MyReactComponent.jsx';
+import MySvelteComponent from '../components/MySvelteComponent.svelte';
+import MyVueComponent from '../components/MyVueComponent.vue';
+---
+<div>
+  <MySvelteComponent />
+  <MyReactComponent />
+  <MyVueComponent />
+</div>
+```
+
+Installing one of the supported JavaScript frameworks is literally a one-liner (f.e. Svelte):
+
+```shellscript
+npx astro add svelte
+```
+
+## Conclusion
+
+Starting with Astro was easy!
+Building this basic blog was easy, especially with following the [official tutorial](https://docs.astro.build/en/tutorial/0-introduction/).
+So what's next? 
+I'll try to blog!
+Wish me luck!

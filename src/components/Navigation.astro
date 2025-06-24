@@ -30,7 +30,7 @@
 
   nav.menu ul {
     display: flex;
-    gap: 1rem;
+    gap: 3rem;
     list-style: none;
     padding: 0;
     flex-direction: column;
@@ -40,7 +40,7 @@
   nav.menu a {
     display: block;
     text-align: center;
-    padding: 10px 0;
+    padding: 0.5rem 0;
     font-weight: bold;
     color: var(--color-white);
     border-bottom: 0;
@@ -63,7 +63,7 @@
   nav.menu a:hover:after,
   nav.menu a:focus:after {
     background-color: var(--color-primary);
-    border-bottom: 0.2rem solid var(--color-primary-hover);
+    border-bottom: 0.2rem double var(--color-primary-hover);
     height: 100%;
   }
 
@@ -116,6 +116,7 @@
 
     nav.menu ul {
       flex-direction: row;
+      gap: 1rem;
     }
 
     nav.menu a {

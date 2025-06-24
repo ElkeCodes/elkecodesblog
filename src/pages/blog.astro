@@ -4,7 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
 
 const allPosts = Object.values(
-  import.meta.glob("./posts/*.md", { eager: true })
+  import.meta.glob("./posts/*/*.md", { eager: true })
 );
 const pageTitle = "Blog";
 ---
