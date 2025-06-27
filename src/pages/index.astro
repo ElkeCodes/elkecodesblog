@@ -1,8 +1,81 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-const pageTitle = "Home Page";
+import { Image } from "astro:assets";
+import profilePicture from "../images/elke.jpg";
+import BlogPost from "../components/BlogPost.astro";
+
+const pageTitle = "Hi there, I'm Elke! 👋";
+
+const posts = Object.values(
+  import.meta.glob("./posts/*/*.md", { eager: true })
+).slice(0, 5);
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-  <h2>My awesome blog subtitle</h2>
+  <div class="hero">
+    <Image
+      src={profilePicture}
+      alt="Photo of Elke"
+      layout="full-width"
+      class="picture"
+    />
+    <span class="introduction">
+      I'm a frontend developer specializing in React, with a background in Vue,
+      Angular, and some fullstack work (NodeJS &amp; C&num;). When I'm not
+      coding, you'll find me running, enjoying music, taking pictures, or
+      playing boardgames and tabletop RPGs like Dungeons&amp;Dragons. These
+      days, my biggest adventure is raising my amazing son with my beautiful
+      wife. On this blog, I'll share my insights on tech, code snippets,
+      hobbies, and more.
+    </span>
+  </div>
+  <h2>Latest blogposts</h2>
+  {
+    posts.map((post: any) => (
+      <BlogPost url={post.url} title={post.frontmatter.title} />
+    ))
+  }
 </BaseLayout>
+
+<style>
+  .hero {
+    background: var(--color-gray);
+    padding: 0.5rem;
+    border-radius: 1rem;
+  }
+  .hero .picture {
+    border-radius: 100%;
+    height: 100px;
+    width: 100px;
+    shape-outside: circle(50%);
+    object-position: left;
+    float: right;
+  }
+  .hero .introduction {
+    margin: 0;
+    font-size: var(--font-size-sm);
+  }
+  @media screen and (min-width: 636px) {
+    .hero {
+      display: grid;
+      grid-template-columns: auto 180px;
+      grid-template-areas: "intro photo";
+      align-items: center;
+      padding: 1rem;
+      gap: 0.5rem;
+    }
+    .hero .picture {
+      width: 180px;
+      height: 180px;
+      float: none;
+      grid-area: photo;
+    }
+    .hero .introduction {
+      font-size: var(--font-size-md);
+      line-height: 1.75rem;
+      margin: unset;
+      grid-area: intro;
+      display: inline-block;
+    }
+  }
+</style>
