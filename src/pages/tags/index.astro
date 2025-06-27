@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const posts = Object.values(import.meta.glob('../posts/*.md', { eager: true }));
+const posts = Object.values(import.meta.glob('../posts/*/*.md', { eager: true }));
 const tags = [...new Set(posts.map((post: any) => post.frontmatter.tags).flat())];
 const pageTitle = "Tag Index";
 ---

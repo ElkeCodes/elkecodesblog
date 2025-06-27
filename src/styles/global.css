@@ -92,3 +92,15 @@ code {
   font-size: 0.8rem;
   padding: 0.1rem 0.3rem;
 }
+
+blockquote {
+  font-style: italic;
+  background: var(--color-gray);
+  padding: 0.5rem 0.8rem;
+  border-left: 1px solid var(--color-primary);
+}
+
+blockquote p {
+  margin: 0;
+  padding: 0;
+}

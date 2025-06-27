@@ -1,8 +1,8 @@
 ---
 layout: ../../../layouts/MarkdownPostLayout.astro
 title: "Why I chose Astro for this blog?"
-pubDate: 2025-06-24
-description: "I have never used Astro and decided to follow the blog tutorial. These are my first impressions about Astro."
+pubDate: 2025-06-27
+description: "At the time of writing, I'm on parental leave to support my wife and take care of our newborn son. In the spare time that I can find between changing diapers, I like tinkering around with technology and was eager to start a blog. Here are my key takeaways of what I like about Astro and what made me choose Astro, in no particular order."
 author: "Elke Heymans"
 image:
   url: "https://docs.astro.build/assets/rose.webp"
@@ -10,16 +10,9 @@ image:
 tags: ["astro", "blog", "review", "frontend"]
 ---
 
-## Some context
-
-At the time of writing, I'm on maternity leave.
-Besides supporting my wife and taking care of our newborn son, I like tinkering around with technology.
-I've decided to use this time to learn [Astro](https://astro.build/).
-Here are my key takeaways of what I like about Astro, in no particular order. 
-
 ## Ease of setup
 
-When you initialize a new Astro project using:
+When you initialize a new [Astro](https://astro.build) project using:
 
 ```shell
 npm create astro@latest
@@ -67,6 +60,13 @@ Here's what the final setup prompt looks like:
 │ ◠ ◡ ◠  Good luck out there, astronaut! 🚀
 ╰─────╯
 ```
+
+I always prefer a very basic setup with a lot of customisation possible later on.
+For example if I want to add support for a frontend framework, I don't have to lock in my decision just yet.
+I love to get started quickly without having to look forward too much.
+
+> “The secret of getting ahead is getting started. The secret of getting started is breaking your complex, overwhelming tasks into small, manageable tasks, and then starting on the first one.”
+> — Mark Twain
 
 ## Extremely fast dev server
 
@@ -173,8 +173,9 @@ npx astro add svelte
 
 ## Conclusion
 
-Starting with Astro was easy!
-Building this basic blog was easy, especially with following the [official tutorial](https://docs.astro.build/en/tutorial/0-introduction/).
-So what's next? 
-I'll try to blog!
-Wish me luck!
+I had this basic blog up and running faster than I expected.
+The straightforward setup, intuitive structure, helpful documentation made the entire process smooth, even with a newborn demanding my attention between commits.
+I have to mention the [official tutorial](https://docs.astro.build/en/tutorial/0-introduction/) for being so clear and easy to follow, that saved me a lot of time and looking things up.
+Now that the foundation is in place, it’s time for the real challenge: actually writing.
+No more hiding behind code.
+It's time to share thoughts, experiments, and lessons learned, one blogpost at a time.

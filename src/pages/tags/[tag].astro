@@ -4,7 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 export async function getStaticPaths() {
   const posts = Object.values(
-    import.meta.glob("../posts/*.md", { eager: true })
+    import.meta.glob("../posts/*/*.md", { eager: true })
   );
 
   const uniqueTags = [
