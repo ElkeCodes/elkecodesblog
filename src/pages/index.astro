@@ -30,11 +30,13 @@ const posts = Object.values(
     </span>
   </div>
   <h2>Latest blogposts</h2>
-  {
-    posts.map((post: any) => (
-      <BlogPost url={post.url} title={post.frontmatter.title} />
-    ))
-  }
+  <ul>
+    {
+      posts.map((post: any) => (
+        <BlogPost url={post.url} title={post.frontmatter.title} />
+      ))
+    }
+  </ul>
 </BaseLayout>
 
 <style>
