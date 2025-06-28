@@ -1,7 +1,7 @@
 ---
 layout: ../../../layouts/MarkdownPostLayout.astro
 title: "Why I chose Astro for this blog?"
-pubDate: 2025-06-27
+pubDate: 2025-06-28
 description: "At the time of writing, I'm on parental leave to support my wife and take care of our newborn son. In the spare time that I can find between changing diapers, I like tinkering around with technology and was eager to start a blog. Here are my key takeaways of what I like about Astro and what made me choose Astro, in no particular order."
 author: "Elke Heymans"
 image:
@@ -22,7 +22,7 @@ You'll get a couple of basic questions and that's it.
 No need to think too much about what extra framework you need to use, just a quick install and some info on what to do afterwards.
 Here's what the final setup prompt looks like:
 
-```shellscript
+```bash
 ❯ npm create astro@latest
 
 > elkecodes@0.0.1 npx
@@ -74,7 +74,7 @@ The startup time is lightning fast!
 We're talking about 123ms on initial launch...
 Even with the knowledge that Astro is built on top of Vite, I was still impressed!
 
-```shellscript
+```bash
 ❯ npm run dev
 
 > test@0.0.1 dev
@@ -97,34 +97,27 @@ Even with the knowledge that Astro is built on top of Vite, I was still impresse
 By default, Astro has support for Markdown pages with the bonus that it directly incorporates syntax highlighting.
 In the past when I looked at other frameworks like [Gatsby](https://www.gatsbyjs.com/), [Gridsome](https://gridsome.org/), [NextJS](https://nextjs.org/), and others, I've had to add Markdown support and/or syntax highlighting support.
 Since this was going to be a blog where I don't want to use a CMS and where I'll share code, Markdown + syntax highlighting was a must for me.
-Having that natively supported is a win to quickly get going.
+Astro’s built-in syntax highlighting means no extra plugins or config—just write Markdown, and it works.
 
-An example of the syntax highlighting, with the code from [an interview question to get the previous Fibonacci number in a sequence](https://github.com/ElkeCodes/rendezvous-with-cassidoo-interview-questions/tree/main/src/days/0253-previous-fibonacci-number):
+An example of the syntax highlighting, with the code from [an interview question to check if two strings are anagrams](https://github.com/ElkeCodes/rendezvous-with-cassidoo-interview-questions/blob/0e470bf2c0b86d72a42ad4149574b37ee9837a30/src/days/0003-anagrams/0003.md):
 
 ```javascript
-function* fibonacci(): Generator<number, number> {
-  let x = 0;
-  let y = 1;
-  let result = 0;
-  while (true) {
-    yield result;
-    result = x + y;
-    x = y;
-    y = result;
-  }
+function normalize(s: string): string {
+  return s
+    .replace(/[^\w\s]|_/g, "") // Remove punctuation and underscores
+    .replace(/\s+/g, "") // Remove whitespace
+    .toLowerCase(); // Convert to lowercase
 }
 
-export function previousFibonacciNumber(fibonacciNumber: number): number {
-  const fibonacciNumbers = fibonacci();
-  let current = 0;
-  do {
-    let next = fibonacciNumbers.next().value;
-    if (next === fibonacciNumber) {
-      return current;
-    }
-    current = next;
-  } while (current <= fibonacciNumber);
-  return -1;
+export function isAnagram(a: string, b: string): boolean {
+  const lettersToMatchA = normalize(a).split("").sort();
+  const lettersToMatchB = normalize(b).split("").sort();
+
+  if (lettersToMatchA.length !== lettersToMatchB.length) {
+    return false;
+  }
+
+  return lettersToMatchA.every((x, index) => lettersToMatchB[index] === x);
 }
 ```
 
@@ -152,6 +145,7 @@ This approach keeps Astro sites lean by default while still supporting dynamic f
 
 One of my favorite things about Astro is how flexible it is with JavaScript frameworks.
 You're not forced to use a specific one, Astro lets you [mix and match components](https://docs.astro.build/en/guides/framework-components/#mixing-frameworks) from React, Vue, Svelte, and more.
+[Next.js](https://nextjs.org/) leans on React, [Nuxt](https://nuxt.com/) leans on Vue, while Astro lets me use Vue for widgets and Svelte for animations
 
 ```js
 import MyReactComponent from '../components/MyReactComponent.jsx';
@@ -167,7 +161,7 @@ import MyVueComponent from '../components/MyVueComponent.vue';
 
 Installing one of the supported JavaScript frameworks is literally a one-liner (f.e. Svelte):
 
-```shellscript
+```bash
 npx astro add svelte
 ```
 
@@ -176,6 +170,9 @@ npx astro add svelte
 I had this basic blog up and running faster than I expected.
 The straightforward setup, intuitive structure, helpful documentation made the entire process smooth, even with a newborn demanding my attention between commits.
 I have to mention the [official tutorial](https://docs.astro.build/en/tutorial/0-introduction/) for being so clear and easy to follow, that saved me a lot of time and looking things up.
+Overall, I'm very happy with Astro and would definitely recommend it.
+Whether you're a junior developer taking your first steps into web development or an experienced developer like me, it's worth checking out.
+
 Now that the foundation is in place, it’s time for the real challenge: actually writing.
 No more hiding behind code.
 It's time to share thoughts, experiments, and lessons learned, one blogpost at a time.
