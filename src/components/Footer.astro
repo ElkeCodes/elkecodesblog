@@ -1,25 +1,49 @@
 ---
-import Social from "./Social.astro";
+
 ---
 
 <footer>
   <p>&copy; 2025 Elke Heymans</p>
+  <p class="building-blocks">Made with Astro, TypeScript and coffee</p>
   <ul class="socials">
-    <Social platform="github" username="elkecodes" />
-    <Social platform="linkedin" username="in/elkeheymans" />
+    <li><a href="https://www.github.com/elkecodes">GitHub</a></li>
+    <li><a href="https://www.linkedin.com/in/elkeheymans">LinkedIn</a></li>
   </ul>
 </footer>
 
 <style>
   footer {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
     justify-content: space-between;
     align-items: center;
     margin-top: 5rem;
     border-top: 2px solid var(--color-secondary);
     padding: 1rem 0;
+    flex-direction: column;
   }
+
+  footer ul,
+  footer p {
+    margin: 0;
+  }
+
+  @media screen and (min-width: 636px) {
+    footer {
+      flex-direction: row;
+      gap: 1rem;
+    }
+
+    footer ul,
+    footer p {
+      margin: unset;
+    }
+  }
+
+  footer p.building-blocks {
+    font-size: var(--font-size-xs);
+  }
+
   footer ul.socials {
     display: flex;
     gap: 1rem;
