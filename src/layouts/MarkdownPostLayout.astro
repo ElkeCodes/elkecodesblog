@@ -1,8 +1,8 @@
 ---
+import Introduction from "../components/Introduction.astro";
 import BaseLayout from "./BaseLayout.astro";
 
 const { frontmatter } = Astro.props;
-
 ---
 
 <BaseLayout pageTitle={frontmatter.title}>
@@ -27,6 +27,7 @@ const { frontmatter } = Astro.props;
       ))
     }
   </ul>
+  <Introduction />
 </BaseLayout>
 <style>
   .tags {
