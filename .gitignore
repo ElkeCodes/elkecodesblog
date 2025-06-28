@@ -25,3 +25,6 @@ pnpm-debug.log*
 
 # cypress
 cypress/screenshots
+
+# vitest
+coverage
