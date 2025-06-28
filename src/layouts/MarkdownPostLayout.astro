@@ -1,5 +1,6 @@
 ---
 import Introduction from "../components/Introduction.astro";
+import Tags from "../components/Tags.astro";
 import BaseLayout from "./BaseLayout.astro";
 
 const { frontmatter } = Astro.props;
@@ -18,30 +19,11 @@ const { frontmatter } = Astro.props;
     }
   </p>
   <slot />
-  <ul class="tags">
-    {
-      frontmatter.tags.map((tag: string) => (
-        <li class="tag">
-          <a href={`/tags/${tag}`}>{tag}</a>
-        </li>
-      ))
-    }
-  </ul>
+  <Tags tags={frontmatter.tags} />
   <Introduction />
 </BaseLayout>
+
 <style>
-  .tags {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-  }
-
-  .tag::before {
-    content: "#";
-  }
-
   .publication-date {
     font-size: var(--font-size-xs);
   }
