@@ -21,7 +21,7 @@
   class="back-to-top"
   on:click={scrollToTop}
   class:hidden
-  aria-label="Scroll back to top"
+  aria-label="Scroll back to top of page"
 ></button>
 
 <style>
@@ -36,6 +36,7 @@
     bottom: 1rem;
     background-color: transparent;
     border: 0;
+    cursor: pointer;
   }
 
   .back-to-top::after {
