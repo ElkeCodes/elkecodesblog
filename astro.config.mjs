@@ -1,19 +1,13 @@
 // @ts-check
 import { defineConfig } from "astro/config";
 
+import svelte from "@astrojs/svelte";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://elkecodes.dev",
   image: {
     responsiveStyles: true,
   },
-  // vite: {
-  //   build: {
-  //     // Exclude files with the *.cy.tsx extension
-  //     rollupOptions: {
-  //       // Exclude files with the *.cy.tsx extension from being processed by Vite
-  //       external: ["**/*.test.js"],
-  //     },
-  //   },
-  // },
+  integrations: [svelte()],
 });

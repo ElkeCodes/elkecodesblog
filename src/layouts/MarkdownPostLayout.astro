@@ -2,6 +2,7 @@
 import Introduction from "../components/Introduction.astro";
 import Tags from "../components/Tags.astro";
 import BaseLayout from "./BaseLayout.astro";
+import BackToTop from "../components/BackToTop.svelte";
 
 const { frontmatter } = Astro.props;
 ---
@@ -19,6 +20,7 @@ const { frontmatter } = Astro.props;
     }
   </p>
   <slot />
+  <BackToTop client:idle />
   <Tags tags={frontmatter.tags} />
   <Introduction />
 </BaseLayout>
