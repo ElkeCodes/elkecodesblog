@@ -7,4 +7,13 @@ export default defineConfig({
   image: {
     responsiveStyles: true,
   },
+  // vite: {
+  //   build: {
+  //     // Exclude files with the *.cy.tsx extension
+  //     rollupOptions: {
+  //       // Exclude files with the *.cy.tsx extension from being processed by Vite
+  //       external: ["**/*.test.js"],
+  //     },
+  //   },
+  // },
 });

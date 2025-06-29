@@ -11,8 +11,10 @@
     "coverage": "vitest run --coverage"
   },
   "dependencies": {
+    "@astrojs/check": "^0.9.4",
     "@astrojs/rss": "^4.0.12",
-    "astro": "^5.10.1"
+    "astro": "^5.10.1",
+    "typescript": "^5.8.3"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "3.2.4",

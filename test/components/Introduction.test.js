@@ -1,6 +1,6 @@
 import { experimental_AstroContainer as AstroContainer } from "astro/container";
 import { expect, test } from "vitest";
-import Introduction from "./Introduction.astro";
+import Introduction from "../../src/components/Introduction.astro";
 
 test("Introduction", async () => {
   const container = await AstroContainer.create();
