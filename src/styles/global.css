@@ -2,6 +2,11 @@
   --color-black: #0c0f11;
   --color-white: #e3e3e3;
   --color-gray: #24292e;
+  --color-dark-gray: color-mix(
+    in oklab,
+    var(--color-gray) 30%,
+    var(--color-black)
+  );
   --color-primary: #ce4257;
   --color-primary-hover: color-mix(
     in oklab,
@@ -103,4 +108,29 @@ blockquote {
 blockquote p {
   margin: 0;
   padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table thead {
+  background: var(--color-gray);
+  border-radius: 0 1rem;
+}
+
+table tr {
+  border-bottom: 1px solid var(--color-white);
+}
+
+table tr:nth-child(2n) {
+  background: var(--color-dark-gray);
+}
+
+table tr:last-child {
+  border-bottom: none;
+}
+
+table td, table th {
+  padding: 0.2rem 0.5rem;
 }

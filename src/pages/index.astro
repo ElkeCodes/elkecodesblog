@@ -2,12 +2,11 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BlogPost from "../components/BlogPost.astro";
 import Introduction from "../components/Introduction.astro";
+import { getPublishedPosts } from "../utils/get-published-posts";
 
 const pageTitle = "Hi there, I'm Elke! 👋";
 
-const posts = Object.values(
-  import.meta.glob("./posts/*/*.md", { eager: true })
-).slice(0, 5);
+const posts = getPublishedPosts().slice(0, 5);
 ---
 
 <BaseLayout pageTitle={pageTitle}>

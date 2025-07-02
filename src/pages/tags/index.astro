@@ -1,10 +1,14 @@
 ---
-import Tags from '../../components/Tags.astro';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-const posts = Object.values(import.meta.glob('../posts/*/*.md', { eager: true }));
-const tags = [...new Set(posts.map((post: any) => post.frontmatter.tags).flat())];
+import Tags from "../../components/Tags.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getPublishedPosts } from "../../utils/get-published-posts";
+const posts = getPublishedPosts();
+const tags = [
+  ...new Set(posts.map((post: any) => post.frontmatter.tags).flat()),
+];
 const pageTitle = "Tag Index";
 ---
+
 <BaseLayout pageTitle={pageTitle}>
   <Tags tags={tags} />
 </BaseLayout>

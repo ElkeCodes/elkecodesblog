@@ -2,10 +2,9 @@
 import BlogPost from "../components/BlogPost.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
+import { getPublishedPosts } from "../utils/get-published-posts";
 
-const allPosts = Object.values(
-  import.meta.glob("./posts/*/*.md", { eager: true })
-);
+const allPosts = getPublishedPosts();
 const pageTitle = "Blog";
 ---
 

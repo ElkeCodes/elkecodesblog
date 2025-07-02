@@ -1,11 +1,10 @@
 ---
 import BlogPost from "../../components/BlogPost.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getPublishedPosts } from "../../utils/get-published-posts";
 
 export async function getStaticPaths() {
-  const posts = Object.values(
-    import.meta.glob("../posts/*/*.md", { eager: true })
-  );
+  const posts = getPublishedPosts();
 
   const uniqueTags = [
     ...new Set(posts.map((post: any) => post.frontmatter.tags).flat()),
