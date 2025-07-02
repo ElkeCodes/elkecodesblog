@@ -1,17 +1,29 @@
 ---
-import { getCollection, render } from 'astro:content';
-import MarkdownPostLayout from '../../layouts/MarkdownPostLayout.astro';
+import { getCollection, render } from "astro:content";
+import MarkdownPostLayout from "../../layouts/MarkdownPostLayout.astro";
+import { getPublishedPosts } from "../../utils/get-published-posts";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
-  return posts.map(post => ({
-    params: { slug: post.id }, props: { post },
+  const posts = await getPublishedPosts();
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
   }));
 }
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const baseUrl = import.meta.env.DEV
+  ? "http://localhost:4321"
+  : new URL(Astro.request.url).origin;
+
+const { title, description } = post.data;
+
+const ogImage = new URL(`/og/${post.id}.png`, baseUrl).toString();
 ---
+
 <MarkdownPostLayout data={post.data}>
+  <meta property="og:image" content={ogImage} />
   <Content />
 </MarkdownPostLayout>
