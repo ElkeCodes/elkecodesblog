@@ -6,17 +6,13 @@ import { getPublishedPosts } from "../utils/get-published-posts";
 
 const pageTitle = "Hi there, I'm Elke! 👋";
 
-const posts = getPublishedPosts().slice(0, 5);
+const posts = (await getPublishedPosts()).slice(0, 5);
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <Introduction />
   <h2>Latest blogposts</h2>
   <ul>
-    {
-      posts.map((post: any) => (
-        <BlogPost url={post.url} title={post.frontmatter.title} />
-      ))
-    }
+    {posts.map((post) => <BlogPost url={post.id} title={post.data.title} />)}
   </ul>
 </BaseLayout>

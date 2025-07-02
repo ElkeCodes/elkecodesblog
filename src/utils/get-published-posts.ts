@@ -1,4 +1,4 @@
+import { getCollection } from "astro:content";
+
 export const getPublishedPosts = () =>
-  Object.values(import.meta.glob("../pages/posts/*/*.md", { eager: true })).filter(
-    (post: any) => new Date(post.frontmatter.pubDate) <= new Date()
-  );
+  getCollection("blog", (post) => new Date(post.data.pubDate) <= new Date());

@@ -4,15 +4,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getPublishedPosts } from "../../utils/get-published-posts";
 
 export async function getStaticPaths() {
-  const posts = getPublishedPosts();
+  const posts = await getPublishedPosts();
 
-  const uniqueTags = [
-    ...new Set(posts.map((post: any) => post.frontmatter.tags).flat()),
-  ];
+  const uniqueTags = [...new Set(posts.map((post) => post.data.tags).flat())];
   return uniqueTags.map((tag) => {
-    const filteredPosts = posts.filter((post: any) =>
-      post.frontmatter.tags.includes(tag)
-    );
+    const filteredPosts = posts.filter((post) => post.data.tags.includes(tag));
     return {
       params: { tag },
       props: { posts: filteredPosts },
@@ -27,8 +23,8 @@ const { posts } = Astro.props;
 <BaseLayout pageTitle={`Tag: ${tag}`}>
   <ul>
     {
-      posts.map((post: any) => (
-        <BlogPost url={post.url} title={post.frontmatter.title} />
+      posts.map((post) => (
+        <BlogPost url={post.id} title={post.data.title} />
       ))
     }
   </ul>

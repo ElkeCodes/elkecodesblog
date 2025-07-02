@@ -4,14 +4,14 @@ import Tags from "../components/Tags.astro";
 import BaseLayout from "./BaseLayout.astro";
 import BackToTop from "../components/BackToTop.svelte";
 
-const { frontmatter } = Astro.props;
+const { data } = Astro.props;
 ---
 
-<BaseLayout pageTitle={frontmatter.title}>
-  <p><em>{frontmatter.description}</em></p>
+<BaseLayout pageTitle={data.title}>
+  <p><em>{data.description}</em></p>
   <p class="publication-date">
     Published on: {
-      new Date(frontmatter.pubDate).toLocaleDateString(undefined, {
+      new Date(data.pubDate).toLocaleDateString(undefined, {
         weekday: "long",
         year: "numeric",
         month: "long",
@@ -21,7 +21,7 @@ const { frontmatter } = Astro.props;
   </p>
   <slot />
   <BackToTop client:idle />
-  <Tags tags={frontmatter.tags} />
+  <Tags tags={data.tags} />
   <Introduction />
 </BaseLayout>
 

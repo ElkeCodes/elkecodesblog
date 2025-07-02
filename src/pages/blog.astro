@@ -4,7 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import "../styles/global.css";
 import { getPublishedPosts } from "../utils/get-published-posts";
 
-const allPosts = getPublishedPosts();
+const allPosts = await getPublishedPosts();
 const pageTitle = "Blog";
 ---
 
@@ -12,8 +12,8 @@ const pageTitle = "Blog";
   <p>This is where I will post about my journey learning Astro.</p>
   <ul>
     {
-      allPosts.map((post: any) => (
-        <BlogPost url={post.url} title={post.frontmatter.title} />
+      allPosts.map((post) => (
+        <BlogPost url={post.id} title={post.data.title} />
       ))
     }
   </ul>
