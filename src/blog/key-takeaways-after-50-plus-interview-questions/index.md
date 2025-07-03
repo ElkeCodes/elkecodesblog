@@ -4,9 +4,6 @@ title: "Key takeaways after 50+ interview questions"
 pubDate: 2030-07-01
 description: "I've been an avid reader of Cassidoo's weekly newsletter for some time now. Part of her newsletter is a weekly interview question where you mail/tweet/whatever the solution to her. I've started solving these interview questions since a couple of months and have solved older ones as well, here's what I've learned."
 author: "Elke Heymans"
-image:
-  url: "https://docs.astro.build/assets/rose.webp"
-  alt: "The Astro logo on a dark background with a pink glow."
 tags: ["interviews", "puzzles", "frontend"]
 ---
 

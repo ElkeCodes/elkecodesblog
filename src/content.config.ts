@@ -9,10 +9,12 @@ const blog = defineCollection({
     description: z.string(),
     shortDescription: z.string().optional(),
     author: z.string(),
-    image: z.object({
-      url: z.string(),
-      alt: z.string(),
-    }),
+    image: z
+      .object({
+        url: z.string(),
+        alt: z.string(),
+      })
+      .optional(),
     tags: z.array(z.string()),
     ogImage: z.string().optional(),
   }),

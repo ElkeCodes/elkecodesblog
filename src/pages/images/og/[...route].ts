@@ -15,7 +15,9 @@ export const { getStaticPaths, GET } = OGImageRoute({
   getImageOptions: (path: string, { data }: (typeof pages)[string]) => ({
     title: data.title,
     description: data.shortDescription || data.description,
-    logo: { path: `src/blog/${path}/${data.image.url}`, size: [240] },
+    logo: data.image
+      ? { path: `src/blog/${path}/${data.image.url}`, size: [240] }
+      : undefined,
     border: { width: 20, color: [206, 66, 87] },
     padding: 50,
     bgGradient: [[12, 15, 17]],
