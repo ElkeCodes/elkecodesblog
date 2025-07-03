@@ -18,12 +18,21 @@ const baseUrl = import.meta.env.DEV
   ? "http://localhost:4321"
   : new URL(Astro.request.url).origin;
 
-const { title, description } = post.data;
+const { title, description, shortDescription } = post.data;
 
-const ogImage = new URL(`/og/${post.id}.png`, baseUrl).toString();
+const ogImage = new URL(`/images/og/${post.id}.png`, baseUrl).toString();
 ---
 
-<MarkdownPostLayout data={post.data}>
-  <meta property="og:image" content={ogImage} />
+<MarkdownPostLayout
+  data={post.data}
+  openGraph={{
+    basic: {
+      title,
+      description: shortDescription,
+      type: "article",
+      image: ogImage,
+    },
+  }}
+>
   <Content />
 </MarkdownPostLayout>

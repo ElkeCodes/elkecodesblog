@@ -2,19 +2,16 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
-const { pageTitle } = Astro.props;
+const {
+  pageTitle,
+  openGraph,
+  description = "I'm a frontend developer currently focusing on React who loves running, photography, and tabletop RPGs when I'm not coding or chasing after my toddler. This blog covers tech insights, hobby adventures, and life as a dev mom.",
+} = Astro.props;
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <meta
-      name="description"
-      content="I'm a frontend developer currently focusing on React who loves running, photography, and tabletop RPGs when I'm not coding or chasing after my toddler. This blog covers tech insights, hobby adventures, and life as a dev mom."
-    />
     <title>{pageTitle}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -23,6 +20,24 @@ const { pageTitle } = Astro.props;
       rel="prefetch"
       as="font"
     />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta property="og:description" content={description} />
+    {
+      openGraph && (
+        <>
+          <meta property="og:title" content={openGraph.basic.title} />
+          <meta property="og:type" content={openGraph.basic.type} />
+          <meta property="og:image" content={openGraph.basic.image} />
+          <meta
+            property="og:url"
+            content={openGraph.basic.url || Astro.url.href}
+          />
+        </>
+      )
+    }
   </head>
   <body>
     <Header pageTitle={pageTitle} />

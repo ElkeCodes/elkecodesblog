@@ -7,6 +7,6 @@ export const getPublishedPosts = () =>
   ).then((posts) =>
     posts.map((post) => ({
       ...post,
-      ogImage: `/og/posts/${post.id}.png`,
+      ogImage: `/images/og/${post.id}.png`,
     }))
   );

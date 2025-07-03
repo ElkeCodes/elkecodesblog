@@ -4,10 +4,14 @@ import Tags from "../components/Tags.astro";
 import BaseLayout from "./BaseLayout.astro";
 import BackToTop from "../components/BackToTop.svelte";
 
-const { data } = Astro.props;
+const { data, openGraph } = Astro.props;
 ---
 
-<BaseLayout pageTitle={data.title}>
+<BaseLayout
+  pageTitle={data.title}
+  openGraph={openGraph}
+  description={data.shortDescription}
+>
   <p><em>{data.description}</em></p>
   <p class="publication-date">
     Published on: {
