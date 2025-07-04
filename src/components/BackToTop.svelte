@@ -1,51 +1,51 @@
 <script>
-  const scrollTopThreshold = 150;
+  const scrollTopThreshold = 500;
   let hidden = true;
 
   function scrollToTop() {
-    document.body.scrollIntoView({ behavior: "smooth" });
+    document.documentElement.scrollIntoView({ behavior: "smooth" });
   }
 
   function handleOnScroll() {
-    let scrollContainer = document.documentElement || document.body;
-    if (!scrollContainer) {
-      return;
-    }
-    hidden = scrollContainer.scrollTop < scrollTopThreshold;
+    hidden = document.documentElement.scrollTop < scrollTopThreshold;
   }
 </script>
 
 <svelte:window onscroll={handleOnScroll} />
 
 <button
-  class="back-to-top"
+  class={["back-to-top", { hidden }]}
   on:click={scrollToTop}
-  class:hidden
   aria-label="Scroll back to top of page"
 ></button>
 
 <style>
   .back-to-top {
-    opacity: 1;
-    transition:
-      opacity 0.5s,
-      visibility 0.5s;
     position: fixed;
-    user-select: none;
     right: 1rem;
     bottom: 1rem;
+    opacity: 1;
+    transition:
+      opacity 0.4s,
+      visibility 0.4s,
+      transform 0.4s;
+    user-select: none;
     background-color: transparent;
-    border: 0;
     cursor: pointer;
+    border: 0;
   }
 
   .back-to-top::after {
     content: "";
-    background-image: url("/icons/up.svg");
-    background-size: cover;
     display: block;
-    height: 2rem;
-    width: 2rem;
+    background-image: url("/icons/arrow_circle_up.svg");
+    background-size: cover;
+    height: 3rem;
+    width: 3rem;
+  }
+
+  .back-to-top:hover {
+    transform: translateY(-0.5rem);
   }
 
   .back-to-top.hidden {

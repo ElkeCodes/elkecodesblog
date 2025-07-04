@@ -7,7 +7,7 @@ shortDescription: "Key takeaways of what I like about Astro and what made me cho
 author: "Elke Heymans"
 image:
   url: "rocket.png"
-  alt: "The Astro logo on a dark background with a pink glow."
+  alt: "Abstract version of the Astro logo which is a space rocket"
 tags: ["astro", "blog", "review", "frontend"]
 ---
 

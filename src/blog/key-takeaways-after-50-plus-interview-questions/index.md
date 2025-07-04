@@ -3,7 +3,11 @@ layout: ../../../layouts/MarkdownPostLayout.astro
 title: "Key takeaways after 50+ interview questions"
 pubDate: 2030-07-01
 description: "I've been an avid reader of Cassidoo's weekly newsletter for some time now. Part of her newsletter is a weekly interview question where you mail/tweet/whatever the solution to her. I've started solving these interview questions since a couple of months and have solved older ones as well, here's what I've learned."
+shortDescription: "After solving a numerous amount of interview questions, it's time to look back at what I've learned"
 author: "Elke Heymans"
+image:
+  url: "psychology_alt.png"
+  alt: "Shape of a face with a question mark on it, as a visual representation of an interview question"
 tags: ["interviews", "puzzles", "frontend"]
 ---
 
