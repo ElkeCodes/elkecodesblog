@@ -3,8 +3,19 @@ import Introduction from "../components/Introduction.astro";
 import Tags from "../components/Tags.astro";
 import BaseLayout from "./BaseLayout.astro";
 import BackToTop from "../components/BackToTop.svelte";
+import TableOfContents from "../components/TableOfContents.astro";
+import type { MarkdownHeading } from "astro";
 
-const { data, openGraph } = Astro.props;
+const { data, openGraph, headings } = Astro.props;
+
+const headingsWithPostTitle: MarkdownHeading[] = [
+  {
+    slug: "title",
+    depth: 1,
+    text: data.title,
+  },
+  ...headings,
+];
 ---
 
 <BaseLayout
@@ -23,7 +34,14 @@ const { data, openGraph } = Astro.props;
       })
     }
   </p>
-  <slot />
+  <div class="article-with-aside">
+    <article>
+      <slot />
+    </article>
+    <aside>
+      <TableOfContents headings={headingsWithPostTitle} />
+    </aside>
+  </div>
   <BackToTop client:idle />
   <Tags tags={data.tags} />
   <Introduction />
@@ -32,5 +50,17 @@ const { data, openGraph } = Astro.props;
 <style>
   .publication-date {
     font-size: var(--font-size-xs);
+  }
+  .article-with-aside {
+    display: grid;
+    grid-template-columns: calc(80ch - 2rem) calc((100vw - 80ch - 2rem) / 2);
+    gap: 1rem;
+  }
+  aside {
+    position: sticky;
+    top: 0;
+    height: min-content;
+    overflow: hidden;
+    padding-top: 2rem;
   }
 </style>

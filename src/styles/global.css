@@ -19,6 +19,10 @@
   --font-size-sm: 0.8rem;
   --font-size-xs: 0.7rem;
 
+  --line-height-md: 1.75rem;
+  --line-height-sm: 1.5rem;
+  --line-height-xs: 1.25rem;
+
   --font-family-serif: "Newsreader", serif;
   --font-family-monospace: "Courier New", Courier, monospace;
 }
@@ -27,6 +31,7 @@ html {
   background-color: var(--color-black);
   font-family: sans-serif;
   color: var(--color-white);
+  scroll-behavior: smooth;
 }
 
 body {
@@ -65,7 +70,7 @@ h3 {
 
 p {
   font-size: var(--font-size-md);
-  line-height: 1.75rem;
+  line-height: var(--line-height-md);
 }
 
 p img {
@@ -76,7 +81,7 @@ p img {
 
 ul li,
 ol li {
-  line-height: 1.75rem;
+  line-height: var(--line-height-md);
 }
 
 a {
@@ -131,6 +136,7 @@ table tr:last-child {
   border-bottom: none;
 }
 
-table td, table th {
+table td,
+table th {
   padding: 0.2rem 0.5rem;
 }

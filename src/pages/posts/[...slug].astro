@@ -12,7 +12,7 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 
 const baseUrl = import.meta.env.DEV
   ? "http://localhost:4321"
@@ -33,6 +33,7 @@ const ogImage = new URL(`/images/og/${post.id}.png`, baseUrl).toString();
       image: ogImage,
     },
   }}
+  headings={headings}
 >
   <Content />
 </MarkdownPostLayout>
