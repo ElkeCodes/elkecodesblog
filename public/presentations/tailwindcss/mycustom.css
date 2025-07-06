@@ -1,0 +1,29 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+.slides h2 {
+  @apply text-orange-base;
+}
+
+.slides a {
+  @apply text-orange-base;
+}
+
+.slides code {
+  @apply rounded-lg;
+}
+
+.slides em {
+  @apply rounded-lg bg-gray-800 px-2 py-1 not-italic;
+}
+
+.reveal .controls {
+  @apply text-orange-base;
+}
+
+.reveal .progress {
+  @apply bg-gray-200 text-orange-base;
+}

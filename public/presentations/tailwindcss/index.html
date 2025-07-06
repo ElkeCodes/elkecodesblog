@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Hoist the sails, we have TailwindCSS</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" id="theme" />
+    <link rel="stylesheet" href="custom.css" id="theme" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link
+      rel="stylesheet"
+      href="plugin/highlight/monokai.css"
+      id="highlight-theme"
+    />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <section>
+            <h1 class="text-orange-base">
+              ⛵️<br />Hoist the sails, we have TailwindCSS!<br />🛠
+            </h1>
+            <p>
+              A utility-first CSS framework for rapidly building custom designs
+            </p>
+          </section>
+          <section>
+            <h2>Your captain: Elke Heymans</h2>
+            <div class="flex">
+              <ul class="flex-grow list-none">
+                <li>👩🏼‍💻 Frontend consultant</li>
+                <li>💻 VueJS developer</li>
+                <li>📸 Photography</li>
+                <li>
+                  🐦 <a href="http://twitter.com/elkecodes">@elkecodes</a>
+                </li>
+                <li>
+                  🌍 <a href="https://elke.codes/">https://elke.codes/</a>
+                </li>
+              </ul>
+              <div class="ml-8 w-1/4">
+                <img src="assets/elke-heymans.jpg" alt="" />
+              </div>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>👩🏼‍💻<br />CSS frameworks now</h2>
+          </section>
+          <section>
+            <h3>Most popular ones</h3>
+            <ul>
+              <li>Bootstrap</li>
+              <li>Foundation</li>
+              <li>Materialize CSS</li>
+              <li>Semantic UI</li>
+              <li>Bulma</li>
+              <li>...</li>
+            </ul>
+            <p>
+              <a href="https://2019.stateofcss.com/technologies/css-frameworks/"
+                >https://2019.stateofcss.com/technologies/css-frameworks/</a
+              >
+            </p>
+          </section>
+          <section>
+            <h3>The classic example: a button component</h3>
+            <pre><code data-trim data-noescape class="language-html">
+&lt;button class=&quot;btn btn-primary&quot;&gt;Primary&lt;/button&gt;
+&lt;button class=&quot;btn btn-secondary&quot;&gt;Secondary&lt;/button&gt;
+&lt;button class=&quot;btn btn-success&quot;&gt;Success&lt;/button&gt;
+			</code></pre>
+            <div class="fragment">
+              <p>The result: pre-styled buttons!</p>
+              <img
+                src="assets/bootstrap-buttons.png"
+                alt=""
+                class="w-7/8 mx-auto"
+              />
+            </div>
+          </section>
+          <section>
+            <h3>Advantages of component frameworks</h3>
+            <ul>
+              <li>Ideal for prototyping</li>
+              <li>Ready to use</li>
+              <li>Uniform styling</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Disadvantages of component frameworks</h3>
+            <div class="flex flex-row">
+              <div class="flex flex-col w-4/5">
+                <pre><code data-trim data-noescape class="language-html">&lt;div class=&quot;card&quot; style=&quot;width: 18rem;&quot;&gt;
+  &lt;img src=&quot;...&quot; class=&quot;card-img-top&quot; alt=&quot;...&quot;&gt;
+  &lt;div class=&quot;card-body&quot;&gt;
+	&lt;h5 class=&quot;card-title&quot;&gt;Card title&lt;/h5&gt;
+	&lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s content.&lt;/p&gt;
+	&lt;a href=&quot;#&quot; class=&quot;btn btn-primary&quot;&gt;Go somewhere&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <ul>
+                  <li>Opinionated predesigned components</li>
+                  <li>No specificity wars:</li>
+                </ul>
+                <pre
+                  class="fragment"
+                ><code data-trim data-noescape class="language-css">.card .card-body .card-title {
+  color: red !important;
+}
+				</code></pre>
+              </div>
+              <div>
+                <img src="assets/bootstrap-card.png" alt="" class="w-auto" />
+              </div>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>🛠<br />TailwindCSS = utility classes</h2>
+          </section>
+          <section>
+            <h3>What are utility classes?</h3>
+            <p>
+              Small pre-existing CSS classes to be used directly in your HTML.
+            </p>
+            <p class="fragment">
+              <em>.mobile-only</em> to add <em>display: none</em>
+            </p>
+            <pre
+              class="fragment"
+            ><code data-trim data-noescape>&lt;button class=&quot;text-white bg-blue-500 underline rounded-lg px-4 py-2&quot;&gt;Primary&lt;/button&gt;</code></pre>
+            <div class="fragment">
+              <p>
+                Result:
+                <button
+                  class="text-white bg-blue-500 underline rounded-lg px-4 py-2"
+                >
+                  Primary
+                </button>
+              </p>
+            </div>
+            <pre
+              class="fragment"
+            ><code data-trim data-noescape class="language-html">
+&lt;button style=&quot;
+  color: white;
+  background-color: #4299e1;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+&quot;&gt;Primary&lt;/button&gt;
+</code></pre>
+          </section>
+          <section>
+            <h3>No more complex CSS</h3>
+            <div class="flex">
+              <ul>
+                <li>Define how an element looks with utilities</li>
+                <li>No CSS selectors needed</li>
+                <li>
+                  Don't invent class names: <em>.btn-pulsing</em>, <em>.btn-important</em>, ...?
+                </li>
+                <li>No naming conventions like BEM needed</li>
+                <li>Very descriptive: no CSS file to open</li>
+              </ul>
+              <div class="w-1/2">
+                <pre><code data-trim data-noescape class="language-html">
+&lt;button class=&quot;
+  text-white
+  font-bold
+  uppercase
+  text-right
+  bg-green-500
+  underline
+  rounded-lg
+  w-full
+  px-4
+  py-2
+  animate-pulse
+&quot;&gt;Primary&lt;/button&gt;
+</code></pre>
+                <button
+                  class="text-white font-bold uppercase text-right bg-green-500 underline rounded-lg w-full px-4 py-2 animate-pulse"
+                >
+                  It's easy!
+                </button>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h3>Utility class exist for:</h3>
+            <ul class="grid grid-cols-2">
+              <li>Layout</li>
+              <li>Flexbox</li>
+              <li>Grid</li>
+              <li>Box Alignment</li>
+              <li>Spacing</li>
+              <li>Sizing</li>
+              <li>Typography</li>
+              <li>Backgrounds</li>
+              <li>Borders</li>
+              <li>Tables</li>
+              <li>Effects</li>
+              <li>Transforms</li>
+              <li>Interactivity</li>
+              <li>SVG</li>
+              <li>Screen Readers</li>
+              <li>Transitions and animation</li>
+            </ul>
+            <p class="fragment">More to come!</p>
+          </section>
+          <section>
+            <h3>Recreating the Bootstrap buttons</h3>
+            <img
+              src="assets/bootstrap-buttons.png"
+              alt=""
+              class="w-7/8 mx-auto fragment"
+            />
+            <pre
+              class="fragment"
+            ><code data-trim data-noescape class="language-html">
+				&lt;button class=&quot;text-white bg-blue-500 px-4 py-2 rounded-lg&quot;&gt;Primary&lt;/button&gt;
+				&lt;button class=&quot;text-white bg-gray-500 px-4 py-2 rounded-lg&quot;&gt;Secondary&lt;/button&gt;
+				&lt;button class=&quot;text-white bg-green-500 px-4 py-2 rounded-lg&quot;&gt;Success&lt;/button&gt;
+				&lt;button class=&quot;text-white bg-red-500 px-4 py-2 rounded-lg&quot;&gt;Danger&lt;/button&gt;
+				&lt;button class=&quot;text-gray-700 bg-yellow-500 px-4 py-2 rounded-lg&quot;&gt;Warning&lt;/button&gt;
+				&lt;button class=&quot;text-white bg-teal-600 px-4 py-2 rounded-lg&quot;&gt;Info&lt;/button&gt;
+				&lt;button class=&quot;text-gray-700 bg-gray-200 px-4 py-2 rounded-lg&quot;&gt;Light&lt;/button&gt;
+				&lt;button class=&quot;text-white bg-gray-800 px-4 py-2 rounded-lg&quot;&gt;Dark&lt;/button&gt;
+				&lt;button class=&quot;text-blue-700 bg-transparent px-4 py-2 rounded-lg&quot;&gt;Link&lt;/button&gt;
+				</code></pre>
+            <div class="fragment">
+              <button class="text-white bg-blue-500 px-4 py-2 rounded-lg">
+                Primary
+              </button>
+              <button class="text-white bg-gray-500 px-4 py-2 rounded-lg">
+                Secondary
+              </button>
+              <button class="text-white bg-green-500 px-4 py-2 rounded-lg">
+                Success
+              </button>
+              <button class="text-white bg-red-500 px-4 py-2 rounded-lg">
+                Danger
+              </button>
+              <button class="text-gray-700 bg-yellow-500 px-4 py-2 rounded-lg">
+                Warning
+              </button>
+              <button class="text-white bg-teal-600 px-4 py-2 rounded-lg">
+                Info
+              </button>
+              <button class="text-gray-700 bg-gray-200 px-4 py-2 rounded-lg">
+                Light
+              </button>
+              <button class="text-white bg-gray-800 px-4 py-2 rounded-lg">
+                Dark
+              </button>
+              <button class="text-blue-700 bg-transparent px-4 py-2 rounded-lg">
+                Link
+              </button>
+            </div>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>😾<br />Addressing the criticism</h2>
+          </section>
+          <section>
+            <h3>1: Look at all that repetition!</h3>
+            <p>Example: you have the same button styling multiple times</p>
+            <pre><code data-trim data-noescape>
+&lt;!-- some HTML--&gt;
+&lt;button class=&quot;text-white bg-gray-500 px-4 py-2 rounded-lg&quot;&gt;Secondary&lt;/button&gt;
+&lt;!-- some more HTML--&gt;
+&lt;button class=&quot;text-white bg-gray-500 px-4 py-2 rounded-lg&quot;&gt;Secondary&lt;/button&gt;
+</code></pre>
+          </section>
+          <section>
+            <h4>Why is it not a component in Vue/React/...?</h4>
+            <p>SecondaryButton.vue:</p>
+            <pre><code data-trim data-noescape>
+&lt;template&gt;
+  &lt;button class=&quot;text-white bg-gray-500 px-4 py-2 rounded-lg&quot;&gt;&lt;slot /&gt;&lt;/button&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  // your button functionality here
+}
+&lt;/script&gt;
+			</code></pre>
+            <ul>
+              <li>Bundle all stylings together per component</li>
+              <li>Useful for complex components</li>
+            </ul>
+          </section>
+          <section>
+            <h4>The power of @apply</h4>
+            <p>For example when you like <em>.btn-secondary</em></p>
+            <pre><code data-trim data-noescape>&lt;button class=&quot;text-white bg-gray-500 px-4 py-2 rounded-lg&quot;&gt;Secondary&lt;/button&gt;</code></pre>
+            <ul>
+              <li class="fragment">Extract component styles</li>
+              <li class="fragment">
+                Keep using the utility classes:<br /><em
+                  >text-white bg-gray-500 px-4 py-2 rounded-lg</em
+                >
+              </li>
+            </ul>
+            <pre class="fragment"><code data-trim data-noescape>
+&lt;button class=&quot;btn-secondary&quot;&gt;Secondary&lt;/button&gt;
+&lt;style&gt;
+.btn-secondary {
+  @apply text-white bg-gray-500 px-4 py-2 rounded-lg;
+}
+&lt;/style&gt;
+			</code></pre>
+          </section>
+          <section><h3>2: It's just like inline styles!</h3></section>
+          <section>
+            <h4>Inline styles !== inline utility classes</h4>
+            <pre
+              class="fragment"
+              data-fragment-index="1"
+            ><code data-trim data-noescape>
+				&lt;button class=&quot;text-white bg-blue-500 px-4 py-2 rounded-lg&quot;&gt;Primary&lt;/button&gt;
+				</code></pre>
+            <p class="fragment" data-fragment-index="6">
+              ↪ Utility classes = no hardcoded values, customisable!
+            </p>
+            <pre
+              class="fragment"
+              data-fragment-index="2"
+            ><code data-trim data-noescape>
+&lt;button style=&quot;
+  color: white;
+  background-color: #4299e1;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+&quot;&gt;Primary&lt;/button&gt;
+</code></pre>
+            <p class="fragment" data-fragment-index="3">
+              ↪ What if we want a different shade of blue?
+            </p>
+            <p class="fragment" data-fragment-index="4">
+              ↪ A different padding?
+            </p>
+            <p class="fragment" data-fragment-index="5">
+              ↪ A different border-radius?
+            </p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>✏️<br />Customisation of TailwindCSS</h2>
+          </section>
+          <section>
+            <h3>How does it work?</h3>
+            <p>tailwind.css + configuration file</p>
+            <p>⬇ via TailwindCLI ⬇</p>
+            <p>custom.css</p>
+            <pre><code>npx tailwindcss build tailwind.css -o custom.css</code></pre>
+          </section>
+          <section>
+            <h3>How do you customise?</h3>
+            <div class="flex flex-row">
+              <pre><code data-trim data-noescape class="language-js">const { colors } = require('tailwindcss/defaultTheme')
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        blue: {
+          ...colors.blue,
+          '500': '#1e3656',
+        }
+      }
+    }
+  }
+}</code></pre>
+            </div>
+            <p class="fragment">
+              With <em>.bg-blue-500</em> utility:
+              <button class="bg-blue-500 rounded-lg px-4 py-2">Original</button>
+              vs.
+              <button
+                class="rounded-lg px-4 py-2"
+                style="background-color: #1e3656"
+              >
+                New
+              </button>
+            </p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>🖥<br />Responsiveness</h2>
+          </section>
+          <section>
+            <h3>With utility classes?</h3>
+            <p>4 breakpoints defined:</p>
+            <ul>
+              <li><em>sm</em> (Small): min-width 640px</li>
+              <li><em>md</em> (Medium): min-width: 768px</li>
+              <li><em>lg</em> (Large): min-width: 1024px</li>
+              <li><em>xl</em> (Extra Large): min-width: 1280px</li>
+            </ul>
+            <img
+              src="assets/screen-sizes.png"
+              alt=""
+              class="w-1/2 mx-auto rounded-lg fragment"
+            />
+            <p class="fragment">
+              Prefix your utilities with <em>sm:</em>, <em>md:</em>,
+              <em>lg:</em>, <em>xl:</em>
+            </p>
+          </section>
+          <section>
+            <h3>An example</h3>
+            <button
+              class="text-blue-500 md:text-white bg-white md:bg-blue-500 lg:bg-purple-500 md:underline lg:no-underline lg:uppercase rounded-lg px-4 py-2"
+            >
+              Primary
+            </button>
+            <pre><code data-trim data-noescape class="language-html">
+&lt;button class=&quot;
+  text-blue-500
+  md:text-white
+  bg-white
+  md:bg-blue-500
+  lg:bg-purple-500
+  md:underline
+  lg:no-underline
+  lg:uppercase
+  rounded-lg
+  px-4 py-2
+&quot;&gt;Primary&lt;/button&gt;</code></pre>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>🧪<br />Want to try it out?</h2>
+          </section>
+          <section>
+            <p>Try it out with the CDN:</p>
+            <pre><code data-trim data-noescape>&lt;link href=&quot;https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css&quot; rel=&quot;stylesheet&quot;&gt;</code></pre>
+            <ul>
+              <li>NPM package</li>
+              <li>Tailwind CLI</li>
+            </ul>
+			<pre><code>npx tailwindcss build tailwind.css -o custom.css</code></pre>
+			<p>See <a href="https://tailwindcss.com/docs/installation">https://tailwindcss.com/docs/installation</a></p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>🏁<br />Conclusion</h2>
+          </section>
+          <section>
+            <ul>
+              <li>Using utilities = vocalising how it looks</li>
+              <li class="fragment">
+                Reponsiveness built in, no more media queries
+              </li>
+              <li class="fragment">Customisation</li>
+            </ul>
+            <p class="fragment">
+              Still sceptical?
+              <a
+                href="https://adamwathan.me/css-utility-classes-and-separation-of-concerns/"
+                >https://adamwathan.me/css-utility-classes-and-separation-of-concerns/</a
+              >
+            </p>
+            <p class="fragment">
+              More info:
+              <a href="https://tailwindcss.com/">https://tailwindcss.com/</a>
+			</p>
+			<p class="fragment">Good luck sailor with TailwindCSS!</p>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+	  Reveal.configure({
+		pdfSeparateFragments: false
+	  })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,822 @@
+<!doctype html>
+<html>
+  <head>
+    <base href="/presentations/advent-of-code/" />
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <title>Advent of Code presentation</title>
+
+    <link rel="stylesheet" href="dist/reset.css" />
+    <link rel="stylesheet" href="dist/reveal.css" />
+    <link rel="stylesheet" href="dist/theme/black.css" />
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css" />
+    <style>
+      blockquote {
+        font-size: 0.5em;
+        text-align: left;
+      }
+      p em {
+        text-decoration: underline;
+      }
+      ul.no-style {
+        padding-left: 0;
+        margin-left: 0;
+      }
+      ul.no-style li {
+        list-style: none;
+      }
+      div.puzzle-description {
+        background: #222222;
+        text-align: left;
+        font-size: 1rem;
+        padding: 1rem;
+      }
+      div.puzzle-description p {
+        margin-top: 1.5rem;
+        margin-bottom: 0;
+      }
+      div.puzzle-description p:first-child {
+        margin-top: 0rem;
+      }
+      .flex {
+        display: flex;
+      }
+      .space-between {
+        justify-content: space-between;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>🎄<br />Advent of Code<br />🎄</h1>
+          <h2>Level up your programming skills</h2>
+        </section>
+        <section>
+          <section>
+            <h2>Hi, I'm Elke!</h2>
+            <img src="img/elke-heymans.jpg" alt="" width="30%" />
+          </section>
+          <section>
+            <h3>Who am I?</h3>
+            <ul class="no-style">
+              <li class="fragment">👩‍💻 Fullstack JS consultant</li>
+              <li class="fragment">📸 Photography</li>
+              <li class="fragment">🤘 Rock and metal shows/festivals</li>
+              <li class="fragment">🏃‍♀️ Half-marathons</li>
+            </ul>
+          </section>
+          <section>
+            <h3>I like to do weird things...</h3>
+            <img src="img/citystrides.png" alt="" class="r-stretch" />
+            <p class="fragment">
+              1st of December 2022: 62.19% of Ghent completed
+            </p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>🎄<br />What is the Advent of Code?</h2>
+          </section>
+          <section>
+            <h3>What is an advent calendar?</h3>
+            <ul class="no-style">
+              <li class="fragment">⛪️ Christian tradition</li>
+              <li class="fragment">#️⃣ Counting down</li>
+              <li class="fragment">4️⃣ 4 Sundays before Christmas</li>
+              <li class="fragment">📆 November 27th - December 3rd</li>
+              <li class="fragment">😎 Easy mode: December 1st</li>
+              <li class="fragment">🤑 Commercialised</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Food advent calendars</h3>
+            <img src="img/advent-calendar-chocolate.jpg" alt="" />
+          </section>
+          <section>
+            <h3>Toy advent calendars</h3>
+            <img src="img/advent-calendar-lego.webp" alt="" />
+          </section>
+          <section>
+            <h3>The Advent of Code</h3>
+            <ul class="no-style">
+              <li class="fragment">✍️ Story set in 25 days before Christmas</li>
+              <li class="fragment">🧩 25 programming puzzles</li>
+              <li class="fragment">🌅 Every morning at 6am</li>
+              <li class="fragment">⏰ Each day = 2 parts</li>
+              <li class="fragment">⭐️ Each part = 1 star</li>
+              <li class="fragment">🤩 Goal: 50 stars</li>
+            </ul>
+          </section>
+          <section>
+            <h3>The Advent of Code</h3>
+            <div class="flex space-between">
+              <ul class="no-style">
+                <li class="fragment">👨‍💻 Eric Wastl</li>
+                <li class="fragment">🎬 2015</li>
+                <li class="fragment">📅 2015: 15k participants</li>
+                <li class="fragment">☝️ 2021: 240k+</li>
+              </ul>
+              <img src="img/eric-wastl.png" alt="" width="30%" />
+            </div>
+          </section>
+          <section>
+            <h3>How/why people participate</h3>
+            <div class="flex space-between">
+              <ul class="no-style">
+                <li class="fragment">🏃 Speed run</li>
+                <li class="fragment">🧑‍🏫 Education</li>
+                <li class="fragment">🙋 Preparation interviews</li>
+                <li class="fragment">🏋️‍♂️ Company training</li>
+              </ul>
+              <img
+                src="img/speed-run.png"
+                alt=""
+                class="r-stretch"
+                width="30%"
+              />
+            </div>
+          </section>
+          <section>
+            <h3>Sometimes, you just have to challenge yourself...</h3>
+            <img src="img/nes.png" alt="" class="r-stretch" />
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>🏃<br />Why should you participate?</h2>
+          </section>
+          <section>
+            <h3>Challenge yourself</h3>
+            <ul class="no-style">
+              <li class="fragment">📚 Learn a new language</li>
+              <li class="fragment">🏋️‍♀️ Exercise your knowledge</li>
+              <li class="fragment">🕵️‍♀️ Find creative solutions</li>
+              <li class="fragment">🧠 Learn algorithms</li>
+            </ul>
+          </section>
+          <section>
+            <img src="img/story.png" alt="" class="r-stretch" />
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>🧩<br />Puzzle examples</h2>
+          </section>
+          <section>
+            <h3>Day 1</h3>
+            <div class="puzzle-description">
+              <p class="fragment">
+                After saving Christmas five years in a row, you've decided to
+                take a vacation at a nice resort on a tropical island. Surely,
+                Christmas will go on without you.
+              </p>
+              <p class="fragment">
+                The tropical island has its own currency and is entirely
+                cash-only. The gold coins used there have a little picture of a
+                starfish; the locals just call them stars. None of the currency
+                exchanges seem to have heard of them, but somehow, you'll need
+                to find fifty of these coins by the time you arrive so you can
+                pay the deposit on your room. To save your vacation, you need to
+                get all fifty stars by December 25th.
+              </p>
+              <p class="fragment">
+                Collect stars by solving puzzles. Two puzzles will be made
+                available on each day in the Advent calendar; the second puzzle
+                is unlocked when you complete the first. Each puzzle grants one
+                star. Good luck!
+              </p>
+              <p class="fragment">
+                Before you leave, the Elves in accounting just need you to fix
+                your <em>expense report</em> (your puzzle input); apparently,
+                something isn't quite adding up.
+              </p>
+              <p class="fragment">
+                Specifically, they need you to
+                <em>find the two entries that sum to 2020</em> and then multiply
+                those two numbers together. For example, suppose your expense
+                report contained the following:
+              </p>
+              <p class="fragment">
+                1721<br />979 <br />366<br />299<br />675<br />1456
+              </p>
+              <p class="fragment">
+                In this list, the two entries that sum to 2020 are 1721 and 299.
+                Multiplying them together produces 1721 * 299 = 514579, so the
+                correct answer is 514579.
+              </p>
+              <p class="fragment">
+                Of course, your expense report is much larger.
+                <em
+                  >Find the two entries that sum to 2020; what do you get if you
+                  multiply them together?</em
+                >
+              </p>
+            </div>
+          </section>
+          <section>
+            <h3>How do you start?</h3>
+            <ul class="no-style">
+              <li class="fragment">🤓 Read the text thoroughly</li>
+              <li class="fragment">🧠 Understand everything</li>
+              <li class="fragment">🕵️‍♀️ What is the problem we try to solve?</li>
+              <li class="fragment">⬇️ What is the input?</li>
+              <li class="fragment">⬆️ What is the output?</li>
+              <li class="fragment">🥸 Write some pseudocode</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Finding the algorithm</h3>
+            <div class="flex">
+              <div class="puzzle-description">
+                <p>1721<br />979 <br />366<br />299<br />675<br />1456</p>
+              </div>
+              <ul class="no-style">
+                <li class="fragment">
+                  🤨 The problem = find 2 entries that sum to 2020
+                </li>
+                <li class="fragment">⬇️ The input = list of numbers</li>
+                <li class="fragment">
+                  ⬆️ The output = multiply the two entries
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h3>The algorithm</h3>
+            <div style="display: flex; align-items: flex-start">
+              <div class="puzzle-description">
+                <p>1721<br />979 <br />366<br />299<br />675<br />1456</p>
+              </div>
+              <ul class="no-style">
+                <li class="fragment">🔄 Loop over entries</li>
+                <li class="fragment" style="padding-left: 2ch">
+                  🔄 Loop over other entries
+                </li>
+                <li class="fragment" style="padding-left: 4ch">
+                  🤨 Entry 1 + entry 2 = 2020
+                </li>
+                <li class="fragment" style="padding-left: 6ch">
+                  🎉 Result = entry 1 * entry 2
+                </li>
+                <li class="fragment" style="padding-left: 6ch">
+                  😫 Continue search
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h3>Day 1 solution</h3>
+            <pre>
+				  <code class="language-typescript" data-trim>
+const data = [1721, 979, 366, 299, 675, 1456];
+
+for (let i = 0; i < data.length; i++) {
+  for (let j = 0; j < data.length; j++) {
+    if (data[i] + data[j] === 2020) {
+      console.log(data[i] * data[j]);
+    }
+  }
+}
+            </code>
+			</pre>
+            <p class="fragment">if statement is true for 1721 + 299</p>
+            <p class="fragment">1721 * 299 = 514579</p>
+          </section>
+          <section>
+            <h3>Day 1 input</h3>
+            <blockquote>
+              1632 1438 1811 1943 1883 1698 1976 1972 1794 1726 1850 1789 1524
+              1701 1454 1594 1655 1018 1828 1867 1959 1541 1596 1998 1916 1894
+              1727 1812 1800 1897 1534 1712 1825 1629 1827 81 1855 1621 1694
+              1663 1793 1685 1616 1899 1688 1652 1719 1589 1649 1742 1905 922
+              1695 1747 1989 1968 1678 1709 1938 1920 1429 1556 2005 1728 1484
+              1746 1702 1456 1917 1670 1433 1538 1806 1667 1505 963 1478 2003
+              1955 1689 1490 1523 1615 1784 1624 583 1465 1443 1489 1873 1485
+              1773 1704 352 505 1705 1844 1599 1778 1846 1533 1535 1965 1987 828
+              1755 1823 1639 1981 1763 1758 1819 1569 1580 358 1786 1964 1604
+              1805 1822 1941 1993 1939 1975 1966 1852 1310 1687 1718 641 1715
+              1995 1603 1444 1641 1961 1536 1771 1267 1749 1944 1519 1445 1818
+              1558 1922 1452 1901 1915 1957 1840 1785 1946 1683 1918 1847 1690
+              1716 1627 1571 1985 1455 435 1856 1527 1660 1555 1557 1591 1906
+              1646 1656 1620 1618 1598 1606 1808 1509 1551 1723 1835 1610 1820
+              1942 1767 1549 1607 1781 1612 1864 2007 1908 1650 1449 1886 1878
+              1895 1869 1469 1507
+            </blockquote>
+            <a href="https://adventofcode.com/2020/day/1/input"
+              >https://adventofcode.com/2020/day/1/input</a
+            >
+            <p class="fragment">🤔 200 input numbers</p>
+          </section>
+          <section>
+            <h3>Day 1 solution</h3>
+            <pre>
+				  <code class="language-typescript" data-trim>
+function runPartA() {
+	const fileData = readFile("01", "a");
+	const data = fileData.map((value) => Number.parseInt(value));
+  
+	for (let i = 0; i < data.length; i++) {
+		for (let j = 0; j < data.length; j++) {
+			if (data[i] + data[j] === 2020) {
+				return data[i] * data[j];
+			}
+		}
+	}
+}
+            </code>
+			</pre>
+            <p class="fragment">if statement true for: 81 + 1939 = 2020</p>
+            <p class="fragment">Puzzle solution = 81 * 1939 = 157059</p>
+          </section>
+          <section>
+            <img src="img/you-got-a-star.jpg" alt="" class="r-stretch" />
+          </section>
+          <section>
+            <h3>Time for part 2!</h3>
+            <div class="puzzle-description">
+              <p class="fragment">
+                The Elves in accounting are thankful for your help; one of them
+                even offers you a starfish coin they had left over from a past
+                vacation. They offer you a second one if you can find
+                <em>three</em>
+                numbers in your expense report that meet the same criteria.
+              </p>
+              <p class="fragment">
+                Using the above example again, the three entries that sum to
+                2020 are <em>979, 366, and 675</em>. Multiplying them together
+                produces the answer, <em>241861950</em>.
+              </p>
+              <p class="fragment">
+                In your expense report,
+                <em
+                  >what is the product of the three entries that sum to 2020</em
+                >?
+              </p>
+            </div>
+          </section>
+          <section>
+            <h3>Updating the algorithm</h3>
+            <ul class="no-style">
+              <li class="fragment">🔄 Loop over entries</li>
+              <li class="fragment" style="padding-left: 2ch">
+                🔄 Loop second time over entries
+              </li>
+              <li class="fragment" style="padding-left: 4ch">
+                🔄 Loop third time over entries
+              </li>
+              <li class="fragment" style="padding-left: 6ch">
+                🤨 Entry 1 + entry 2 + entry 3 = 2020
+              </li>
+              <li class="fragment" style="padding-left: 8ch">
+                🎉 Result = entry 1 * entry 2 * entry 3
+              </li>
+              <li class="fragment" style="padding-left: 8ch">
+                😫 Continue search
+              </li>
+            </ul>
+          </section>
+          <section>
+            <h3>Part 2 solution</h3>
+            <pre>
+				  <code class="language-typescript" data-trim>
+function runPartB() {
+	const fileData = readFile("01", "a");
+	const data = fileData.map((value) => Number.parseInt(value));
+  
+	for (let i = 0; i < data.length; i++) {
+		for (let j = 0; j < data.length; j++) {
+      for (let k = 0; k < data.length; k++) {
+        if (data[i] + data[j] + data[k] === 2020) {
+          return data[i] * data[j] * data[k];
+        }
+      }
+		}
+	}
+}
+            </code>
+			</pre>
+            <p class="fragment">
+              if statement true for: 352 + 358 + 1310 = 2020
+            </p>
+            <p class="fragment">
+              Puzzle solution = 352 * 358 * 1310 = 165080960
+            </p>
+          </section>
+          <section>
+            <img src="img/part2.png" alt="" class="r-stretch" />
+          </section>
+          <section>
+            <h3>What have we learned/used?</h3>
+            <ul class="no-style">
+              <li class="fragment">🤔 If statements</li>
+              <li class="fragment">🧛 Basic arithmetic operations</li>
+              <li class="fragment">👯 Arrays</li>
+              <li class="fragment">🔄 Looping over arrays</li>
+              <li class="fragment">👓 Reading a file</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <h3>The end result</h3>
+          <img src="img/result-2020.png" alt="" class="r-stretch" />
+        </section>
+        <section>
+          <section>
+            <h2>👵<br />My experience with the Advent of Code</h2>
+          </section>
+          <section>
+            <h3>🥇<br />First time participating:<br />Scheme</h3>
+          </section>
+          <section>
+            <h3>Language for 2018: Scheme</h3>
+            <pre><code data-trim>
+(define (fib n)
+  (cond
+    ((= n 0) 0)
+    ((= n 1) 1)
+    (else
+      (+ (fib (- n 1))
+         (fib (- n 2))))))</code></pre>
+            <ul class="no-style">
+              <li class="fragment">📅 1975</li>
+              <li class="fragment">👩‍🏫 Learned at university</li>
+              <li class="fragment">📚 Research and teaching</li>
+              <li class="fragment">🦸 General purpose language</li>
+            </ul>
+          </section>
+          <section>
+            <h3>2018: Scheme</h3>
+            <div class="flex">
+              <ul class="no-style">
+                <li class="fragment">🏋️‍♀️ Exercise my old Scheme knowledge</li>
+                <li class="fragment">📆 Same day solve</li>
+                <li class="fragment">⏳ Performance and time</li>
+                <li class="fragment">⏩ Skipped 2 days</li>
+                <li class="fragment">😨 Never completed</li>
+                <li class="fragment">🤩 31 stars</li>
+              </ul>
+              <img
+                class="fragment"
+                src="img/result-2018.png"
+                alt=""
+                style="width: 30vw"
+              />
+            </div>
+            <p class="fragment">
+              <a
+                href="
+              https://github.com/ElkeCodes/AdventOfCode2018"
+              >
+                https://github.com/ElkeCodes/AdventOfCode2018</a
+              >
+            </p>
+          </section>
+          <section>
+            <h3>Retro on 2018</h3>
+            <ul class="no-style">
+              <li class="fragment">🎓 Scheme = nostalgia</li>
+              <li class="fragment">👩‍🏫 Practiced old techniques</li>
+              <li class="fragment">🐌 Not the fastest language</li>
+              <li class="fragment">🥳 Fun and accomplished feeling</li>
+            </ul>
+            <p class="fragment">7/10 would recommend</p>
+          </section>
+          <section>
+            <h3>🥈<br />Second time participating:<br />TypeScript</h3>
+          </section>
+          <section>
+            <h3>Language for 2020: TypeScript</h3>
+            <pre><code data-trim class="language-typescript">
+const fib = (n: number): number => {
+  if (n < 1)
+    return 0;
+  if (n < 2)
+    return 1;
+  return fib(n - 2) + fib(n - 1);
+};</code></pre>
+            <ul class="no-style">
+              <li class="fragment">🏭 Microsoft</li>
+              <li class="fragment">🧂 JavaScript + types</li>
+              <li class="fragment">⚙️ Compiled</li>
+              <li class="fragment">🏗 Web development</li>
+            </ul>
+          </section>
+          <section>
+            <h3>2020: TypeScript</h3>
+            <div class="flex">
+              <ul class="no-style">
+                <li class="fragment">🏎 Daily driver</li>
+                <li class="fragment">🧘‍♀️ Less harsh on myself</li>
+                <li class="fragment">🤩 50 stars</li>
+              </ul>
+              <img
+                class="fragment"
+                src="img/result-2020.png"
+                alt=""
+                style="width: 30vw"
+              />
+            </div>
+            <p class="fragment">
+              <a
+                href="
+              https://github.com/ElkeCodes/AdventOfCode2020"
+              >
+                https://github.com/ElkeCodes/AdventOfCode2020</a
+              >
+            </p>
+          </section>
+          <section>
+            <h3>Retro on 2020</h3>
+            <ul class="no-style">
+              <li class="fragment">💪 TypeScript = confidence</li>
+              <li class="fragment">📚 So much documentation</li>
+              <li class="fragment">🙇‍♀️ Learned new things about the language</li>
+              <li class="fragment">🥳 Easier than 2018 and more fun</li>
+            </ul>
+            <p class="fragment">10/10 would definitely recommend</p>
+          </section>
+          <section>
+            <h3>🥉<br />Third time participating:<br />Rust</h3>
+          </section>
+          <section>
+            <h3>Language for 2021: Rust</h3>
+            <pre><code data-trim>
+pub fn fib(n: i32) -> u64 {
+  if n < 0 {
+    panic!("{} is negative!", n);
+  }
+  match n {
+    0     => panic!("zero is not a valid argument to fib()!"),
+    1 | 2 => 1,
+    3     => 2,
+    _     => fib(n - 1) + fib(n - 2)
+  }
+}
+              </code></pre>
+            <ul class="no-style">
+              <li class="fragment">🏭 Mozilla</li>
+              <li class="fragment">👷‍♀️ Memory safe</li>
+              <li class="fragment">⚙️ Compiled</li>
+              <li class="fragment">🚀 Popular</li>
+            </ul>
+          </section>
+          <section>
+            <h3>2021: Rust</h3>
+            <div class="flex">
+              <ul class="no-style">
+                <li class="fragment">
+                  🐣 Never written a single line of Rust before
+                </li>
+                <li class="fragment">📖 Bought a book</li>
+                <li class="fragment">💁‍♀️ Used a starter</li>
+                <li class="fragment">🤩 36 stars</li>
+              </ul>
+              <img
+                class="fragment"
+                src="img/result-2021.png"
+                alt=""
+                style="width: 30vw"
+              />
+            </div>
+            <p class="fragment">
+              <a
+                href="
+              https://github.com/ElkeCodes/AdventOfCode2021"
+              >
+                https://github.com/ElkeCodes/AdventOfCode2021</a
+              >
+            </p>
+          </section>
+          <section>
+            <h3>Retro on 2021</h3>
+            <ul class="no-style">
+              <li class="fragment">🤯 So much to learn!</li>
+              <li class="fragment">📖 Book was a great help</li>
+              <li class="fragment">🙇‍♀️ Hardest part: how to write it</li>
+              <li class="fragment">🥳 Learned a lot about Rust</li>
+            </ul>
+            <p class="fragment">9/10 hard recommend</p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>🙇‍♀️<br />What I've learned over all the years</h2>
+          </section>
+          <section>
+            <h3>Programming languages</h3>
+            <ul class="no-style">
+              <li class="fragment">Refreshing = fun and interesting</li>
+              <li class="fragment">Daily = easier</li>
+              <li class="fragment">New = hard but feeling of accomplishment</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Algorithms and data structures</h3>
+            <ul class="no-style" style="columns: 2">
+              <li class="fragment">Parsing</li>
+              <li class="fragment">String manipulations</li>
+              <li class="fragment">Stacks</li>
+              <li class="fragment">Queues</li>
+              <li class="fragment">Hashmaps</li>
+              <li class="fragment">Linked List</li>
+              <li class="fragment">Graphs</li>
+              <li class="fragment">Breadth-first search</li>
+              <li class="fragment">Depth-first search</li>
+              <li class="fragment">Binary search</li>
+              <li class="fragment">A*</li>
+              <li class="fragment">Dijkstra</li>
+              <li class="fragment">Floodfill</li>
+              <li class="fragment">Memoization</li>
+              <li class="fragment">Sorting</li>
+              <li class="fragment">...</li>
+            </ul>
+          </section>
+          <section>
+            <img src="img/bruteforce.png" alt="" class="r-stretch" />
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>🎄<br />Advent of Code 2022</h2>
+          </section>
+          <section>
+            <h3>How I'm participating</h3>
+            <ul class="no-style">
+              <li class="fragment">👩‍💻 Rust</li>
+              <li class="fragment">💆‍♀️ Taking my time</li>
+              <li class="fragment">📚 Book</li>
+            </ul>
+          </section>
+          <section>
+            <h3>My first day</h3>
+            <ul class="no-style">
+              <li class="fragment">👷‍♀️ I had work today</li>
+              <li class="fragment">⏰ Woke up at 5am</li>
+              <li class="fragment">🧐 Looked at 6am</li>
+              <li class="fragment">✍️ Wrote at work</li>
+            </ul>
+          </section>
+          <section>
+            <h3>My first day: an evaluation</h3>
+            <ul class="no-style">
+              <li class="fragment">🐣 It's been almost a year</li>
+              <li class="fragment">🤷‍♀️ Rust is confusing</li>
+              <li class="fragment">💪 I can do this</li>
+              <li class="fragment">😎 Rust is awesome</li>
+            </ul>
+            <p class="fragment">➡ It's exciting!</p>
+          </section>
+          <section>
+            <img src="img/2022-day1.png" alt="" class="r-stretch" />
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>🎬<br />How can you start the Advent of Code</h2>
+          </section>
+          <section>
+            <h3>Creating an account</h3>
+            <p>Log in with:</p>
+            <ul>
+              <li>Google</li>
+              <li>GitHub</li>
+              <li>Twitter</li>
+              <li>Reddit</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Choosing a technology</h3>
+            <ul class="no-style">
+              <li class="fragment">🥅 What's your goal?</li>
+              <li class="fragment">☑️ All technologies are valid!</li>
+              <li class="fragment">💯 Don't limit yourself to 1</li>
+              <li class="fragment">🕵️‍♀️ More popular = more resources</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Pick your fighter!</h3>
+            <ul class="no-style" style="columns: 4; font-size: 0.6em">
+              <li>Java</li>
+              <li>C#</li>
+              <li>Scheme</li>
+              <li>JavaScript</li>
+              <li>Fortran</li>
+              <li>F#</li>
+              <li>C++</li>
+              <li>Rust</li>
+              <li>PHP</li>
+              <li>Erlang</li>
+              <li>Python</li>
+              <li>Progress&nbsp;4GL</li>
+              <li>Elixir</li>
+              <li>Kotlin</li>
+              <li>Go</li>
+              <li>Ruby</li>
+              <li>D</li>
+              <li>Haskell</li>
+              <li>Clojure</li>
+              <li>Swift</li>
+              <li>C</li>
+              <li>Scala</li>
+              <li>Assembly</li>
+              <li>R</li>
+              <li>Bash</li>
+              <li>Perl</li>
+              <li>COBOL</li>
+              <li>VBA</li>
+            </ul>
+            <p class="fragment">And so many more options...!</p>
+          </section>
+          <section>
+            <h3>Top 15 languages in 2018</h3>
+            <img src="img/popular-languages.png" alt="" class="r-fill" />
+          </section>
+          <section>
+            <h3>Or just go weird....</h3>
+            <img src="img/ti-84.png" alt="" class="r-stretch" />
+          </section>
+          <section>
+            <h3>Use a starter template</h3>
+            <p>
+              <a href="https://github.com/Bogdanp/awesome-advent-of-code"
+                >https://github.com/Bogdanp/awesome-advent-of-code</a
+              >
+            </p>
+            <img src="img/templates.png" alt="" class="r-stretch" />
+          </section>
+          <section>
+            <img src="img/starter-template-setup.png" alt="" class="r-fill" />
+            <p class="fragment">Add dayXX.rs and start coding!</p>
+          </section>
+          <section>
+            <h3>When should you enter?</h3>
+            <ul class="no-style">
+              <li class="fragment">💆‍♀️ Whenever you want!</li>
+              <li class="fragment">⏰ It's ok to start later</li>
+            </ul>
+            <img src="img/overview-20221104.png" alt="" class="r-stretch" />
+          </section>
+          <section>
+            <h3>Getting help</h3>
+            <ul class="no-style">
+              <li>💻 Wikipedia</li>
+              <li>
+                🌍
+                <a href="https://www.reddit.com/r/AdventOfCode"
+                  >/r/AdventOfCode</a
+                >
+              </li>
+              <li>🐦 Twitter</li>
+              <li>🗣 The women.code(be) discord!</li>
+            </ul>
+          </section>
+          <section>
+            <h3>Share notes</h3>
+            <img src="img/notes.png" alt="" class="r-stretch" />
+          </section>
+          <section>
+            <h3>Do I have to complete it?</h3>
+            <img src="img/2021-stats.png" alt="" class="r-stretch" />
+          </section>
+        </section>
+        <section>
+          <h3>💭<br />Things to remember</h3>
+          <ul class="no-style">
+            <li class="fragment">😰 Don't put time pressure on you</li>
+            <li class="fragment">👌 Every technology is valid</li>
+            <li class="fragment">🙋 Ask for help</li>
+            <li class="fragment">🔨 Break it into smaller problems</li>
+            <li class="fragment">✍️ Make notes and diagrams</li>
+            <li class="fragment">📚 Use libraries</li>
+          </ul>
+          <p class="fragment">🧠 You'll learn a lot!</p>
+        </section>
+      </div>
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+      // More info about initialization & config:
+      // - https://revealjs.com/initialization/
+      // - https://revealjs.com/config/
+      Reveal.initialize({
+        hash: true,
+        slideNumber: true,
+        progress: true,
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+      });
+    </script>
+  </body>
+</html>

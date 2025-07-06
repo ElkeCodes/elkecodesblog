@@ -1,0 +1,67 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Introduction from "../components/Introduction.astro";
+import { formatDate } from "../utils/format-date";
+
+const pageTitle = "Presentations";
+
+const presentations = [
+  {
+    title: "Advent of Code",
+    presentationDate: new Date(2022, 11, 1),
+    presentationLocation: "women.code(be)",
+    description: `Christmas is coming!
+    That means that the yearly tradition of the Advent of Code is here, an Advent calendar of small programming puzzles for a variety of skill sets and skill levels.
+    They have been used as a speed contest, interview preparation, company training, university coursework, practice problems, to challenge each other, or just for fun.
+    But how do you participate in the Advent of Code?
+    What kind of programming puzzles can you expect?
+    Is it possible to learn a new programming language with the Advent of Code or should you stick to something that you know?`,
+    slides: "/presentations/advent-of-code/index.html",
+  },
+  {
+    title: "Hoist the sails, we have TailwindCSS!",
+    presentationDate: new Date(2020, 8, 14),
+    presentationLocation: "women.code(be)",
+    description: `In this lightning talk of 15 minutes I introduce TailwindCSS.
+    While most CSS frameworks provide pre-designed components, Tailwind CSS provides utility classes to style your frontend components from scratch.
+    I show how to use it to build custom, responsive and maintainable designs without having to write CSS.`,
+    slides: "/presentations/tailwindcss/index.html",
+  },
+  {
+    title: "Pacman VR in Vue",
+    presentationDate: new Date(2020, 1, 27),
+    presentationLocation: "women.code(be)",
+    description: `A lot of people have played the game Pacman before.
+    But with the rising popularity of VR, how would it be to build a Pacman VR?
+    Is it even possible to have a playable version on mobile?
+    In this 40 minutes talk I dive into some history of Pacman and how it's linked to arcade gaming for women.
+    After that I explain how I built a VR version of the popular arcade game with the help of Vue and A-frame.`,
+    slides: "/presentations/pacman-vr/index.html",
+  },
+];
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  {
+    presentations.map((presentation) => (
+      <>
+        <h2>{presentation.title}</h2>
+        <p class="presentation-date">
+          Presented {formatDate(presentation.presentationDate)} @{" "}
+          {presentation.presentationLocation}
+        </p>
+        <p>{presentation.description}</p>
+        <a href={presentation.slides} target="_blank">
+          Open the {presentation.title} slides
+        </a>
+      </>
+    ))
+  }
+  <Introduction />
+</BaseLayout>
+
+<style>
+  .presentation-date {
+    font-size: var(--font-size-sm);
+  }
+</style>
