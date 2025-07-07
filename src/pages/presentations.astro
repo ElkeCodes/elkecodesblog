@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Introduction from "../components/Introduction.astro";
 import { formatDate } from "../utils/format-date";
+import BackToTop from "../components/BackToTop.svelte";
 
 const pageTitle = "Presentations";
 
@@ -55,10 +56,8 @@ const presentations = [
     description: `Let's look at the origin of a bunch of words that we regulary use in IT.
     Where do they come from?
     What might be their suprising history?`,
-    slides:
-      "/presentations/etymology-in-it/etymology-in-it.pdf",
+    slides: "/presentations/etymology-in-it/etymology-in-it.pdf",
   },
-  
 ].sort(
   ({ presentationDate: date1 }, { presentationDate: date2 }) =>
     date2.valueOf() - date1.valueOf()
@@ -82,6 +81,7 @@ const presentations = [
     ))
   }
   <Introduction />
+  <BackToTop client:idle />
 </BaseLayout>
 
 <style>
