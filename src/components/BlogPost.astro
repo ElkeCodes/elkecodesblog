@@ -1,7 +1,9 @@
 ---
-const { url, title } = Astro.props;
+import Card from "./Card.astro";
+
+const { id, data } = Astro.props;
 ---
 
-<li>
-  <a href={`/posts/${url}`}>{title}</a>
-</li>
+<Card href={`/posts/${id}`} title={data.title} actionLabel="Read more">
+  <p>{data.description}</p>
+</Card>

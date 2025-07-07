@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Introduction from "../components/Introduction.astro";
 import { formatDate } from "../utils/format-date";
 import BackToTop from "../components/BackToTop.svelte";
+import Card from "../components/Card.astro";
 
 const pageTitle = "Talks";
 
@@ -67,16 +68,17 @@ const talks = [
 <BaseLayout pageTitle={pageTitle}>
   {
     talks.map((talk) => (
-      <a class="talk-card" href={talk.slides} target="_blank">
-        <h2>{talk.title}</h2>
+      <Card
+        title={talk.title}
+        href={talk.slides}
+        actionLabel={`Open the ${talk.title} slides`}
+        target="_blank"
+      >
         <p class="talk-date">
           Presented {formatDate(talk.talkDate)} @ {talk.talkLocation}
         </p>
         <p>{talk.description}</p>
-        <div class="talk-slides-link">
-          <button>Open the "{talk.title}" slides</button>
-        </div>
-      </a>
+      </Card>
     ))
   }
   <Introduction />
@@ -84,27 +86,8 @@ const talks = [
 </BaseLayout>
 
 <style>
-  .talk-card {
-    border-radius: 1rem;
-    background: var(--color-gray);
-    padding: 2rem;
-    margin-bottom: 2rem;
-    transition: transform 0.2s;
-    display: block;
-    border: 1px solid var(--color-light-gray);
-  }
-  .talk-card:hover {
-    cursor: pointer;
-  }
-  .talk-card h2 {
-    margin-top: 0;
-  }
   .talk-date {
     font-size: var(--font-size-sm);
     color: var(--color-lighter-gray);
-  }
-  .talk-slides-link {
-    width: 100%;
-    text-align: right;
   }
 </style>

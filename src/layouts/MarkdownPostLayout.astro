@@ -47,8 +47,13 @@ const headingsWithPostTitle: MarkdownHeading[] = [
   }
   .article-with-aside {
     display: grid;
-    grid-template-columns: calc(80ch - 2rem) calc((100vw - 80ch - 2rem) / 2);
-    gap: 1rem;
+    grid-template-columns: calc(100vw - 2rem) 0;
+  }
+  @media screen and (min-width: 636px) {
+    .article-with-aside {
+      grid-template-columns: calc(80ch - 2rem) calc((100vw - 80ch - 2rem) / 2);
+      gap: 1rem;
+    }
   }
   aside {
     position: sticky;

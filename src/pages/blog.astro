@@ -13,8 +13,18 @@ const pageTitle = "Blog";
   <ul>
     {
       allPosts.map((post) => (
-        <BlogPost url={post.id} title={post.data.title} />
+        <li>
+          <BlogPost id={post.id} data={post.data} />
+        </li>
       ))
     }
   </ul>
 </BaseLayout>
+
+<style>
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+</style>
