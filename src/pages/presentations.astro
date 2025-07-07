@@ -38,30 +38,74 @@ const presentations = [
     After that I explain how I built a VR version of the popular arcade game with the help of Vue and A-frame.`,
     slides: "/presentations/pacman-vr/index.html",
   },
-];
+  {
+    title: "Wrapping your head around headless tables",
+    presentationDate: new Date(2023, 5, 21),
+    presentationLocation: "Sopra Steria",
+    description: `In a lot of component libraries, we are bombarded with different components to build a table.
+    With headless tables, we can take full control of all the HTML and CSS that is produced by a table.
+    This eliminates the need to start customising a theme or having to override lots of complicated CSS.`,
+    slides:
+      "/presentations/wrapping-your-head-around-headless-tables/wrapping-your-head-around-headless-tables.pdf",
+  },
+  {
+    title: "Etymology in IT",
+    presentationDate: new Date(2025, 0, 16),
+    presentationLocation: "Sopra Steria",
+    description: `Let's look at the origin of a bunch of words that we regulary use in IT.
+    Where do they come from?
+    What might be their suprising history?`,
+    slides:
+      "/presentations/etymology-in-it/etymology-in-it.pdf",
+  },
+  
+].sort(
+  ({ presentationDate: date1 }, { presentationDate: date2 }) =>
+    date2.valueOf() - date1.valueOf()
+);
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   {
     presentations.map((presentation) => (
-      <>
+      <a class="presentation-card" href={presentation.slides} target="_blank">
         <h2>{presentation.title}</h2>
         <p class="presentation-date">
           Presented {formatDate(presentation.presentationDate)} @{" "}
           {presentation.presentationLocation}
         </p>
         <p>{presentation.description}</p>
-        <a href={presentation.slides} target="_blank">
-          Open the {presentation.title} slides
-        </a>
-      </>
+        <div class="presentation-slides-link">
+          <button>Open the "{presentation.title}" slides</button>
+        </div>
+      </a>
     ))
   }
   <Introduction />
 </BaseLayout>
 
 <style>
+  .presentation-card {
+    border-radius: 1rem;
+    background: var(--color-gray);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: transform 0.2s;
+    display: block;
+    border: 1px solid var(--color-light-gray);
+  }
+  .presentation-card:hover {
+    cursor: pointer;
+  }
+  .presentation-card h2 {
+    margin-top: 0;
+  }
   .presentation-date {
     font-size: var(--font-size-sm);
+    color: var(--color-lighter-gray);
+  }
+  .presentation-slides-link {
+    width: 100%;
+    text-align: right;
   }
 </style>
