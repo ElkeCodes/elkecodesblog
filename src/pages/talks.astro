@@ -4,78 +4,77 @@ import Introduction from "../components/Introduction.astro";
 import { formatDate } from "../utils/format-date";
 import BackToTop from "../components/BackToTop.svelte";
 
-const pageTitle = "Presentations";
+const pageTitle = "Talks";
 
-const presentations = [
+const talks = [
   {
     title: "Advent of Code",
-    presentationDate: new Date(2022, 11, 1),
-    presentationLocation: "women.code(be)",
+    talkDate: new Date(2022, 11, 1),
+    talkLocation: "women.code(be)",
     description: `Christmas is coming!
     That means that the yearly tradition of the Advent of Code is here, an Advent calendar of small programming puzzles for a variety of skill sets and skill levels.
     They have been used as a speed contest, interview preparation, company training, university coursework, practice problems, to challenge each other, or just for fun.
     But how do you participate in the Advent of Code?
     What kind of programming puzzles can you expect?
     Is it possible to learn a new programming language with the Advent of Code or should you stick to something that you know?`,
-    slides: "/presentations/advent-of-code/index.html",
+    slides: "/talks/advent-of-code/index.html",
   },
   {
     title: "Hoist the sails, we have TailwindCSS!",
-    presentationDate: new Date(2020, 8, 14),
-    presentationLocation: "women.code(be)",
+    talkDate: new Date(2020, 8, 14),
+    talkLocation: "women.code(be)",
     description: `In this lightning talk of 15 minutes I introduce TailwindCSS.
     While most CSS frameworks provide pre-designed components, Tailwind CSS provides utility classes to style your frontend components from scratch.
     I show how to use it to build custom, responsive and maintainable designs without having to write CSS.`,
-    slides: "/presentations/tailwindcss/index.html",
+    slides: "/talks/tailwindcss/index.html",
   },
   {
     title: "Pacman VR in Vue",
-    presentationDate: new Date(2020, 1, 27),
-    presentationLocation: "women.code(be)",
+    talkDate: new Date(2020, 1, 27),
+    talkLocation: "women.code(be)",
     description: `A lot of people have played the game Pacman before.
     But with the rising popularity of VR, how would it be to build a Pacman VR?
     Is it even possible to have a playable version on mobile?
     In this 40 minutes talk I dive into some history of Pacman and how it's linked to arcade gaming for women.
     After that I explain how I built a VR version of the popular arcade game with the help of Vue and A-frame.`,
-    slides: "/presentations/pacman-vr/index.html",
+    slides: "/talks/pacman-vr/index.html",
   },
   {
     title: "Wrapping your head around headless tables",
-    presentationDate: new Date(2023, 5, 21),
-    presentationLocation: "Sopra Steria",
+    talkDate: new Date(2023, 5, 21),
+    talkLocation: "Sopra Steria",
     description: `In a lot of component libraries, we are bombarded with different components to build a table.
     With headless tables, we can take full control of all the HTML and CSS that is produced by a table.
     This eliminates the need to start customising a theme or having to override lots of complicated CSS.`,
     slides:
-      "/presentations/wrapping-your-head-around-headless-tables/wrapping-your-head-around-headless-tables.pdf",
+      "/talks/wrapping-your-head-around-headless-tables/wrapping-your-head-around-headless-tables.pdf",
   },
   {
     title: "Etymology in IT",
-    presentationDate: new Date(2025, 0, 16),
-    presentationLocation: "Sopra Steria",
+    talkDate: new Date(2025, 0, 16),
+    talkLocation: "Sopra Steria",
     description: `Let's look at the origin of a bunch of words that we regulary use in IT.
     Where do they come from?
     What might be their suprising history?`,
-    slides: "/presentations/etymology-in-it/etymology-in-it.pdf",
+    slides: "/talks/etymology-in-it/etymology-in-it.pdf",
   },
 ].sort(
-  ({ presentationDate: date1 }, { presentationDate: date2 }) =>
+  ({ talkDate: date1 }, { talkDate: date2 }) =>
     date2.valueOf() - date1.valueOf()
 );
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   {
-    presentations.map((presentation) => (
-      <a class="presentation-card" href={presentation.slides} target="_blank">
-        <h2>{presentation.title}</h2>
-        <p class="presentation-date">
-          Presented {formatDate(presentation.presentationDate)} @{" "}
-          {presentation.presentationLocation}
+    talks.map((talk) => (
+      <a class="talk-card" href={talk.slides} target="_blank">
+        <h2>{talk.title}</h2>
+        <p class="talk-date">
+          Presented {formatDate(talk.talkDate)} @ {talk.talkLocation}
         </p>
-        <p>{presentation.description}</p>
-        <div class="presentation-slides-link">
-          <button>Open the "{presentation.title}" slides</button>
+        <p>{talk.description}</p>
+        <div class="talk-slides-link">
+          <button>Open the "{talk.title}" slides</button>
         </div>
       </a>
     ))
@@ -85,7 +84,7 @@ const presentations = [
 </BaseLayout>
 
 <style>
-  .presentation-card {
+  .talk-card {
     border-radius: 1rem;
     background: var(--color-gray);
     padding: 2rem;
@@ -94,17 +93,17 @@ const presentations = [
     display: block;
     border: 1px solid var(--color-light-gray);
   }
-  .presentation-card:hover {
+  .talk-card:hover {
     cursor: pointer;
   }
-  .presentation-card h2 {
+  .talk-card h2 {
     margin-top: 0;
   }
-  .presentation-date {
+  .talk-date {
     font-size: var(--font-size-sm);
     color: var(--color-lighter-gray);
   }
-  .presentation-slides-link {
+  .talk-slides-link {
     width: 100%;
     text-align: right;
   }
