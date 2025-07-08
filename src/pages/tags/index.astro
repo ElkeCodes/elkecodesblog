@@ -1,7 +1,7 @@
 ---
-import Tags from "../../components/Tags.astro";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getPublishedPosts } from "../../utils/get-published-posts";
+import Tags from "@components/Tags.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { getPublishedPosts } from "@utils/get-published-posts";
 const posts = await getPublishedPosts();
 const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
 const pageTitle = "Tag Index";

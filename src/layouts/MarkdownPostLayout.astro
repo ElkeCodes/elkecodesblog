@@ -1,11 +1,11 @@
 ---
-import Introduction from "../components/Introduction.astro";
-import Tags from "../components/Tags.astro";
+import Introduction from "@components/Introduction.astro";
+import Tags from "@components/Tags.astro";
 import BaseLayout from "./BaseLayout.astro";
-import BackToTop from "../components/BackToTop.svelte";
-import TableOfContents from "../components/TableOfContents.astro";
+import BackToTop from "@components/BackToTop.svelte";
+import TableOfContents from "@components/TableOfContents.astro";
 import type { MarkdownHeading } from "astro";
-import { formatDate } from "../utils/format-date";
+import { formatDate } from "@utils/format-date";
 
 const { data, openGraph, headings } = Astro.props;
 

@@ -1,5 +1,5 @@
 import rss, { pagesGlobToRssItems } from "@astrojs/rss";
-import { getPublishedPosts } from "../utils/get-published-posts";
+import { getPublishedPosts } from "@utils/get-published-posts";
 
 export async function GET(context) {
   return rss({

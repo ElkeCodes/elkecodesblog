@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/MarkdownPostLayout.astro
+layout: ../@layouts/MarkdownPostLayout.astro
 title: "Why I chose Astro for this blog"
 pubDate: 2025-06-28
 description: "At the time of writing, I'm on parental leave to support my wife and take care of our newborn son. In the spare time that I can find between changing diapers, I like tinkering around with technology and was eager to start a blog. Here are my key takeaways of what I like about Astro and what made me choose Astro, in no particular order."
@@ -149,9 +149,9 @@ You're not forced to use a specific one, Astro lets you [mix and match component
 [Next.js](https://nextjs.org/) leans on React, [Nuxt](https://nuxt.com/) leans on Vue, while Astro lets me use Vue for widgets and Svelte for animations
 
 ```js
-import MyReactComponent from '../components/MyReactComponent.jsx';
-import MySvelteComponent from '../components/MySvelteComponent.svelte';
-import MyVueComponent from '../components/MyVueComponent.vue';
+import MyReactComponent from '@components/MyReactComponent.jsx';
+import MySvelteComponent from '@components/MySvelteComponent.svelte';
+import MyVueComponent from '@components/MyVueComponent.vue';
 ---
 <div>
   <MySvelteComponent />

@@ -1,8 +1,8 @@
 ---
-import BlogPost from "../components/BlogPost.astro";
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BlogPost from "@components/BlogPost.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
 import "../styles/global.css";
-import { getPublishedPosts } from "../utils/get-published-posts";
+import { getPublishedPosts } from "@utils/get-published-posts";
 
 const allPosts = await getPublishedPosts();
 const pageTitle = "Blog";
