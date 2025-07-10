@@ -1,0 +1,18 @@
+---
+import Card from "@components/Card.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const pageTitle = "Coding projects overview";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <Card
+    title="Rendez-vous with Cassidoo"
+    href="/coding/rendez-vous-with-cassidoo"
+    actionLabel="Open the details"
+    ><p>
+      Trying to solve all interview questions that Cassidoo sends and has sent
+      in her weekly newsletter.
+    </p></Card
+  >
+</BaseLayout>
