@@ -58,64 +58,7 @@ const solvedWeeks = (
 //   ),
 // ];
 
-// const solvedWeeks = weeksData.map(({ name, ...rest }) => ({ ...rest, name }));
-
 const getWeek = (name: string): string => name.substring(0, name.indexOf("-"));
-
-// const solvedWeeks = [
-//   { week: 1, url: "0001-roman-numerals" },
-//   { week: 2, url: "0002-postfix" },
-//   { week: 3, url: "0003-anagrams" },
-//   { week: 5, url: "0005-queue-with-two-stacks" },
-//   { week: 7, url: "0007-duplicate-characters" },
-//   { week: 8, url: "0008-rotate-array" },
-//   { week: 98, url: "0098-non-repeat" },
-//   { week: 99, url: "0099-integer-division-the-hard-way" },
-//   { week: 100, url: "0100-max-range	" },
-//   { week: 103, url: "0103-dice-combos	" },
-//   { week: 107, url: "0107-valid-triangle" },
-//   { week: 108, url: "0108-repeated-substring" },
-//   { week: 155, url: "0155-char-num-sort" },
-//   { week: 157, url: "0157-move-zeroes" },
-//   { week: 204, url: "0204-ip-address-in-range" },
-//   { week: 205, url: "0205-continuous-sub-arrays" },
-//   { week: 206, url: "0206-zeroes-ending-factorial" },
-//   { week: 208, url: "0208-minesweeper" },
-//   { week: 238, url: "0238-hashmap-reimplemented" },
-//   { week: 245, url: "0245-merge-overlapping-intervals" },
-//   { week: 246, url: "0246-simple-autocomplete" },
-//   { week: 250, url: "0250-all-unique-characters" },
-//   { week: 252, url: "0252-add-more-vowels" },
-//   { week: 253, url: "0253-previous-fibonacci-number" },
-//   { week: 254, url: "0254-longest-word" },
-//   { week: 257, url: "0257-hide-email" },
-//   { week: 345, url: "0345-largest-island" },
-//   { week: 346, url: "0346-unique-sum" },
-//   { week: 349, url: "0349-print-arrow" },
-//   { week: 350, url: "0350-misplaced-hands-on-keyboard" },
-//   { week: 380, url: "0380-meal-prep" },
-//   { week: 381, url: "0381-roll-call" },
-//   { week: 384, url: "0384-count-perfectly-round-cookies" },
-//   { week: 386, url: "0386-permute" },
-//   { week: 387, url: "0387-nato-phonetic-alphabet" },
-//   { week: 388, url: "0388-longest-subsequence" },
-//   { week: 397, url: "0397-longest-true-streak" },
-//   { week: 398, url: "0398-longest-time-gap" },
-//   { week: 399, url: "0399-leyland-numbers" },
-//   { week: 400, url: "0400-largest-sum-of-connected-paths" },
-//   { week: 401, url: "0401-calculate-ingredients" },
-//   { week: 402, url: "0402-compress" },
-//   { week: 403, url: "0403-longest-common-prefix" },
-//   { week: 404, url: "0404-add-operators" },
-//   { week: 405, url: "0405-draw-cube" },
-//   { week: 406, url: "0406-odd-sum" },
-//   { week: 407, url: "0407-nest-array" },
-//   { week: 408, url: "0408-traffic-sequence" },
-//   { week: 409, url: "0409-sort-monarchs" },
-//   { week: 410, url: "0410-remove-overlapping-sirens" },
-//   { week: 411, url: "0411-non-repeat" },
-//   { week: 412, url: "0412-grand-finale-fireworks" },
-// ];
 
 const lastWeek = parseInt(
   getWeek(solvedWeeks.at(solvedWeeks.length - 1)?.name || "0-foo"),
@@ -158,7 +101,9 @@ const completionPercentage = Math.floor((solvedWeeks.length / lastWeek) * 100);
           <tr>
             <td>{getWeek(name)}</td>
             <td>
-              <a href={html_url}>{name}</a>
+              <a href={html_url} target="_blank">
+                {name}
+              </a>
             </td>
             {/* <td>
               <ul class="tags">
