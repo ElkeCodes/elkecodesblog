@@ -2,7 +2,7 @@ const openBlog = () => cy.openBlogPost("why-i-chose-astro-for-this-blog");
 
 describe("blog post 'Why I chose Astro for this blog'", () => {
   beforeEach(() => {
-    cy.openBlogPost("why-i-chose-astro-for-this-blog");
+    openBlog();
   });
   it("should have the correct titles", () => {
     cy.get("title").should("have.text", "Why I chose Astro for this blog");
@@ -18,12 +18,10 @@ describe("blog post 'Why I chose Astro for this blog'", () => {
   });
 
   it("should have the introduction", () => {
-    cy.get("section").should("contain.text", "I'm a frontend developer");
+    cy.verifyIntroduction();
   });
 
   it("should have the menu", () => {
-    cy.get("nav").should("contain", "Home");
-    cy.get("nav").should("contain", "About");
-    cy.get("nav").should("contain", "Blog");
+    cy.verifyMenu();
   });
 });

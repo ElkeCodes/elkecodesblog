@@ -1,0 +1,16 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { Content as Experience } from "./base.md";
+
+const pageTitle = "Curriculum Vitae";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <Experience />
+</BaseLayout>
+<style>
+  dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+</style>

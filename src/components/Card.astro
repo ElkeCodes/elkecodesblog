@@ -9,15 +9,18 @@ const { href, title, actionLabel, ...rest } = Astro.props;
 ---
 
 <a class="card" href={href} {...rest}>
-  <h2>{title}</h2>
+  <h3>{title}</h3>
   <slot />
-  {
-    actionLabel && (
-      <div class="card-actions">
-        <button>{actionLabel}</button>
-      </div>
-    )
-  }
+  <div class="aside-and-actions">
+    <slot name="aside" />
+    {
+      actionLabel && (
+        <div class="card-actions">
+          <button>{actionLabel}</button>
+        </div>
+      )
+    }
+  </div>
 </a>
 
 <style>
@@ -25,26 +28,32 @@ const { href, title, actionLabel, ...rest } = Astro.props;
     background: var(--color-gray);
     border-radius: 0.5rem;
     padding: 1rem;
-    margin-bottom: 1rem;
-    transition: transform 0.2s;
+    transition:
+      transform 0.2s,
+      background-color 0.4s;
     display: block;
-    border: 1px solid var(--color-light-gray);
+    border: 1px solid var(--color-border);
   }
   .card:hover {
     cursor: pointer;
+    background: var(--color-dark-gray);
   }
-  .card h2 {
+  .card h3 {
     margin-top: 0;
+    color: var(--color-secondary);
   }
   .card-actions {
     width: 100%;
     text-align: right;
   }
+  .aside-and-actions {
+    display: flex;
+    justify-content: space-between;
+  }
   @media screen and (min-width: 636px) {
     .card {
       border-radius: 1rem;
       padding: 2rem;
-      margin-bottom: 2rem;
     }
   }
 </style>
