@@ -1,8 +1,8 @@
 ---
 layout: ../@layouts/MarkdownPostLayout.astro
-title: "5 key takeaways after solving 50+ interview questions"
+title: "5 key takeaways from solving 50+ coding interview questions as a frontend developer"
 pubDate: 2025-08-05
-description: "I've been an avid reader of Cassidoo's weekly newsletter for some time now. Part of her newsletter is a weekly interview question that I've started to solve. Here's 5 key takeaways about solving these questions and why it has made me a better developer."
+description: "I've been an avid reader of Cassidoo's weekly newsletter for some time now. Part of her newsletter is a weekly interview question that I've started to solve. Here's 5 takeaways about solving these questions and why it has made me a better developer."
 shortDescription: "After solving a numerous amount of interview questions, it's time to look back at what I've learned"
 author: "Elke Heymans"
 image:
@@ -20,7 +20,7 @@ The cliché of frontend developers is that we can only use JavaScript and hopefu
 After 3 hours battling Rust's ownership model for a simple streak counter, I had an epiphany.
 Solving an interview question isn't about proving I can use fancy tools.
 **It's about reliably solving problems**.
-My TypeScript solution took less 15 minutes and passed all edge cases on the first try.
+My TypeScript solution took less than 15 minutes and passed all edge cases on the first try.
 
 Still, I'm proud of my Rust solve for the [interview question of issue #397](https://buttondown.com/cassidoo/archive/this-present-moment-was-once-the-unimaginable/) but my Javascript solution was so much shorter and cleaner:
 
@@ -75,7 +75,7 @@ function badLeyland(n: number) {
 }
 ```
 
-This code had numereous problems: it created duplicates instead of a clean sequence and if the requested n numbers was too high, it started to create a wrong sequence.
+This code had numerous problems: it created duplicates instead of a clean sequence and if the requested n numbers was too high, it started to create a wrong sequence.
 In the end, I found this cleaner solution with clever use of a Set and building up a longer temporary sequence (by looping n<sup>2</sup> times instead of n times) that we clean up at the end:
 
 ```typescript
@@ -91,7 +91,7 @@ export function getLeylandNumbersWithSet(n: number): number[] {
 ```
 
 **It's okay to have to read up on some information and having to dive into some literature**.
-I've ended up learning more about certain concepts like [Leyland numbers](https://github.com/ElkeCodes/rendezvous-with-cassidoo-interview-questions/blob/7771c0bde200442d1fa4d0c93974621c8dab585d/src/days/0399-leyland-numbers/get-leyland-numbers.ts) and [the NATO phonetic alphabet](https://github.com/ElkeCodes/rendezvous-with-cassidoo-interview-questions/blob/7771c0bde200442d1fa4d0c93974621c8dab585d/src/days/0387-nato-phonetic-alphabet/natoify.ts)..
+I've ended up learning more about certain concepts like [Leyland numbers](https://github.com/ElkeCodes/rendezvous-with-cassidoo-interview-questions/blob/7771c0bde200442d1fa4d0c93974621c8dab585d/src/days/0399-leyland-numbers/get-leyland-numbers.ts) and [the NATO phonetic alphabet](https://github.com/ElkeCodes/rendezvous-with-cassidoo-interview-questions/blob/7771c0bde200442d1fa4d0c93974621c8dab585d/src/days/0387-nato-phonetic-alphabet/natoify.ts).
 
 ## Takeaway #4: basic algorithms and data structure knowledge comes in handy
 
@@ -113,7 +113,7 @@ For me, one of the reasons was that **I could learn more about the quirks and ad
 Throughout these interview challenges, I've deepened my understanding of several advanced JavaScript/TypeScript concepts:
 
 - **BigInt**: Used to [handle large numbers safely](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt) and thus avoiding integer overflow issues
-- **Generators**: Practiced with [iterator patterns](https://github.com/ElkeCodes/rendezvous-with-cassidoo-interview-questions/blob/7771c0bde200442d1fa4d0c93974621c8dab585d/src/days/0408-traffic-sequence/is-valid-traffic-sequence.ts) by using a generator to create a infinite stream of output
+- **Generators**: Practiced with [iterator patterns](https://github.com/ElkeCodes/rendezvous-with-cassidoo-interview-questions/blob/7771c0bde200442d1fa4d0c93974621c8dab585d/src/days/0408-traffic-sequence/is-valid-traffic-sequence.ts) by using a generator to create an infinite stream of output
 - **Bitwise operations**: Solved IP range problems efficiently in the [IP address validator](https://github.com/ElkeCodes/rendezvous-with-cassidoo-interview-questions/blob/7771c0bde200442d1fa4d0c93974621c8dab585d/src/days/0204-ip-address-in-range/in-range.ts) by using some clever bit calculations
 - **Generics**: Implemented [type-safe reusable utilities](https://github.com/ElkeCodes/rendezvous-with-cassidoo-interview-questions/blob/7771c0bde200442d1fa4d0c93974621c8dab585d/src/days/shared/partition.ts) for different data types
 - **Complex type systems**: Designed [nested type structures](https://github.com/ElkeCodes/rendezvous-with-cassidoo-interview-questions/blob/7771c0bde200442d1fa4d0c93974621c8dab585d/src/days/0407-nest-array/nest-array.ts) for hierarchical data
