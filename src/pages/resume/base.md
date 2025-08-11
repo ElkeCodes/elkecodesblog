@@ -154,7 +154,7 @@ helped with their in-house npm packages. -->
 
 - Developed new design system in scope of rebranding ADMB, Zenito & Provikmo to Liantis
 - Integrated design system into the new Angular website portal for their clients to existing applications
-- TO COMPLETE
+<!-- - TO COMPLETE -->
 
 <!-- ADMB / Zenito hired Ordina to help with their rebranding for the new merged company. With the
 rebranding they also wanted to foresee a new portal website which was made with the needs of the client taken
