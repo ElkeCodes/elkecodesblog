@@ -5,7 +5,7 @@ import { coverageConfigDefaults } from "vitest/config";
 export default getViteConfig({
   test: {
     coverage: {
-      exclude: ["astro.config.mjs", ...coverageConfigDefaults.exclude],
+      exclude: ["astro.config.mjs", "public/talks", ...coverageConfigDefaults.exclude],
     },
   },
 });

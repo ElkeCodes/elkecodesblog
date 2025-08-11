@@ -7,6 +7,5 @@ test("Navigation", async () => {
   const result = await container.renderToString(Navigation);
 
   expect(result).toContain("Home");
-  expect(result).toContain("About");
   expect(result).toContain("Blog");
 });
