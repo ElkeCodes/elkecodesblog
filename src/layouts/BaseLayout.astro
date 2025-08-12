@@ -2,11 +2,13 @@
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
 import "../styles/global.css";
+import SkipToMainContent from "@components/SkipToMainContent.astro";
 const {
   pageTitle,
   openGraph,
   description = "I'm a frontend developer currently focusing on React who loves running, photography, and tabletop RPGs when I'm not coding or chasing after my toddler. This blog covers tech insights, hobby adventures, and life as a dev mom.",
 } = Astro.props;
+const skipToMainContentId = "main-content";
 ---
 
 <html lang="en">
@@ -40,8 +42,12 @@ const {
     }
   </head>
   <body>
-    <Header pageTitle={pageTitle} />
-    <slot />
+    <SkipToMainContent id={skipToMainContentId} />
+    <Header />
+    <article id={skipToMainContentId}>
+      <h1 id="title">{pageTitle}</h1>
+      <slot />
+    </article>
     <Footer />
     <script>
       import "../scripts/menu.js";

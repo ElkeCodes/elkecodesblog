@@ -1,0 +1,21 @@
+---
+const { id } = Astro.props;
+---
+
+<a href=`#${id}` class="skip-to-main-content">Skip to main content</a>
+
+<style>
+  .skip-to-main-content {
+    background: var(--color-primary);
+    padding: 0.5rem 1rem;
+    position: absolute;
+    transform: translateY(calc(-100% - 1rem));
+    transition: transform 0.3s;
+    color: var(--color-black);
+    border-radius: 0.5rem;
+  }
+
+  .skip-to-main-content:focus {
+    transform: translateY(0%);
+  }
+</style>
