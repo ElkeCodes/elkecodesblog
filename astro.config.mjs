@@ -5,6 +5,8 @@ import svelte from "@astrojs/svelte";
 
 import netlify from "@astrojs/netlify";
 
+import mdx from "@astrojs/mdx";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://elkecodes.dev",
@@ -13,6 +15,6 @@ export default defineConfig({
     responsiveStyles: true,
   },
 
-  integrations: [svelte()],
+  integrations: [svelte(), mdx()],
   adapter: netlify(),
 });

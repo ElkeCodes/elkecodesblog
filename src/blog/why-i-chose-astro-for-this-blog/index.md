@@ -1,5 +1,4 @@
 ---
-layout: ../@layouts/MarkdownPostLayout.astro
 title: "Why I chose Astro for this blog"
 pubDate: 2025-06-28
 description: "At the time of writing, I'm on parental leave to support my wife and take care of our newborn son. In the spare time that I can find between changing diapers, I like tinkering around with technology and was eager to start a blog. Here are my key takeaways of what I like about Astro and what made me choose Astro, in no particular order."

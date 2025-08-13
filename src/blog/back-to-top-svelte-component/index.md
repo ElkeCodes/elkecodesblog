@@ -1,5 +1,4 @@
 ---
-layout: ../@layouts/MarkdownPostLayout.astro
 title: "Writing a BackToTop Svelte component"
 pubDate: 2025-07-04
 description: "Having a BackToTop button readily available on a webpage is such a handy thing to have when reading lengthy pages such as blogposts. I'll explain how I've implemented an easy to integrate Svelte component."

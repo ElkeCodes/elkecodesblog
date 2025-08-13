@@ -1,5 +1,4 @@
 ---
-layout: ../@layouts/MarkdownPostLayout.astro
 title: "5 key takeaways from solving 50+ coding interview questions as a frontend developer"
 pubDate: 2025-08-05
 description: "I've been an avid reader of Cassidoo's weekly newsletter for some time now. Part of her newsletter is a weekly interview question that I've started to solve. Here's 5 takeaways about solving these questions and why it has made me a better developer."

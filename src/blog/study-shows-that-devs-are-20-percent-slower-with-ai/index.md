@@ -1,5 +1,4 @@
 ---
-layout: ../@layouts/MarkdownPostLayout.astro
 title: "Study shows that devs are 20 percent slower with AI"
 pubDate: 2025-07-12
 description: "A new study shows a stark difference between the time forecast and the actual time spent when performing development tasks with the help of AI. Let's look at the study, discover the reasons why and I'll give my own 2 cents."

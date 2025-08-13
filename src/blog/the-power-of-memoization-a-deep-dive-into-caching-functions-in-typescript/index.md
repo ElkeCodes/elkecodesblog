@@ -1,5 +1,4 @@
 ---
-layout: ../@layouts/MarkdownPostLayout.astro
 title: "The Power of Memoization: A Deep Dive into Caching Functions in TypeScript"
 pubDate: 2025-08-11
 description: "Memoization is a powerful optimization technique that can supercharge your JavaScript applications by eliminating redundant calculations."

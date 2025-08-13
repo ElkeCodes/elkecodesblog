@@ -1,5 +1,4 @@
 ---
-layout: ../@layouts/MarkdownPostLayout.astro
 title: "Podcasts I listen to while running"
 pubDate: 2025-08-12
 description: "I love to listen to podcasts while running. Over the years, I've accumulated a lot of hours and shows that I've listened to. Here's an overview of the podcasts that I listened to the most."
