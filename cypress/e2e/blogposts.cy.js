@@ -97,6 +97,16 @@ const blogPosts = [
       { text: "Nerdland", level: 2 },
     ],
   },
+  {
+    slug: "reset-all-css-properties-in-1-line",
+    title: "Reset all CSS properties in 1 line",
+    headings: [
+      { text: "The setup: a styled paragraph", level: 2 },
+      { text: "Revert all stylings", level: 2 },
+      { text: "What about ‘initial’?", level: 2 },
+      { text: "Conclusion", level: 2 },
+    ],
+  },
 ];
 
 blogPosts.forEach(({ slug, title, headings }) => {
