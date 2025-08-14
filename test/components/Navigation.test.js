@@ -6,6 +6,7 @@ test("Navigation", async () => {
   const container = await AstroContainer.create();
   const result = await container.renderToString(Navigation);
 
-  expect(result).toContain("Home");
   expect(result).toContain("Blog");
+  expect(result).toContain("Talks");
+  expect(result).toContain("Coding");
 });

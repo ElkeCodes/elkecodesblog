@@ -1,0 +1,28 @@
+.some-styling {
+    color: green;
+    border: 5px solid red;
+}
+
+.lots-of-styling {
+  color: purple;
+  font-size: 20px;
+  font-family: "Comic Sans MS", cursive;
+  background-color: lightgreen;
+  padding: 15px;
+  border: 2px dashed orange;
+  margin: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.revert-all-styling {
+  all: revert;
+}
+
+.initial-all-styling {
+  all: initial;
+}
+
+.unset-all-styling {
+  all: unset;
+}

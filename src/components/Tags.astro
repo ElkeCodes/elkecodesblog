@@ -6,7 +6,7 @@ interface Props {
 const { tags } = Astro.props;
 ---
 
-<div class="tags">
+<nav class="tags" aria-label="Tags used in blogposts">
   {
     tags.map((tag) => (
       <p class="tag">
@@ -14,7 +14,7 @@ const { tags } = Astro.props;
       </p>
     ))
   }
-</div>
+</nav>
 
 <style>
   .tags {

@@ -8,15 +8,17 @@ interface Props {
 const { headings } = Astro.props;
 ---
 
-<ul class="headings">
-  {
-    headings.map((heading) => (
-      <li class:list={["heading", `heading--${heading.depth}`]}>
-        <a href={`#${heading.slug}`}>{heading.text}</a>
-      </li>
-    ))
-  }
-</ul>
+<nav aria-label="Table of contents">
+  <ul class="headings">
+    {
+      headings.map((heading) => (
+        <li class:list={["heading", `heading--${heading.depth}`]}>
+          <a href={`#${heading.slug}`}>{heading.text}</a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
 
 <style>
   .headings {

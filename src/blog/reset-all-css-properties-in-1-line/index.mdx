@@ -1,0 +1,133 @@
+---
+title: "Reset all CSS properties in 1 line"
+pubDate: 2025-08-14
+description: "Let's look at the powerful CSS statements 'all: revert' and 'all: initial' to see how they can improve your CSS skills."
+shortDescription: "The power of 'all: revert' and 'all: initial' in CSS"
+author: "Elke Heymans"
+image:
+  url: "redo.png"
+  alt: "Arrow that points back to signify a redo"
+tags: ["css", "frontend"]
+---
+
+import "styles.css";
+
+## The setup: a styled paragraph
+
+As an example, let us look at what a normal paragraph looks like by default on this website.
+This code:
+
+```html
+<p>A normal paragraph</p>
+```
+
+Renders as this:
+
+<hr />
+
+<p>A normal paragraph</p>
+
+<hr />
+
+Now let's assume that we have somewhere a CSS class defined to style a paragraph:
+
+```css
+.lots-of-styling {
+  color: purple;
+  font-size: 20px;
+  font-family: "Comic Sans MS", cursive;
+  background-color: lightgreen;
+  padding: 15px;
+  border: 2px dashed orange;
+  margin: 20px;
+  font-weight: bold;
+  text-decoration: underline;
+}
+```
+
+Which causes this HTML:
+
+```html
+<p class="lots-of-styling">A styled paragraph</p>
+```
+
+To render like this:
+
+<p class="lots-of-styling">A styled paragraph</p>
+
+## Revert all stylings
+
+If you want to restyle an element that already has the `.lots-of-styling` class applied (or if all that styling is for example done on the `p` tag itself), then you might end up with having to override a lot of CSS properties.
+
+Thanks to `all: revert` in CSS, we can make this very easy on us.
+Let's create a utility class:
+
+```css
+.revert-all-styling {
+  all: revert;
+}
+```
+
+So that if we use this HTML:
+
+```html
+<p class="lots-of-styling revert-all-styling">
+  Paragraph with the styling reverted
+</p>
+```
+
+We end up with this paragraph:
+
+<p class="lots-of-styling revert-all-styling">
+  Paragraph with the styling reverted
+</p>
+
+As you can see, we have now returned the styling back to the original `p` styling that is in our site's CSS.
+
+<hr />
+
+## What about 'initial'?
+
+The `all: initial` is a special one to be considered.
+`all: revert` resets styles to the browser's default or your site's base styles (whichever applies).
+`all: initial` however, forces a complete reset to the CSS specification's default values, ignoring both browser defaults and your site's CSS.
+Thus the `all: initial` is an even more powerful tool as it clears up more of the set CSS properties of your elements that you're redefining.
+
+I've created a utility class named `.initial-all-styling`:
+
+```css
+.initial-all-styling {
+  all: initial;
+}
+```
+
+And if we apply that on a paragraph:
+
+```html
+<p class="lots-of-styling initial-all-styling">
+  Initial styling after setting a bunch of other styles
+</p>
+
+<p class="initial-all-styling">
+  Initial styling without custom styles on this paragraph
+</p>
+```
+
+We get:
+
+<p class="lots-of-styling initial-all-styling">
+  Initial styling after setting a bunch of other styles
+</p>
+
+<p class="initial-all-styling">
+  Initial styling without custom styles on this paragraph
+</p>
+
+## Conclusion
+
+The `all: revert` and `all: initial` CSS statements are very powerful in helping you clean up some previously set styles.
+Instead of having to reset everything manually, all styling is reverted or set to the initial properties.
+Use `all: revert` when you want to undo styles but respect your site's base design.
+Use `all: initial` for a hard reset.
+This is helpful when fighting stubborn inherited styles from for example a library.
+If your CSS selector has enough specificity, it might help you avoid a lot of uses of `!important`.
