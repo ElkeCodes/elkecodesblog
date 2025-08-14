@@ -28,3 +28,6 @@ cypress/screenshots
 
 # vitest
 coverage
+
+# for some reason, builds fail with package-lock...
+package-lock.json
