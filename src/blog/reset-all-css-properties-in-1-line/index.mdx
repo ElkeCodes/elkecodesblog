@@ -104,24 +104,17 @@ I've created a utility class named `.initial-all-styling`:
 And if we apply that on a paragraph:
 
 ```html
-<p class="lots-of-styling initial-all-styling">
-  Initial styling after setting a bunch of other styles
-</p>
-
-<p class="initial-all-styling">
-  Initial styling without custom styles on this paragraph
-</p>
+<p class="lots-of-styling initial-all-styling">After custom styling</p>
+<p class="initial-all-styling">Without custom styling</p>
 ```
 
-We get:
+We get (added white background div behind it for better clarity):
 
-<p class="lots-of-styling initial-all-styling">
-  Initial styling after setting a bunch of other styles
-</p>
-
-<p class="initial-all-styling">
-  Initial styling without custom styles on this paragraph
-</p>
+<div style="background: white">
+  <p class="lots-of-styling initial-all-styling">After custom styling</p>
+  <br />
+  <p class="initial-all-styling">Without custom styling</p>
+</div>
 
 ## Conclusion
 
