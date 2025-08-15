@@ -1,0 +1,68 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { formatDate } from "@utils/format-date";
+---
+
+<BaseLayout pageTitle="Now">
+  <p>
+    This page is last updated on {formatDate("2025-08-15")} and is based on the <a
+      href="https://nownownow.com/about"
+      target="_blank">/now idea</a
+    > to showcase what a person is currently doing in their life.
+  </p>
+  <h2>Exercising</h2>
+  <ul>
+    <li>Currently training for the 10 miles of Ghent with 3 runs per week</li>
+    <li>
+      Trying to combine running with pilates, yoga and some strength &amp;
+      conditioning
+    </li>
+  </ul>
+  <h2>Programming</h2>
+  <ul>
+    <li>
+      This blog in Astro:
+      <ul>
+        <li>Adding pagination to the blogs overview</li>
+        <li>Trying to get 100% test coverage with vitest, just for fun</li>
+        <li>Adding Cypress tests to learn more about Cypress</li>
+      </ul>
+    </li>
+    <li>
+      Solving <a href="coding/rendez-vous-with-cassidoo"
+        >Rendez-vous with Cassidoo interview questions</a
+      >:
+      <ul>
+        <li>Solving the weekly question</li>
+        <li>Going back to older questions to solve them too</li>
+      </ul>
+    </li>
+    <li>Looking to finalise my Advent of Code puzzles of 2025</li>
+  </ul>
+  <h2>Working</h2>
+  <ul>
+    <li>On parental leave until end of September</li>
+    <li>Working as a frontend consultant at Sopra Steria</li>
+  </ul>
+  <h2>Learning</h2>
+  <ul>
+    <li>More about Astro by building this site</li>
+    <li>Deepening my knowledge of French</li>
+  </ul>
+  <h2>Gaming</h2>
+  <ul>
+    <li>Trying to build an efficient city in Cities: Skylines</li>
+    <li>Eagerly awaiting the release of Hades 2</li>
+    <li>Playing a Pathfinder campaign with friends</li>
+    <li>Building my biggest Factorio: Space Age factory</li>
+  </ul>
+  <h2>Parenting</h2>
+  <ul>
+    <li>
+      Watching my beautiful baby boy grow up, together with my amazing wife
+    </li>
+    <li>
+      Since a week he's having nights where he sleeps for more than 6 hours
+    </li>
+  </ul>
+</BaseLayout>
