@@ -107,6 +107,11 @@ const blogPosts = [
       { text: "Conclusion", level: 2 },
     ],
   },
+  // {
+  //   slug: "the-initial-git-commit",
+  //   title: "The initial Git commit",
+  //   headings: [],
+  // },
 ];
 
 blogPosts.forEach(({ slug, title, headings }) => {

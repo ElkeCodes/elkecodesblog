@@ -38,6 +38,9 @@ const { href, title, actionLabel, ...rest } = Astro.props;
     cursor: pointer;
     background: var(--color-dark-gray);
   }
+  .card:after {
+    all: revert;
+  }
   .card h3 {
     margin-top: 0;
     color: var(--color-secondary);

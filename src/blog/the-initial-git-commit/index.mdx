@@ -1,0 +1,40 @@
+---
+title: "The initial Git commit"
+pubDate: 2025-08-30
+description: "As a version control system, Git is one of the most widely adopted ones that developers use daily. Since Git is maintained in Git, we can look back in the history to find the original commit."
+shortDescription: "Looking back at the initial commit of Git"
+author: "Elke Heymans"
+image:
+  url: "history.png"
+  alt: "Clock pointing backwards, signifying the concept of history"
+tags: ["history", "git"]
+---
+
+import { formatDate } from "@utils/format-date";
+
+The [first ever git commit](https://github.com/git/git/blob/e83c5163316f89bfbde7d9ab23ca2e25604af290/README) was published on {formatDate("2005-04-08")}.
+The creator of git, Linus Torvalds (yes, this is also the one that created the Linux kernel), is known for being very straight forward in his talking in the past.
+[He even admitted that himself](https://web.archive.org/web/20151031114409/http://www.theregister.co.uk/2012/11/07/passion_of_torvalds):
+
+> I'd like to be a nice person and curse less and encourage people to grow rather than telling them they are idiots. I'm sorry—I tried, it's just not in me.
+
+The first git commit contains a README file that starts off in typical Linus style:
+
+```
+	GIT - the stupid content tracker
+
+"git" can mean anything, depending on your mood.
+
+ - random three-letter combination that is pronounceable, and not
+   actually used by any common UNIX command.  The fact that it is a
+   mispronounciation of "get" may or may not be relevant.
+ - stupid. contemptible and despicable. simple. Take your pick from the
+   dictionary of slang.
+ - "global information tracker": you're in a good mood, and it actually
+   works for you. Angels sing, and a light suddenly fills the room.
+ - "goddamn idiotic truckload of sh*t": when it breaks
+
+This is a stupid (but extremely fast) directory content manager.  It
+doesn't do a whole lot, but what it _does_ do is track directory
+contents efficiently.
+```

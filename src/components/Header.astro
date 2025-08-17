@@ -18,12 +18,16 @@ import Navigation from "./Navigation.astro";
     align-items: center;
   }
   header .sitename-and-menu .sitename {
+    all: revert;
     color: var(--color-white);
     text-decoration: none;
     font-family: var(--font-family-monospace);
     font-weight: bold;
     font-size: 1.5rem;
     border-bottom: 0;
+  }
+  header .sitename-and-menu .sitename:after {
+    all: initial;
   }
 </style>
 

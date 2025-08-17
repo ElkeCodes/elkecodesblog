@@ -16,7 +16,8 @@
 
 <style>
   nav.menu {
-    display: none;
+    display: flex;
+    opacity: 0;
     margin: 0;
     position: fixed;
     height: 100vh;
@@ -28,6 +29,7 @@
     bottom: 0;
     align-items: center;
     justify-content: center;
+    transition: all 0.2s ease 0s;
   }
 
   nav.menu ul {
@@ -45,8 +47,8 @@
     padding: 0.5rem 0;
     font-weight: bold;
     color: var(--color-white);
-    border-bottom: 0;
     position: relative;
+    border: 0;
   }
 
   nav.menu li a:after {
@@ -56,21 +58,19 @@
     bottom: 0;
     width: 100%;
     position: absolute;
-    transition: all 0.3s ease 0s;
-    -webkit-transition: all 0.3s ease 0s;
+    transition: all 0.2s ease 0s;
     z-index: -1;
     border-bottom: 0.2rem solid var(--color-primary);
   }
 
-  nav.menu a:hover:after,
-  nav.menu a:focus:after {
-    background-color: var(--color-primary);
-    border-bottom: 0.2rem double var(--color-primary-hover);
-    height: 100%;
+  nav.menu li a:hover:after,
+  nav.menu li a:focus:after {
+    transform: translateY(-0.5rem);
   }
 
   nav.menu.expanded {
     display: flex;
+    opacity: 1;
   }
 
   .hamburger {
@@ -110,6 +110,7 @@
   @media screen and (min-width: 636px) {
     nav.menu {
       display: block;
+      opacity: 1;
       background: none;
       position: unset;
       height: auto;

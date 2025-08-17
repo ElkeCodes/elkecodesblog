@@ -10,7 +10,7 @@ import { formatDate } from "@utils/format-date";
 const { data, openGraph, headings } = Astro.props;
 
 const headingsWithPostTitle: MarkdownHeading[] = [
-  {
+{
     slug: "title",
     depth: 1,
     text: data.title,
@@ -32,9 +32,13 @@ const headingsWithPostTitle: MarkdownHeading[] = [
     <article>
       <slot />
     </article>
-    <aside>
-      <TableOfContents headings={headingsWithPostTitle} />
-    </aside>
+    {
+      headings.length > 0 ? (
+        <aside>
+          <TableOfContents headings={headingsWithPostTitle} />
+        </aside>
+      ) : null
+    }
   </div>
   <BackToTop client:idle />
   <Tags tags={data.tags} />
