@@ -17,4 +17,10 @@ test("TableOfContents", async () => {
   });
 
   expect(result).toContain("mockText1");
+
+  // document.body.innerHTML = "";
+  // const template = document.createElement("template");
+  // template.innerHTML = result;
+
+  // expect(getAllByLabel(template.content)).toEqual("test");
 });
