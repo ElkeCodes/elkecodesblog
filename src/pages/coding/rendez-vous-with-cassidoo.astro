@@ -97,7 +97,7 @@ const completionPercentage = Math.floor((solvedWeeks.length / lastWeek) * 100);
     </thead>
     <tbody>
       {
-        solvedWeeks.map(({ name, html_url, tags }) => (
+        solvedWeeks.map(({ name, html_url }) => (
           <tr>
             <td>{getWeek(name)}</td>
             <td>

@@ -1,5 +1,5 @@
 ---
-import { getCollection, render } from "astro:content";
+import { render } from "astro:content";
 import MarkdownPostLayout from "@layouts/MarkdownPostLayout.astro";
 import { getPublishedPosts } from "@utils/get-published-posts";
 
@@ -18,7 +18,7 @@ const baseUrl = import.meta.env.DEV
   ? "http://localhost:4321"
   : new URL(Astro.request.url).origin;
 
-const { title, description, shortDescription } = post.data;
+const { title, shortDescription } = post.data;
 
 const ogImage = new URL(`/images/og/${post.id}.png`, baseUrl).toString();
 ---

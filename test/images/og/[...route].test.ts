@@ -1,7 +1,6 @@
 import { expect, describe, test } from "vitest";
 import {
   getStaticPaths,
-  GET,
   getImageOptions,
 } from "src/pages/images/og/[...route]";
 
