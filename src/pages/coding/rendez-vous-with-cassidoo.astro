@@ -61,7 +61,7 @@ const solvedWeeks = (
 const getWeek = (name: string): string => name.substring(0, name.indexOf("-"));
 
 const lastWeek = parseInt(
-  getWeek(solvedWeeks.at(solvedWeeks.length - 1)?.name || "0-foo"),
+  getWeek(solvedWeeks.at(solvedWeeks.length - 1)!.name),
   10
 );
 const completionPercentage = Math.floor((solvedWeeks.length / lastWeek) * 100);

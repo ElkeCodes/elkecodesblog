@@ -4,8 +4,6 @@ import { coverageConfigDefaults } from "vitest/config";
 
 export default getViteConfig({
   test: {
-    // environment: 'happy-dom'
-    // environment: 'jsdom',
     setupFiles: ["test/setup.ts"],
     coverage: {
       exclude: [
@@ -15,5 +13,8 @@ export default getViteConfig({
         ...coverageConfigDefaults.exclude,
       ],
     },
+  },
+  resolve: {
+    conditions: ["browser"],
   },
 });

@@ -7,12 +7,14 @@ export async function GET(context) {
     description:
       "Blog focused on frontend development, photography, running and more",
     site: context.site,
-    items: (await getPublishedPosts()).map((post) => ({
-      title: post.data.title,
-      pubDate: post.data.pubDate,
-      description: post.data.description,
-      link: `/posts/${post.id}/`,
-    })),
+    items: (await getPublishedPosts()).map((post) => {
+      return {
+        title: post.data.title,
+        pubDate: post.data.pubDate,
+        description: post.data.description,
+        link: `/posts/${post.id}/`,
+      };
+    }),
     customData: `<language>en-gb</language>`,
   });
 }
