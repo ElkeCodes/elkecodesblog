@@ -13,8 +13,8 @@ describe("Hamburger menu toggle", () => {
   });
 
   it('toggles "expanded" class on menu when hamburger is clicked', async () => {
-    const hamburger = document.querySelector(".hamburger");
-    const menu = document.querySelector(".menu");
+    const hamburger = document.querySelector(".hamburger") as HTMLElement;
+    const menu = document.querySelector(".menu")!;
 
     expect(menu.classList.contains("expanded")).toBe(false);
     await hamburger.click();
@@ -22,9 +22,9 @@ describe("Hamburger menu toggle", () => {
   });
 
   it('toggles "expanded" class on menu when menu-close is clicked', async () => {
-    const menuClose = document.querySelector(".menu-close");
-    const hamburger = document.querySelector(".hamburger");
-    const menu = document.querySelector(".menu");
+    const menuClose = document.querySelector(".menu-close") as HTMLElement;
+    const hamburger = document.querySelector(".hamburger") as HTMLElement;
+    const menu = document.querySelector(".menu")!;
 
     expect(menu.classList.contains("expanded")).toBe(false);
     await hamburger.click();
