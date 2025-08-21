@@ -14,10 +14,10 @@ describe("Pomodoro", () => {
     vi.restoreAllMocks();
   });
 
-  it("should render the action buttons and a timer of 00:00", () => {
+  it("should render the action buttons and a timer of 25:00", () => {
     const { unmount } = render(Pomodoro);
-    screen.getByRole("button", { name: "Start" });
-    screen.getByRole("button", { name: "Reset" });
+    expect(screen.getByRole("button", { name: "Start" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Reset" })).toBeInTheDocument();
     unmount();
   });
 
@@ -26,10 +26,10 @@ describe("Pomodoro", () => {
     const startButton = screen.getByRole("button", { name: /start/i });
     expect(startButton).toBeInTheDocument();
     await userEvent.click(startButton);
-    await vi.advanceTimersByTime(1000);
-    expect(screen.getByText(/00:01/)).toBeInTheDocument();
-    await vi.advanceTimersByTime(1000);
-    expect(screen.getByText(/00:02/)).toBeInTheDocument();
+    await vi.advanceTimersByTimeAsync(1000);
+    expect(screen.getByText(/24:59/)).toBeInTheDocument();
+    await vi.advanceTimersByTimeAsync(1000);
+    expect(screen.getByText(/24:58/)).toBeInTheDocument();
     unmount();
   });
 
@@ -38,12 +38,12 @@ describe("Pomodoro", () => {
     const startButton = screen.getByRole("button", { name: /start/i });
     expect(startButton).toBeInTheDocument();
     await userEvent.click(startButton);
-    await vi.advanceTimersByTime(1000);
+    await vi.advanceTimersByTimeAsync(1000);
     const pauseButton = screen.getByRole("button", { name: /pause/i });
     expect(pauseButton).toBeInTheDocument();
     await userEvent.click(pauseButton);
-    const pausedTime = screen.getByText(/00:01/).textContent;
-    await vi.advanceTimersByTime(1000);
+    const pausedTime = screen.getByText(/24:59/).textContent;
+    await vi.advanceTimersByTimeAsync(1000);
     expect(screen.getByText(pausedTime!)).toBeInTheDocument();
     unmount();
   });
@@ -53,10 +53,24 @@ describe("Pomodoro", () => {
     const startButton = screen.getByRole("button", { name: /start/i });
     expect(startButton).toBeInTheDocument();
     await userEvent.click(startButton);
-    await vi.advanceTimersByTime(1000);
+    await vi.advanceTimersByTimeAsync(1000);
     const resetButton = screen.getByRole("button", { name: /reset/i });
     expect(resetButton).toBeInTheDocument();
     await userEvent.click(resetButton);
+    expect(screen.getByText(/25:00/)).toBeInTheDocument();
+    unmount();
+  });
+
+  it("stops the stopwatch when it reaches 00:00", async () => {
+    const { unmount } = render(Pomodoro);
+    const startButton = screen.getByRole("button", { name: /start/i });
+    expect(startButton).toBeInTheDocument();
+    await userEvent.click(startButton);
+    await vi.advanceTimersByTimeAsync(60 * 1000);
+    expect(screen.getByText(/24:00/)).toBeInTheDocument();
+    await vi.advanceTimersByTimeAsync(24 * 60 * 1000);
+    expect(screen.getByText(/00:00/)).toBeInTheDocument();
+    await vi.advanceTimersByTimeAsync(60 * 1000);
     expect(screen.getByText(/00:00/)).toBeInTheDocument();
     unmount();
   });
@@ -104,12 +118,10 @@ describe("Pomodoro", () => {
     const startButton = screen.getByRole("button", { name: /start/i });
     expect(startButton).toBeInTheDocument();
     await userEvent.click(startButton);
-    await vi.advanceTimersByTime(3600000); // 1 hour
-    expect(screen.getByText(/01:00:00/)).toBeInTheDocument();
-    await vi.advanceTimersByTime(60000 * 23); // 23 minutes
-    expect(screen.getByText(/01:23:00/)).toBeInTheDocument();
-    await vi.advanceTimersByTime(1000 * 45); // 45 second
-    expect(screen.getByText(/01:23:45/)).toBeInTheDocument();
+    await vi.advanceTimersByTimeAsync(60000 * 23); // 23 minutes
+    expect(screen.getByText(/02:00/)).toBeInTheDocument();
+    await vi.advanceTimersByTimeAsync(1000 * 45); // 45 second
+    expect(screen.getByText(/01:15/)).toBeInTheDocument();
     unmount();
   });
 

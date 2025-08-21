@@ -1,8 +1,22 @@
 ---
+import Introduction from "@components/Introduction.astro";
 import Pomodoro from "./pomodoro.vue";
 import BaseLayout from "@layouts/BaseLayout.astro";
 
 const pageTitle = "Pomodoro";
 ---
 
-<BaseLayout pageTitle={pageTitle}><Pomodoro client:load /></BaseLayout>
+<BaseLayout pageTitle={pageTitle}>
+  <p>
+    The Pomodoro Focus technique is a time management method that boosts
+    productivity by breaking work into focused, 25-minute intervals (called
+    "Pomodoros"), followed by a 5-minute break; after completing 4 Pomodoros,
+    you take a longer 15-30 minute break. This approach helps maintain
+    concentration, reduces procrastination, and prevents burnout by encouraging
+    short bursts of deep work followed by regular rest. The structured intervals
+    create a sense of urgency and accomplishment, making tasks feel more
+    manageable while keeping distractions at bay.
+  </p>
+  <Pomodoro client:load />
+  <Introduction />
+</BaseLayout>

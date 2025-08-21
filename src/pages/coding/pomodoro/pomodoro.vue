@@ -1,36 +1,49 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, ref } from 'vue'
+import { computed, effect, onBeforeUnmount, ref } from 'vue';
+
+const DEFAULT_POMODORO_SECONDS = 25 * 60; // 25 minutes
 
 let intervalId = ref<ReturnType<typeof setInterval> | null>(null);
-const elapsedSeconds = ref(0);
+const remainingSeconds = ref(DEFAULT_POMODORO_SECONDS);
+
+const pause = () => {
+    if (intervalId.value) {
+        clearInterval(intervalId.value);
+    }
+    intervalId.value = null;
+}
 
 const startPause = () => {
     if (intervalId.value) {
-        clearInterval(intervalId.value);
-        intervalId.value = null;
+        pause();
     } else {
         intervalId.value = setInterval(() => {
-            elapsedSeconds.value += 1;
+            remainingSeconds.value -= 1;
         }, 1000);
     }
 };
 
 const reset = () => {
-    elapsedSeconds.value = 0;
+    remainingSeconds.value = DEFAULT_POMODORO_SECONDS;
 }
 
 const elapsedTime = computed(() => {
-    var hours = Math.floor(elapsedSeconds.value / 3600)
-    var minutes = Math.floor(elapsedSeconds.value / 60) % 60
-    var seconds = elapsedSeconds.value % 60
+    var minutes = Math.floor(remainingSeconds.value / 60) % 60
+    var seconds = remainingSeconds.value % 60
 
-    return [hours, minutes, seconds]
+    return [minutes, seconds]
         .map(v => v < 10 ? "0" + v : v)
-        .filter((v, i) => v !== "00" || i > 0)
+        .filter((v, i) => v !== "00" || i >= 0)
         .join(":")
 });
 
 const isActive = computed(() => !!intervalId.value);
+
+effect(() => {
+    if (remainingSeconds.value === 0) {
+        pause();
+    }
+});
 
 onBeforeUnmount(() => {
     if (intervalId.value) clearInterval(intervalId.value);
@@ -60,7 +73,6 @@ onBeforeUnmount(() => {
 
 .pomodoro {
     position: relative;
-
 }
 
 .actions {

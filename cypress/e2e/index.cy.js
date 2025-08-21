@@ -9,7 +9,7 @@ describe("home cy", () => {
   });
 
   it("should have the introduction", () => {
-    cy.get("section").should("contain.text", "I'm a frontend developer");
+    cy.verifyIntroduction();
   });
 
   it("should have the menu", () => {
