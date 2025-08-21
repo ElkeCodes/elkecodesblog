@@ -7,6 +7,8 @@ import netlify from "@astrojs/netlify";
 
 import mdx from "@astrojs/mdx";
 
+import vue from "@astrojs/vue";
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://elkecodes.dev",
@@ -15,6 +17,6 @@ export default defineConfig({
     responsiveStyles: true,
   },
 
-  integrations: [svelte(), mdx()],
+  integrations: [svelte(), mdx(), vue()],
   adapter: netlify(),
 });

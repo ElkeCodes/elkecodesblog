@@ -1,0 +1,8 @@
+---
+import Pomodoro from "./pomodoro.vue";
+import BaseLayout from "@layouts/BaseLayout.astro";
+
+const pageTitle = "Pomodoro";
+---
+
+<BaseLayout pageTitle={pageTitle}><Pomodoro client:load /></BaseLayout>
