@@ -14,10 +14,20 @@ describe("Pomodoro", () => {
     vi.restoreAllMocks();
   });
 
-  it("should render the action buttons and a timer of 25:00", () => {
+  it("should render the action buttons, the state and a timer of 25:00", () => {
     const { unmount } = render(Pomodoro);
+    expect(screen.getByRole("button", { name: "Next" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Start" })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Reset" })).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: "Previous" })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("status", { name: "Current state" })
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("timer", { name: "Remaining time" })
+    ).toBeInTheDocument();
     unmount();
   });
 
@@ -27,9 +37,13 @@ describe("Pomodoro", () => {
     expect(startButton).toBeInTheDocument();
     await userEvent.click(startButton);
     await vi.advanceTimersByTimeAsync(1000);
-    expect(screen.getByText(/24:59/)).toBeInTheDocument();
+    const timer = screen.getByRole("timer", {
+      name: "Remaining time",
+    });
+    expect(timer).toBeInTheDocument();
+    expect(timer).toHaveTextContent(/24:59/);
     await vi.advanceTimersByTimeAsync(1000);
-    expect(screen.getByText(/24:58/)).toBeInTheDocument();
+    expect(timer).toHaveTextContent(/24:58/);
     unmount();
   });
 
@@ -42,9 +56,13 @@ describe("Pomodoro", () => {
     const pauseButton = screen.getByRole("button", { name: /pause/i });
     expect(pauseButton).toBeInTheDocument();
     await userEvent.click(pauseButton);
-    const pausedTime = screen.getByText(/24:59/).textContent;
+    const timer = screen.getByRole("timer", {
+      name: "Remaining time",
+    });
+    expect(timer).toBeInTheDocument();
+    expect(timer).toHaveTextContent(/24:59/);
     await vi.advanceTimersByTimeAsync(1000);
-    expect(screen.getByText(pausedTime!)).toBeInTheDocument();
+    expect(timer).toHaveTextContent(/24:59/);
     unmount();
   });
 
@@ -57,7 +75,11 @@ describe("Pomodoro", () => {
     const resetButton = screen.getByRole("button", { name: /reset/i });
     expect(resetButton).toBeInTheDocument();
     await userEvent.click(resetButton);
-    expect(screen.getByText(/25:00/)).toBeInTheDocument();
+    const timer = screen.getByRole("timer", {
+      name: "Remaining time",
+    });
+    expect(timer).toBeInTheDocument();
+    expect(timer).toHaveTextContent(/25:00/);
     unmount();
   });
 
@@ -67,11 +89,15 @@ describe("Pomodoro", () => {
     expect(startButton).toBeInTheDocument();
     await userEvent.click(startButton);
     await vi.advanceTimersByTimeAsync(60 * 1000);
-    expect(screen.getByText(/24:00/)).toBeInTheDocument();
+    const timer = screen.getByRole("timer", {
+      name: "Remaining time",
+    });
+    expect(timer).toBeInTheDocument();
+    expect(timer).toHaveTextContent(/24:00/);
     await vi.advanceTimersByTimeAsync(24 * 60 * 1000);
-    expect(screen.getByText(/00:00/)).toBeInTheDocument();
+    expect(timer).toHaveTextContent(/00:00/);
     await vi.advanceTimersByTimeAsync(60 * 1000);
-    expect(screen.getByText(/00:00/)).toBeInTheDocument();
+    expect(timer).toHaveTextContent(/00:00/);
     unmount();
   });
 
@@ -104,6 +130,9 @@ describe("Pomodoro", () => {
     const startButton = screen.getByRole("button", { name: /start/i });
     expect(startButton).toBeInTheDocument();
     await userEvent.click(startButton);
+    expect(
+      screen.getByRole("presentation", { hidden: true })
+    ).toBeInTheDocument();
     const pauseButton = screen.getByRole("button", { name: /pause/i });
     expect(pauseButton).toBeInTheDocument();
     await userEvent.click(pauseButton);
@@ -113,15 +142,37 @@ describe("Pomodoro", () => {
     unmount();
   });
 
+  it("pauses when a click on the backdrop occurs", async () => {
+    const { unmount } = render(Pomodoro);
+    const startButton = screen.getByRole("button", { name: /start/i });
+    expect(startButton).toBeInTheDocument();
+    await userEvent.click(startButton);
+    const backdrop = screen.getByRole("presentation", { hidden: true });
+    expect(backdrop).toBeInTheDocument();
+    await userEvent.click(backdrop);
+    expect(
+      screen.queryByRole("presentation", { hidden: true })
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: /pause/i })
+    ).not.toBeInTheDocument();
+    unmount();
+  });
+
   it("formats time correctly for hours, minutes, and seconds", async () => {
     const { unmount } = render(Pomodoro);
     const startButton = screen.getByRole("button", { name: /start/i });
     expect(startButton).toBeInTheDocument();
     await userEvent.click(startButton);
+    const timer = screen.getByRole("timer", {
+      name: "Remaining time",
+    });
+    expect(timer).toBeInTheDocument();
+    expect(timer).toHaveTextContent(/25:00/);
     await vi.advanceTimersByTimeAsync(60000 * 23); // 23 minutes
-    expect(screen.getByText(/02:00/)).toBeInTheDocument();
+    expect(timer).toHaveTextContent(/02:00/);
     await vi.advanceTimersByTimeAsync(1000 * 45); // 45 second
-    expect(screen.getByText(/01:15/)).toBeInTheDocument();
+    expect(timer).toHaveTextContent(/01:15/);
     unmount();
   });
 
@@ -133,5 +184,61 @@ describe("Pomodoro", () => {
     const spy = vi.spyOn(global, "clearInterval");
     unmount();
     expect(spy).toHaveBeenCalled();
+  });
+
+  it("should go through the correct states when clicking next", async () => {
+    const { unmount } = render(Pomodoro);
+    const nextButton = screen.getByRole("button", { name: "Next" });
+    expect(nextButton).toBeInTheDocument();
+    let status = screen.getByRole("status", {
+      name: "Current state",
+    });
+    expect(status).toBeInTheDocument();
+    expect(status).toHaveTextContent("Pomodoro");
+    await userEvent.click(nextButton);
+    expect(status).toHaveTextContent("Short break");
+    await userEvent.click(nextButton);
+    expect(status).toHaveTextContent("Pomodoro");
+    await userEvent.click(nextButton);
+    expect(status).toHaveTextContent("Short break");
+    await userEvent.click(nextButton);
+    expect(status).toHaveTextContent("Pomodoro");
+    await userEvent.click(nextButton);
+    expect(status).toHaveTextContent("Short break");
+    await userEvent.click(nextButton);
+    expect(status).toHaveTextContent("Pomodoro");
+    await userEvent.click(nextButton);
+    expect(status).toHaveTextContent("Long break");
+    await userEvent.click(nextButton);
+    expect(status).toHaveTextContent("Pomodoro");
+    unmount();
+  });
+
+  it("should go through the correct states when clicking previous", async () => {
+    const { unmount } = render(Pomodoro);
+    const previousButton = screen.getByRole("button", { name: "Previous" });
+    expect(previousButton).toBeInTheDocument();
+    let status = screen.getByRole("status", {
+      name: "Current state",
+    });
+    expect(status).toBeInTheDocument();
+    expect(status).toHaveTextContent("Pomodoro");
+    await userEvent.click(previousButton);
+    expect(status).toHaveTextContent("Long break");
+    await userEvent.click(previousButton);
+    expect(status).toHaveTextContent("Pomodoro");
+    await userEvent.click(previousButton);
+    expect(status).toHaveTextContent("Short break");
+    await userEvent.click(previousButton);
+    expect(status).toHaveTextContent("Pomodoro");
+    await userEvent.click(previousButton);
+    expect(status).toHaveTextContent("Short break");
+    await userEvent.click(previousButton);
+    expect(status).toHaveTextContent("Pomodoro");
+    await userEvent.click(previousButton);
+    expect(status).toHaveTextContent("Short break");
+    await userEvent.click(previousButton);
+    expect(status).toHaveTextContent("Pomodoro");
+    unmount();
   });
 });

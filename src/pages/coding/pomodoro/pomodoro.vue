@@ -1,63 +1,21 @@
 <script setup lang="ts">
-import { computed, effect, onBeforeUnmount, ref } from 'vue';
+import { usePomodoro } from './usePomodoro';
 
-const DEFAULT_POMODORO_SECONDS = 25 * 60; // 25 minutes
-
-let intervalId = ref<ReturnType<typeof setInterval> | null>(null);
-const remainingSeconds = ref(DEFAULT_POMODORO_SECONDS);
-
-const pause = () => {
-    if (intervalId.value) {
-        clearInterval(intervalId.value);
-    }
-    intervalId.value = null;
-}
-
-const startPause = () => {
-    if (intervalId.value) {
-        pause();
-    } else {
-        intervalId.value = setInterval(() => {
-            remainingSeconds.value -= 1;
-        }, 1000);
-    }
-};
-
-const reset = () => {
-    remainingSeconds.value = DEFAULT_POMODORO_SECONDS;
-}
-
-const elapsedTime = computed(() => {
-    var minutes = Math.floor(remainingSeconds.value / 60) % 60
-    var seconds = remainingSeconds.value % 60
-
-    return [minutes, seconds]
-        .map(v => v < 10 ? "0" + v : v)
-        .filter((v, i) => v !== "00" || i >= 0)
-        .join(":")
-});
-
-const isActive = computed(() => !!intervalId.value);
-
-effect(() => {
-    if (remainingSeconds.value === 0) {
-        pause();
-    }
-});
-
-onBeforeUnmount(() => {
-    if (intervalId.value) clearInterval(intervalId.value);
-});
+const { isActive, toggle, previousState, reset, nextState, stateLabel, elapsedTime } = usePomodoro();
 </script>
 
 <template>
-    <div v-if="isActive" class="backdrop" @click="startPause" role="presentation" aria-hidden="true"></div>
+    <div v-if="isActive" class="backdrop" @click="toggle" role="presentation" aria-hidden="true"></div>
     <div class="pomodoro">
         <div class="actions">
-            <button @click="startPause()">{{ isActive ? "Pause" : "Start" }}</button>
+            <button @click="previousState()">Previous</button>
+            <button @click="toggle()">{{ isActive ? "Pause" : "Start" }}</button>
             <button @click="reset()">Reset</button>
+            <button @click="nextState()">Next</button>
         </div>
-        <time :datetime=elapsedTime>{{ elapsedTime }}</time>
+        <output aria-label="Current state" aria-live="polite">{{ stateLabel }}</output>
+        <time role="timer" :datetime=elapsedTime aria-label="Remaining time" aria-live="polite">{{ elapsedTime
+        }}</time>
     </div>
 </template>
 
@@ -73,6 +31,11 @@ onBeforeUnmount(() => {
 
 .pomodoro {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+    gap: 1rem;
 }
 
 .actions {
@@ -86,5 +49,7 @@ time {
     text-align: center;
     padding: 1rem;
     font-size: 3rem;
+    border: 1px solid var(--color-secondary);
+    border-radius: 0.5rem;
 }
 </style>
