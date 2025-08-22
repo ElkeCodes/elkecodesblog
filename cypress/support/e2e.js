@@ -11,3 +11,5 @@ Cypress.Commands.add("verifyMenu", () => {
 Cypress.Commands.add("verifyIntroduction", () => {
   cy.get("section").should("contain.text", "I'm a frontend developer");
 });
+
+import '@testing-library/cypress/add-commands'
