@@ -15,4 +15,8 @@ describe("home cy", () => {
   it("should have the menu", () => {
     cy.verifyMenu();
   });
+
+  it("should have proper lighthouse scores", () => {
+    cy.lighthouse();
+  });
 });

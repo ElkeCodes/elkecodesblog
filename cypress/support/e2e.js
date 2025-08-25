@@ -13,3 +13,4 @@ Cypress.Commands.add("verifyIntroduction", () => {
 });
 
 import '@testing-library/cypress/add-commands'
+import '@cypress-audit/lighthouse/commands'
