@@ -1,0 +1,99 @@
+---
+title: "Why you should stop using the logical OR in JavaScript"
+pubDate: 2025-09-02
+description: "At first glance, JavaScript's logical OR operator (||) seems like a straightforward way to handle default values and conditional logic. It’s concise, widely used, and often appears in tutorials as a go-to solution for setting fallbacks. But beneath its simplicity lies a range of potential issues that can lead to unexpected behavior, subtle bugs, and confusing code."
+shortDescription: "JavaScript's logical OR operator is problematic and here's why"
+author: "Elke Heymans"
+image:
+  url: "javascript.png"
+  alt: "Letters JS to denote JavaScript"
+tags: ["frontend", "javascript", "operators"]
+---
+
+## An example problem
+
+In a lot of code, you'll find similar snippets where the logical OR is used to set a default value:
+
+```javascript
+function applyDiscount(price, discount) {
+  discount = discount || 0.1; // Default 10% discount
+  const finalPrice = price * (1 - discount);
+  console.log(`Final price: €${finalPrice.toFixed(2)}`);
+}
+```
+
+At first glance, this seems fine when `discount` has a proper value
+
+```javascript
+applyDiscount(100, 0.2); // Output: "Final price: €80.00" (20% discount)
+```
+
+But when `discount` has the proper value `0` (i.e. no discount should be applied), we run in this unintended situation:
+
+```javascript
+applyDiscount(100, 0); // Output: "Final price: €90.00" (10% discount, not as intended)
+```
+
+## Why this happens with the logical OR operator
+
+Let's take a look at the description the [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Logical_OR) provides us:
+
+> The logical OR (||) (logical disjunction) operator for a set of operands is true if and only if one or more of its operands is true.
+> It is typically used with boolean (logical) values.
+> When it is, it returns a Boolean value.
+> However, the || operator actually returns the value of one of the specified operands, so if this operator is used with non-Boolean values, it will return a non-Boolean value.
+
+Because it returns a non-Boolean value when it is used with non-Boolean values, it is tempting to use the logical OR to set default values.
+In the past, this was a very short way of writing code to set default values.
+In our example code `discount = discount || 0.1;`: as long as `discount` contained a falsey value, the default value of `0.1` would be set.
+But the problem is that the logical OR operator can override valid but falsey inputs like 0, leading to incorrect calculations or behavior.
+
+## Using the nullish coalescing operator: ??
+
+By changing the usage of the logical OR to the nullish coalescing operator ??, we can fix our issue:
+
+```javascript
+function applyDiscount(price, discount) {
+  discount = discount ?? 0.1; // Default 10% discount
+  const finalPrice = price * (1 - discount);
+  console.log(`Final price: €${finalPrice.toFixed(2)}`);
+}
+```
+
+When we run this code, we see the correct results:
+
+```javascript
+applyDiscount(100, 0.2); // Output: "Final price: €80.00" (20% discount)
+applyDiscount(100, 0); // Output: "Final price: €100.00" (0% discount, as intended)
+```
+
+The reason for this, is that the Nullish Coalescing Operator ?? distinguishes between:
+
+- nullish values (null, undefined)
+- falsey but defined values (false, 0, '' etc.)
+
+So our use of 0 is not overridden by the default value.
+In real-world applications, values like 0, false, or empty strings ('') are often meaningful inputs.
+Using ?? ensures these values are respected, avoiding subtle bugs that can be hard to debug.
+
+## Conclusion
+
+Here's a comparison of how the logical OR and nullish coalescing operator behave:
+
+| Value               | `value \|\| "default"` | `value ?? "default"` |
+| ------------------- | ---------------------- | -------------------- |
+| `undefined`         | `"default"`            | `"default"`          |
+| `null`              | `"default"`            | `"default"`          |
+| `false`             | `"default"`            | `false`              |
+| `true`              | `true`                 | `true`               |
+| `0`                 | `"default"`            | `0`                  |
+| `1` (or any number) | `1`                    | `1`                  |
+| `NaN`               | `"default"`            | `NaN`                |
+| `""` (empty string) | `"default"`            | `""`                 |
+| `"hello"`           | `"hello"`              | `"hello"`            |
+| `[]` (empty array)  | `[]`                   | `[]`                 |
+| `{}` (empty object) | `{}`                   | `{}`                 |
+| `function() {}`     | `function() {}`        | `function() {}`      |
+
+By switching to the nullish coalescing operator, you can write more predictable and robust JavaScript, especially when dealing with optional parameters or configurations.
+There might be usecases for the logical OR operator but be aware of its risks.
