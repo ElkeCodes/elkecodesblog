@@ -22,8 +22,8 @@ export default defineConfig({
       });
 
       on("task", {
-        lighthouse: lighthouse(({ report, requestedUrl, ...rest }) => {
-          writeFile("lighthouse.html", report, (error) => {
+        lighthouse: lighthouse(({ report, requestedUrl }) => {
+          writeFile(`lighthouse/${requestedUrl}.html`, report, (error) => {
             error
               ? console.error(`${requestedUrl} gave lighthouse error: ${error}`)
               : console.log(`${requestedUrl}: Report created successfully`);

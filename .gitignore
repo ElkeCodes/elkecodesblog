@@ -31,3 +31,6 @@ coverage
 
 # for some reason, builds fail with package-lock...
 package-lock.json
+
+# test results for lighthouse
+lighthouse
