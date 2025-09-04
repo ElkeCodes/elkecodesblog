@@ -1,4 +1,6 @@
 ---
+import { normalizeText } from "@utils/normalize-text";
+
 interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
   href: string;
   title: string;
@@ -6,10 +8,12 @@ interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
 }
 
 const { href, title, actionLabel, ...rest } = Astro.props;
+
+const id = `card-${normalizeText(title)}`;
 ---
 
-<a class="card" href={href} {...rest}>
-  <h3>{title}</h3>
+<a class="card" href={href} {...rest} aria-describedBy={id}>
+  <h3 id={id}>{title}</h3>
   <slot />
   <div class="aside-and-actions">
     <slot name="aside" />

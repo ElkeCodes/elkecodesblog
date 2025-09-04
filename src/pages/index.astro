@@ -11,8 +11,8 @@ const posts = (await getPublishedPosts()).slice(0, 5);
 
 <BaseLayout pageTitle={pageTitle}>
   <Introduction />
-  <h2>Latest blogposts</h2>
-  <ul>
+  <h2 id="latest-blogposts">Latest blogposts</h2>
+  <ul aria-labelledby="latest-blogposts">
     {
       posts.map((post) => (
         <li>

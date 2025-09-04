@@ -23,10 +23,10 @@
     height: 100vh;
     width: 100vw;
     background: var(--color-black);
-    top: 0;
+    top: -100vh;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: -100vh;
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease 0s;
@@ -71,6 +71,8 @@
   nav.menu.expanded {
     display: flex;
     opacity: 1;
+    top: 0;
+    bottom: 0;
   }
 
   .hamburger {
