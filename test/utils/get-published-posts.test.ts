@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
-import { getPublishedPosts } from "../../src/utils/get-published-posts";
+import { getPublishedPosts } from "@utils/get-published-posts";
+import { getCollection } from "astro:content";
 
 // Mock the astro:content module
 vi.mock("astro:content", () => {
@@ -8,36 +9,50 @@ vi.mock("astro:content", () => {
   };
 });
 
-const { getCollection } = await import("astro:content");
-
 describe("getPublishedPosts", () => {
   const mockPosts = [
     {
+      collection: "blog" as const,
       id: "post-1",
       data: {
-        pubDate: "2025-05-15",
+        pubDate: new Date("2025-05-15"),
         title: "Post 1",
+        description: "Description 1",
+        author: "Author 1",
+        tags: ["tag 1"],
       },
     },
     {
+      collection: "blog" as const,
       id: "post-2",
       data: {
-        pubDate: "2025-01-10",
+        pubDate: new Date("2025-01-10"),
         title: "Post 2",
+        description: "Description 2",
+        author: "Author 2",
+        tags: ["tag 2"],
       },
     },
     {
+      collection: "blog" as const,
       id: "post-3",
       data: {
-        pubDate: "2025-07-31",
+        pubDate: new Date("2025-07-31"),
         title: "Post 3",
+        description: "Description 3",
+        author: "Author 3",
+        tags: ["tag 3"],
       },
     },
     {
+      collection: "blog" as const,
       id: "future-post",
       data: {
-        pubDate: "2035-01-01",
+        pubDate: new Date("2035-01-01"),
         title: "Future Post",
+        description: "Description future",
+        author: "Author future",
+        tags: ["tag future"],
       },
     },
   ];
@@ -48,18 +63,8 @@ describe("getPublishedPosts", () => {
     vi.clearAllMocks();
   });
 
-//   it("should filter out future posts", async () => {
-//     getCollection.mockResolvedValue(mockPosts);
-
-//     const result = await getPublishedPosts();
-
-//     // Should exclude the future post
-//     expect(result).toHaveLength(3);
-//     expect(result.some((post) => post.id === "future-post")).toBe(false);
-//   });
-
   it("should add ogImage path to each post", async () => {
-    getCollection.mockResolvedValue(mockPosts.slice(0, 2));
+    vi.mocked(getCollection).mockResolvedValue(mockPosts.slice(0, 2));
 
     const result = await getPublishedPosts();
 
@@ -68,7 +73,7 @@ describe("getPublishedPosts", () => {
   });
 
   it("should sort posts by pubDate in descending order", async () => {
-    getCollection.mockResolvedValue(mockPosts.slice(0, 3));
+    vi.mocked(getCollection).mockResolvedValue(mockPosts.slice(0, 3));
 
     const result = await getPublishedPosts();
 
@@ -78,7 +83,7 @@ describe("getPublishedPosts", () => {
   });
 
   it("should handle empty collection", async () => {
-    getCollection.mockResolvedValue([]);
+    vi.mocked(getCollection).mockResolvedValue([]);
 
     const result = await getPublishedPosts();
 
@@ -86,15 +91,18 @@ describe("getPublishedPosts", () => {
   });
 
   it("should preserve all original post properties", async () => {
-    getCollection.mockResolvedValue([mockPosts[0]]);
+    vi.mocked(getCollection).mockResolvedValue([mockPosts[0]]);
 
     const result = await getPublishedPosts();
 
     expect(result[0]).toMatchObject({
       id: "post-1",
       data: {
-        pubDate: "2025-05-15",
+        pubDate: new Date("2025-05-15"),
         title: "Post 1",
+        description: "Description 1",
+        author: "Author 1",
+        tags: ["tag 1"],
       },
     });
   });

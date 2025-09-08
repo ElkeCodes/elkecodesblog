@@ -12,24 +12,24 @@ describe("Hamburger menu toggle", () => {
     installMenuScript();
   });
 
-  it('toggles "expanded" class on menu when hamburger is clicked', async () => {
+  it('toggles "expanded" class on menu when hamburger is clicked', () => {
     const hamburger = document.querySelector(".hamburger") as HTMLElement;
     const menu = document.querySelector(".menu")!;
 
     expect(menu.classList.contains("expanded")).toBe(false);
-    await hamburger.click();
+    hamburger.click();
     expect(menu.classList.contains("expanded")).toBe(true);
   });
 
-  it('toggles "expanded" class on menu when menu-close is clicked', async () => {
+  it('toggles "expanded" class on menu when menu-close is clicked', () => {
     const menuClose = document.querySelector(".menu-close") as HTMLElement;
     const hamburger = document.querySelector(".hamburger") as HTMLElement;
     const menu = document.querySelector(".menu")!;
 
     expect(menu.classList.contains("expanded")).toBe(false);
-    await hamburger.click();
+    hamburger.click();
     expect(menu.classList.contains("expanded")).toBe(true);
-    await menuClose.click();
+    menuClose.click();
     expect(menu.classList.contains("expanded")).toBe(false);
   });
 });

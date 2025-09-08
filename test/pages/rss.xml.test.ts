@@ -10,8 +10,14 @@ vi.mock("@utils/get-published-posts");
 
 describe("GET /rss.xml", () => {
   it("should return an RSS feed with correct structure", async () => {
-    getPublishedPosts.mockResolvedValue(Promise.resolve(mockBlogPosts));
-    rss.mockImplementation((config) => config);
+    vi.mocked(getPublishedPosts).mockResolvedValue(mockBlogPosts);
+    vi.mocked(rss).mockImplementation((config) =>
+      Promise.resolve(
+        new Response(JSON.stringify({ data: config }), {
+          status: 200,
+        })
+      )
+    );
 
     const result = await GET(mockContext);
 
@@ -29,32 +35,40 @@ describe("GET /rss.xml", () => {
       customData: "<language>en-gb</language>",
     });
 
-    expect(result).toEqual({
-      title: "Elke Codes",
-      description:
-        "Blog focused on frontend development, photography, running and more",
-      site: mockContext.site,
-      items: [
-        {
-          title: "First Post",
-          pubDate: mockBlogPosts[0].data.pubDate,
-          description: "This is the first post.",
-          link: "/posts/post-1/",
-        },
-        {
-          title: "Second Post",
-          pubDate: mockBlogPosts[1].data.pubDate,
-          description: "This is the second post.",
-          link: "/posts/post-2/",
-        },
-      ],
-      customData: "<language>en-gb</language>",
+    expect(await result.json()).toMatchObject({
+      data: {
+        title: "Elke Codes",
+        description:
+          "Blog focused on frontend development, photography, running and more",
+        site: mockContext.site,
+        items: [
+          {
+            title: "First Post",
+            pubDate: mockBlogPosts[0].data.pubDate.toJSON(),
+            description: "This is the first post.",
+            link: "/posts/post-1/",
+          },
+          {
+            title: "Second Post",
+            pubDate: mockBlogPosts[1].data.pubDate.toJSON(),
+            description: "This is the second post.",
+            link: "/posts/post-2/",
+          },
+        ],
+        customData: "<language>en-gb</language>",
+      },
     });
   });
 
   it("should handle empty posts array", async () => {
-    getPublishedPosts.mockResolvedValue([]);
-    rss.mockImplementation((config) => config);
+    vi.mocked(getPublishedPosts).mockResolvedValue([]);
+    vi.mocked(rss).mockImplementation((config) =>
+      Promise.resolve(
+        new Response(JSON.stringify({ data: config }), {
+          status: 200,
+        })
+      )
+    );
 
     const result = await GET(mockContext);
 
@@ -67,6 +81,15 @@ describe("GET /rss.xml", () => {
       customData: "<language>en-gb</language>",
     });
 
-    expect(result.items).toEqual([]);
+    expect(await result.json()).toMatchObject({
+      data: {
+        title: "Elke Codes",
+        description:
+          "Blog focused on frontend development, photography, running and more",
+        site: mockContext.site,
+        items: [],
+        customData: "<language>en-gb</language>",
+      },
+    });
   });
 });

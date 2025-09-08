@@ -1,5 +1,6 @@
 export const mockBlogPost = {
   id: 1,
+  collection: "blog" as const,
   data: {
     title: "mockTitle",
     tags: ["mockTag1", "mockTag2"],
@@ -22,6 +23,7 @@ export const mockBlogPost = {
 
 export const createBlogPost = ({ headings }: { headings: boolean }) => ({
   id: 1,
+  collection: "blog" as const,
   data: {
     title: "mockTitle",
     tags: ["mockTag1", "mockTag2"],
@@ -46,19 +48,27 @@ export const createBlogPost = ({ headings }: { headings: boolean }) => ({
 
 export const mockBlogPosts = [
   {
+    collection: "blog" as const,
     id: "post-1",
     data: {
       title: "First Post",
       pubDate: new Date("2025-01-01"),
       description: "This is the first post.",
+      author: "Author 1",
+      tags: ["tag 1"],
     },
+    ogImage: "image1.png",
   },
   {
+    collection: "blog" as const,
     id: "post-2",
     data: {
       title: "Second Post",
       pubDate: new Date("2025-01-02"),
       description: "This is the second post.",
+      author: "Author 2",
+      tags: ["tag 2"],
     },
+    ogImage: "image2.png",
   },
 ];

@@ -1,0 +1,108 @@
+---
+title: "Fixing TypeScript Errors in Vitest Mocks with vi.mocked()"
+pubDate: 2025-09-08
+description: "After I run the `astro check` command on my blog code, I saw that there were lots of typing errors in my tests. Especially the ones where I mocked an imported function were giving type errors. With a little helper from Vitest, the issues were instantly resolved."
+shortDescription: "With a helper function from Vitest, we can added typings to our mocked functions"
+author: "Elke Heymans"
+image:
+  url: "checklist.png"
+  alt: "Checklist as a metaphor to testing"
+tags: ["frontend", "typescript", "vitest", "typings", "mocking"]
+---
+
+In my Astro code, I have a function that retrieves all my blogposts and does some mapping on them to add OG image URLs automatically.
+In essence, it's not a complicated function:
+
+```typescript
+import { getCollection } from "astro:content";
+
+export const getPublishedPosts = () =>
+  getCollection(
+    "blog",
+    (post) => new Date(post.data.pubDate) <= new Date()
+  ).then((posts) =>
+    posts
+      .map((post) => ({
+        ...post,
+        ogImage: `/images/og/${post.id}.png`,
+      }))
+      .sort(
+        ({ data: { pubDate: pubDateA } }, { data: { pubDate: pubDateB } }) =>
+          new Date(pubDateB).valueOf() - new Date(pubDateA).valueOf()
+      )
+  );
+```
+
+As I was striving to have 100% test coverage on my site, I wanted to mock out this function.
+That way, I was not dependent on the actual content of my blog but could properly test out certain pages with mocked data.
+But of course, I also wanted to test this `getPublishedPosts` function to ensure its stability and robustness.
+
+An example of a test was to verify if the `ogImage` property was properly added:
+
+```typescript
+it("should add ogImage path to each post", async () => {
+  getCollection.mockResolvedValue(mockPosts.slice(0, 2));
+
+  const result = await getPublishedPosts();
+
+  expect(result[0]).toHaveProperty("ogImage", "/images/og/post-1.png");
+  expect(result[1]).toHaveProperty("ogImage", "/images/og/post-2.png");
+});
+```
+
+When I ran `astro check`, my terminal contained multiple errors about `mockResolvedValue`, `mockImplementation` and so on not existing.
+All Vitest mocks were giving these errors saying that the mock methods I used, didn't exist:
+`Property 'mockResolvedValue' does not exist on type`.
+
+An full example of such an error in my terminal:
+
+```bash
+test/utils/get-published-posts.test.ts:62:19 - error ts(2339): Property 'mockResolvedValue' does not exist on type '{ <C extends keyof AnyEntryMap, E extends CollectionEntry<C>>(collection: C, filter?: ((entry: Flatten<DataEntryMap[C]>) => entry is E) | undefined): Promise<E[]>; <C extends keyof AnyEntryMap>(collection: C, filter?: ((entry: Flatten<...>) => unknown) | undefined): Promise<...>; }'.
+
+62     getCollection.mockResolvedValue(mockPosts.slice(0, 2));
+                     ~~~~~~~~~~~~~~~~~
+```
+
+What happened is that TypeScript only saw what the original typing was from the mocked methods and did not see that they were actually mocked.
+
+This was because at the top of the test file, I mocked my method like this:
+
+```typescript
+import { getCollection } from "astro:content";
+
+vi.mock("astro:content", () => {
+  return {
+    getCollection: vi.fn(),
+  };
+});
+```
+
+Vitest thus knew that `getCollection` from `astro:content` should be mocked during test execution but of course, TypeScript didn't know that.
+TypeScript only sees the original type of `getCollection` and doesn’t know it’s been mocked.
+This is why it complains about missing properties like `mockResolvedValue(...)`.
+The result was that the tests ran fine but that my editor gave typing errors.
+
+With the help of `vi.mocked(...)`, I was able to alleviate this issue.
+Instead of writing `getCollection.mockResolvedValue(mockPosts.slice(0, 2));`, I had to write `vi.mocked(getCollection).mockResolvedValue(mockPosts.slice(0, 2));`.
+The key part is that `getCollection` got wrapped with `vi.mocked(...)` to become `vi.mocked(getCollection)`.
+
+My test that verified if `ogImage` was properly added, was thus changed to this:
+
+```typescript
+it("should add ogImage path to each post", async () => {
+  // wrap getCollection with vi.mocked(...)
+  vi.mocked(getCollection).mockResolvedValue(mockPosts.slice(0, 2));
+
+  const result = await getPublishedPosts();
+
+  expect(result[0]).toHaveProperty("ogImage", "/images/og/post-1.png");
+  expect(result[1]).toHaveProperty("ogImage", "/images/og/post-2.png");
+});
+```
+
+My tests still succeeded and now my typing errors were fixed.
+I added `vi.mocked(...)` on every method that was mocked: `mockResolvedValue(...)`, `mockReturnValue(...)`, `mockImplementation(...)` and so on.
+By adding `vi.mocked(...)`, TypeScript was able to propagate the tyings further in my code.
+This allowed me to see all kinds of typing errors that I could now resolve and that weren't visible at first.
+The full documentation for `vi.mocked(...)` can be found in the [Vitest documentation](https://vitest.dev/api/vi.html#vi-mocked).
+Wrapping mocked functions with `vi.mocked(...)` ensures TypeScript understands the mock methods, eliminating typing errors.

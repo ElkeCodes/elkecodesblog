@@ -17,7 +17,7 @@ export default defineConfig({
       },
     },
     setupNodeEvents(on) {
-      on("before:browser:launch", (browser = {}, launchOptions) => {
+      on("before:browser:launch", (_ = {}, launchOptions) => {
         prepareAudit(launchOptions);
       });
 
