@@ -15,7 +15,7 @@ const post = (await getPublishedPosts()).at(0)!;
   <section aria-labelledby="latest-blogpost">
     <h2 id="latest-blogpost">Latest blogpost</h2>
     <BlogPost id={post.id} data={post.data} />
-    <p class="check-out"><a href="/posts">Check out my other blogposts</a></p>
+    <p class="check-out"><a href="/posts">Check out my other blogposts</a> or <a href="/tags">browse them per tag</a></p>
   </section>
   <section aria-labelledby="coding-projects">
     <h2 id="coding-projects">Coding projects</h2>

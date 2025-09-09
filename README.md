@@ -43,12 +43,12 @@ Thanks to Cypress, I'm able to write even better tests that go beyond the scope 
 - Add code coverage page
 - Make descriptions on blog posts optional
 - Standardise all tags
-- Make tags page reachable
 - Add a11y testing with pa11y or an alternative
 - Add page about the blog on /coding
 - Add sitemap
 
 ## Done TODOs
 
+- Make tags page reachable
 - /blog vs. /posts
 - Check robots.txt if we need to block AI (inspiration: https://github.com/cassidoo/blahg/blob/main/public/robots.txt)
