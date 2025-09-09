@@ -3,24 +3,58 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import BlogPost from "@components/BlogPost.astro";
 import Introduction from "@components/Introduction.astro";
 import { getPublishedPosts } from "@utils/get-published-posts";
+import Card from "@components/Card.astro";
 
 const pageTitle = "Hi there, I'm Elke! 👋";
 
-const posts = (await getPublishedPosts()).slice(0, 5);
+const post = (await getPublishedPosts()).at(0)!;
 ---
 
 <BaseLayout pageTitle={pageTitle}>
   <Introduction />
-  <h2 id="latest-blogposts">Latest blogposts</h2>
-  <ul aria-labelledby="latest-blogposts">
-    {
-      posts.map((post) => (
-        <li>
-          <BlogPost id={post.id} data={post.data} />
-        </li>
-      ))
-    }
-  </ul>
+  <section aria-labelledby="latest-blogpost">
+    <h2 id="latest-blogpost">Latest blogpost</h2>
+    <BlogPost id={post.id} data={post.data} />
+    <p class="check-out"><a href="/blog">Check out my other blogposts</a></p>
+  </section>
+  <section aria-labelledby="coding-projects">
+    <h2 id="coding-projects">Coding projects</h2>
+    <Card
+      title="Rendez-vous with Cassidoo"
+      href="/coding/rendez-vous-with-cassidoo"
+      actionLabel="Open the details"
+      ><p>
+        Trying to solve all interview questions that Cassidoo sends and has sent
+        in her weekly newsletter.
+      </p></Card
+    >
+    <p class="check-out">
+      <a href="/coding">Check out my other coding projects</a>
+    </p>
+  </section>
+  <section aria-labelledby="talks">
+    <h2 id="talks">Talks</h2>
+    <p>
+      I love giving a talk about a variety of topics. The range of topics is
+      quite broad with talks about etymology of certain IT terms, the Advent of
+      Code or how I wrote Pacman VR in Vue.
+    </p>
+    <p class="check-out">
+      <a href="/talks">Check out my talks</a>
+    </p>
+  </section>
+  <section aria-labelledby="now">
+    <h2 id="now">What am I doing right now?</h2>
+    <p>
+      Beside my career in frontend, I am raising an amazing son with my
+      beautiful wife. I also have a wide range of interests like
+      Dungeons&amp;Dragons, running, and more.
+    </p>
+    <p class="check-out">
+      <a href="/now">Check out my now page for an overview of my current life</a
+      >
+    </p>
+  </section>
 </BaseLayout>
 
 <style>
@@ -31,5 +65,9 @@ const posts = (await getPublishedPosts()).slice(0, 5);
     display: flex;
     flex-direction: column;
     gap: 1rem;
+  }
+  .check-out {
+    text-align: right;
+    width: 100%;
   }
 </style>
