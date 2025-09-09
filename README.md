@@ -38,7 +38,6 @@ Thanks to Cypress, I'm able to write even better tests that go beyond the scope 
 - Random blog post
 - Add running data page
 - Clean up errors in build, mainly that there's code that Astro tries to parse as endpoints when it shouldn't
-- Add URL to Github of this blog
 - Add page with all test results
 - Add code coverage page
 - Make descriptions on blog posts optional
@@ -46,9 +45,11 @@ Thanks to Cypress, I'm able to write even better tests that go beyond the scope 
 - Add a11y testing with pa11y or an alternative
 - Add page about the blog on /coding
 - Add sitemap
+- Add external link component
 
 ## Done TODOs
 
+- Add URL to Github of this blog
 - Make tags page reachable
 - /blog vs. /posts
 - Check robots.txt if we need to block AI (inspiration: https://github.com/cassidoo/blahg/blob/main/public/robots.txt)

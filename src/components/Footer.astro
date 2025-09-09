@@ -10,6 +10,10 @@
     <li><a href="https://www.linkedin.com/in/elkeheymans">LinkedIn</a></li>
     <li><a href="https://bsky.app/profile/elkecodes.dev">Bluesky</a></li>
   </ul>
+  <p class="source-url">
+    <a href="https://github.com/ElkeCodes/elkecodesblog"
+      >This website is open-source</a>
+  </p>
 </footer>
 
 <style>
@@ -22,6 +26,7 @@
     border-top: 2px solid var(--color-secondary);
     padding: 1rem 0;
     flex-direction: column;
+    flex-wrap: wrap;
   }
 
   footer ul,
@@ -50,5 +55,10 @@
     gap: 1rem;
     list-style: none;
     padding: 0;
+  }
+
+  footer p.source-url {
+    flex-grow: 1;
+    text-align: center;
   }
 </style>
