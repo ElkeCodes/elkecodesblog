@@ -1,19 +1,23 @@
 ---
 interface Props {
-  tags: Array<string>;
+  tags: Record<string, number>;
 }
 
 const { tags } = Astro.props;
 ---
 
-<nav class="tags" aria-label="Tags used in blogposts">
-  {
-    tags.map((tag) => (
-      <p class="tag">
-        <a href={`/tags/${tag}`}>{tag}</a>
-      </p>
-    ))
-  }
+<nav class="tags" id="tags" aria-label="Tags used in blogposts">
+  <ul aria-labelledby="tags">
+    {
+      Object.entries(tags).map(([tag, number]) => (
+        <li class="tag">
+          <a href={`/tags/${tag}`}>
+            {tag} ({number})
+          </a>
+        </li>
+      ))
+    }
+  </ul>
 </nav>
 
 <style>
@@ -23,6 +27,11 @@ const { tags } = Astro.props;
     flex-wrap: wrap;
     list-style: none;
     padding: 0;
+  }
+
+  .tags ul {
+    list-style: none;
+    columns: 3;
   }
 
   .tag::before {

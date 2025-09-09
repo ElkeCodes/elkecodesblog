@@ -3,7 +3,20 @@ import Tags from "@components/Tags.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getPublishedPosts } from "@utils/get-published-posts";
 const posts = await getPublishedPosts();
-const tags = [...new Set(posts.map((post) => post.data.tags).flat())];
+const tags = posts
+  .map((post) => post.data.tags)
+  .flat()
+  .reduce(
+    (acc, tag) => {
+      if (acc[tag]) {
+        acc[tag]++;
+      } else {
+        acc[tag] = 1;
+      }
+      return acc;
+    },
+    {} as Record<string, number>
+  );
 const pageTitle = "Tag Index";
 ---
 
