@@ -47,3 +47,5 @@ Thanks to Cypress, I'm able to write even better tests that go beyond the scope 
 - Make tags page reachable
 - Add a11y testing with pa11y or an alternative
 - Add page about the blog on /coding
+- Add sitemap
+- Check robots.txt if we need to block AI (inspiration: https://github.com/cassidoo/blahg/blob/main/public/robots.txt)
