@@ -1,0 +1,38 @@
+---
+title: "Fixing Astro Build Errors: Rollup Failed to Resolve Content Imports"
+pubDate: 2025-09-09
+description: "If your Astro build fails with a Rollup error about unresolved imports from the content layer, it might be due to stale caching. Here’s how to fix it quickly."
+shortDescription: "Rollup failed to resolve an import from Astro’s content layer. Here’s how to fix it."
+author: "Elke Heymans"
+image:
+  url: "build.png"
+  alt: "Wrench as a metaphor to a build"
+tags: ["frontend", "astro", "build", "rollup"]
+---
+
+The error was this:
+
+```
+09:17:47 [ERROR] [vite] ✗ Build failed in 910ms
+[vite]: Rollup failed to resolve import "astro:content-layer-deferred-module?astro%3Acontent-layer-deferred-module=&fileName=src%2Fblog%2Ffixing-typescript-errors-in-vitest-mocks-with-vi.mocked%2Findex.mdx&astroContentModuleFlag=true" from "/Users/elke/Repositories/elkecodes/.astro/content-modules.mjs".
+```
+
+I noticed the error referred to the file `src/blog/fixing-typescript-errors-in-vitest-mocks-with-vi.mocked/index.mdx` in the `fileName` parameter.
+I had just changed to `vi.mocked` part into `vimocked`.
+`src/blog/fixing-typescript-errors-in-vitest-mocks-with-vi.mocked/index.mdx` didn't exist anymore, now it was `src/blog/fixing-typescript-errors-in-vitest-mocks-with-vimocked/index.mdx`.
+
+What happens in Astro, is that Astro's content layer gathers all data to be used for content and caches it.
+I have a collection defined for all my blog articles and in that collection definition, I retrieve it all with a loader that uses a glob pattern.
+Retrieving that data can be quite heavy so Astro caches the results to reuse during subsequent builds.
+In my case, I had renamed a folder, but the cache wasn’t updated.
+By adding the `--force` parameter, I could invalidate the cache at build time.
+
+So instead of running `astro build`, I now ran `astro build --force`.
+According to [the Astro documentation](https://docs.astro.build/en/reference/cli-reference/#--force-string), this clears Astro's content layer cache.
+Now my build ran perfectly.
+
+Note that this is a quick temporary workaround and that Astro handles cache invalidation automatically in most cases.
+If you frequently rename files, you can:
+
+- Run `astro build --force` to clear the cache before building.
+- Delete the `.astro/cache` directory manually for a clean slate.

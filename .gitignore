@@ -34,3 +34,6 @@ package-lock.json
 
 # test results for lighthouse
 lighthouse
+
+# netlify
+.netlify
