@@ -1,7 +1,7 @@
 {
   "name": "elkecodes",
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build --force",
@@ -16,6 +16,7 @@
     "@astrojs/mdx": "^4.3.3",
     "@astrojs/netlify": "^6.4.1",
     "@astrojs/rss": "^4.0.12",
+    "@astrojs/sitemap": "^3.5.1",
     "@astrojs/svelte": "^7.1.0",
     "@astrojs/vue": "^5.1.0",
     "astro": "^5.13.2",
