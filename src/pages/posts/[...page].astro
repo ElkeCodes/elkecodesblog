@@ -1,0 +1,92 @@
+---
+import { getCollection } from "astro:content";
+
+import type { GetStaticPaths, GetStaticPathsOptions } from "astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import BlogPost from "@components/BlogPost.astro";
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts = (await getCollection("blog")).sort(
+    ({ data: { pubDate: pubDateA } }, { data: { pubDate: pubDateB } }) =>
+      pubDateB.valueOf() - pubDateA.valueOf()
+  );
+
+  return paginate(posts, { pageSize: 10 });
+}
+
+const { page } = Astro.props;
+
+const pageNumbers = Array.from({ length: page.lastPage }, (_, i) => i + 1);
+const pageTitle = `Blogposts #${page.start + 1} - #${page.end + 1}, page #${page.currentPage}`;
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <h2 id="posts-overview">Blogposts overview</h2>
+  <ul aria-labelledby="posts-overview">
+    {
+      page.data.map((post) => (
+        <li>
+          <BlogPost id={post.id} data={post.data} />
+        </li>
+      ))
+    }
+  </ul>
+  {
+    page.lastPage > 1 && (
+      <nav aria-label="Page navigation" id="page-navigation">
+        <ul aria-labelledby="page-navigation">
+          {page.url.prev && (
+            <li>
+              <a href={page.url.prev} aria-label="Go to the previous page">
+                Previous
+              </a>
+            </li>
+          )}
+          {pageNumbers.map((pageNumber) => (
+            <li>
+              <a
+                href={`/posts/${pageNumber}`}
+                aria-label={`Go to page ${pageNumber}`}
+              >
+                {pageNumber}
+              </a>
+            </li>
+          ))}
+          {page.url.next && (
+            <li>
+              <a href={page.url.next} aria-label="Go to the next page">
+                Next
+              </a>
+            </li>
+          )}
+        </ul>
+      </nav>
+    )
+  }
+</BaseLayout>
+
+<style>
+  ul {
+    list-style: none;
+    margin: 1rem 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  nav#page-navigation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav#page-navigation ul {
+    list-style: none;
+    margin: 1rem 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+</style>
