@@ -27,3 +27,23 @@ Yes, I have written all kinds of tests for this blog.
 I test all components, utilities and pages in unit tests.
 With a test coverage of 100%, I'm still not happy as not all tests are that useful so I'm in the works of upgrading everything.
 Thanks to Cypress, I'm able to write even better tests that go beyond the scope of 1 UI element for example.
+
+## TODOs
+
+- /blog vs. /posts
+- Standardise ul styling
+- Add readtime component
+- Better unit tests for the pagination
+- Add previous/next post link to blog posts
+- Run all cypress tests on my multiple devices
+- Random blog post
+- Add running data page
+- Clean up errors in build, mainly that there's code that Astro tries to parse as endpoints when it shouldn't
+- Add URL to Github of this blog
+- Add page with all test results
+- Add code coverage page
+- Make descriptions on blog posts optional
+- Standardise all tags
+- Make tags page reachable
+- Add a11y testing with pa11y or an alternative
+- Add page about the blog on /coding
