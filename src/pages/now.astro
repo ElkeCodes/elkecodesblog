@@ -1,13 +1,13 @@
 ---
+import ExternalLink from "@components/ExternalLink.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { formatDate } from "@utils/format-date";
 ---
 
 <BaseLayout pageTitle="Now">
   <p>
-    This page is last updated on {formatDate("2025-09-09")} and is based on the <a
-      href="https://nownownow.com/about"
-      target="_blank">/now idea</a
+    This page is last updated on {formatDate("2025-09-09")} and is based on the <ExternalLink
+      href="https://nownownow.com/about">/now idea</ExternalLink
     > to showcase what a person is currently doing in their life.
   </p>
   <h2>Exercising</h2>

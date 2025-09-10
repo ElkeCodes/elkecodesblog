@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { Content as Experience } from "./base.md";
+import ExternalLink from "@components/ExternalLink.astro";
 
 const pageTitle = "Curriculum Vitae";
 ---
@@ -28,11 +29,12 @@ const pageTitle = "Curriculum Vitae";
     makes me a very interesting asset in your team.
   </p>
   <p>
-    You can find me on <a
+    You can find me on <ExternalLink
       href="https://www.linkedin.com/in/elkeheymans/"
-      target="_blank">LinkedIn</a
-    > and check out my <a href="https://github.com/elkecodes" target="_blank"
-      >GitHub</a
+      target="_blank">LinkedIn</ExternalLink
+    > and check out my <ExternalLink
+      href="https://github.com/elkecodes"
+      target="_blank">GitHub</ExternalLink
     >.
   </p>
   <Experience />

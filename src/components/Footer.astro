@@ -1,18 +1,28 @@
 ---
-
+import ExternalLink from "./ExternalLink.astro";
 ---
 
 <footer>
   <p>&copy; 2025 Elke Heymans</p>
   <p class="building-blocks">Made with Astro, TypeScript and coffee</p>
   <ul class="socials">
-    <li><a href="https://www.github.com/elkecodes">GitHub</a></li>
-    <li><a href="https://www.linkedin.com/in/elkeheymans">LinkedIn</a></li>
-    <li><a href="https://bsky.app/profile/elkecodes.dev">Bluesky</a></li>
+    <li>
+      <ExternalLink href="https://www.github.com/elkecodes"
+        >GitHub</ExternalLink>
+    </li>
+    <li>
+      <ExternalLink href="https://www.linkedin.com/in/elkeheymans"
+        >LinkedIn</ExternalLink>
+    </li>
+    <li>
+      <ExternalLink href="https://bsky.app/profile/elkecodes.dev"
+        >Bluesky</ExternalLink>
+    </li>
   </ul>
   <p class="source-url">
-    <a href="https://github.com/ElkeCodes/elkecodesblog"
-      >This website is open-source</a>
+    <ExternalLink href="https://github.com/ElkeCodes/elkecodesblog"
+      >This website is open-source</ExternalLink
+    >
   </p>
 </footer>
 

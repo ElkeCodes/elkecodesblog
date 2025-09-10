@@ -2,6 +2,7 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import "../../styles/global.css";
 import { getSecret } from "astro:env/server";
+import ExternalLink from "@components/ExternalLink.astro";
 
 const pageTitle = "Rendez-vous with Cassidoo";
 
@@ -71,8 +72,8 @@ const completionPercentage = Math.floor((solvedWeeks.length / lastWeek) * 100);
   <p>
     I love challenging myself with code puzzles. After being subscribed for
     years, I've decided to start solving all the interview questions (she sends
-    one per <a href="https://cassidoo.co/newsletter/" target="_blank"
-      >weekly newsletter</a
+    one per <ExternalLink href="https://cassidoo.co/newsletter/"
+      >weekly newsletter</ExternalLink
     >). This is a big project as she has passed 400 sent newsletters and still
     actively sending new ones out.
   </p>
@@ -101,9 +102,7 @@ const completionPercentage = Math.floor((solvedWeeks.length / lastWeek) * 100);
           <tr>
             <td>{getWeek(name)}</td>
             <td>
-              <a href={html_url} target="_blank">
-                {name}
-              </a>
+              <ExternalLink href={html_url}>{name}</ExternalLink>
             </td>
             {/* <td>
               <ul class="tags">

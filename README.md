@@ -34,21 +34,22 @@ Thanks to Cypress, I'm able to write even better tests that go beyond the scope 
 - Add readtime component
 - Better unit tests for the pagination
 - Add previous/next post link to blog posts
-- Run all cypress tests on my multiple devices
+- Run all cypress tests on multiple devices
 - Random blog post
 - Add running data page
 - Clean up errors in build, mainly that there's code that Astro tries to parse as endpoints when it shouldn't
 - Add page with all test results
 - Add code coverage page
 - Make descriptions on blog posts optional
-- Standardise all tags
+- Standardise all blogpost tags
 - Add a11y testing with pa11y or an alternative
 - Add page about the blog on /coding
-- Add sitemap
-- Add external link component
+- Improve external link tests
 
 ## Done TODOs
 
+- Add sitemap
+- Add external link component
 - Add URL to Github of this blog
 - Make tags page reachable
 - /blog vs. /posts
