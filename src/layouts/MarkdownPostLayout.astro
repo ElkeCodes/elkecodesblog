@@ -7,9 +7,28 @@ import TableOfContents from "@components/TableOfContents.astro";
 import type { MarkdownHeading } from "astro";
 import { formatDate } from "@utils/format-date";
 
+type Props = {
+  data: {
+    tags: Array<string>;
+    title: string;
+    description: string;
+    shortDescription: string;
+    pubDate: string;
+  };
+  openGraph: {
+    basic: {
+      title: string;
+      type: string;
+      image: string;
+      url: string;
+    };
+  };
+  headings: Array<MarkdownHeading>;
+};
+
 const { data, openGraph, headings } = Astro.props;
 
-const headingsWithPostTitle: MarkdownHeading[] = [
+const headingsWithPostTitle: Array<MarkdownHeading> = [
   {
     slug: "title",
     depth: 1,
@@ -17,7 +36,19 @@ const headingsWithPostTitle: MarkdownHeading[] = [
   },
   ...headings,
 ];
+const tags = data.tags.reduce(
+  (acc, tag) => {
+    if (acc[tag]) {
+      acc[tag]++;
+    } else {
+      acc[tag] = 1;
+    }
+    return acc;
+  },
+  {} as Record<string, number>
+);
 ---
+
 <BaseLayout
   pageTitle={data.title}
   openGraph={openGraph}
@@ -40,7 +71,7 @@ const headingsWithPostTitle: MarkdownHeading[] = [
     }
   </div>
   <BackToTop client:idle />
-  <Tags tags={data.tags} />
+  <Tags tags={tags} />
   <Introduction />
 </BaseLayout>
 
