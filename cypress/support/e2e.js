@@ -12,5 +12,5 @@ Cypress.Commands.add("verifyIntroduction", () => {
   cy.get("section").should("contain.text", "I'm a frontend developer");
 });
 
-import '@testing-library/cypress/add-commands'
-import '@cypress-audit/lighthouse/commands'
+import "@testing-library/cypress/add-commands";
+import "@cypress-audit/lighthouse/commands";

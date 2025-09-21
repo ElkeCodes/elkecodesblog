@@ -1,8 +1,12 @@
-describe("pomodoro page", () => {
+import { testOnViewports } from "../support/utils";
+
+describe(`pomodoro page`, () => {
   beforeEach(() => {
     cy.visit("http://localhost:4321/coding/pomodoro");
     cy.clock(); // Mock timers
   });
+  // before(() => {
+  // });
   it("should have the correct titles", () => {
     cy.get("title").should("have.text", "Pomodoro");
     cy.get("h1").should("have.text", "Pomodoro");
@@ -29,17 +33,22 @@ describe("pomodoro page", () => {
   });
 
   it("starts the stopwatch and updates the time", () => {
-    cy.findByRole("button", { name: /start/i }).click();
-    cy.tick(1000);
-    cy.findByRole("timer", { name: "Remaining time" }).should(
-      "have.text",
-      "24:59"
-    );
-    cy.tick(1000);
-    cy.findByRole("timer", { name: "Remaining time" }).should(
-      "have.text",
-      "24:58"
-    );
+    cy.clock().then((clock) => {
+      cy.findByRole("button", { name: /start/i })
+        .click()
+        .then(() => {
+          clock.tick(1000);
+          cy.findByRole("timer", { name: "Remaining time" }).should(
+            "have.text",
+            "24:59"
+          );
+          clock.tick(1000);
+          cy.findByRole("timer", { name: "Remaining time" }).should(
+            "have.text",
+            "24:58"
+          );
+        });
+    });
   });
 
   it("pauses the stopwatch", () => {
