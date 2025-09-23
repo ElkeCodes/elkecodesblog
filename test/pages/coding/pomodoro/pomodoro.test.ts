@@ -1,7 +1,7 @@
 // @vitest-environment happy-dom
 
 import { expect, it, describe, vi, beforeEach, afterEach } from "vitest";
-import Pomodoro from "@pages/coding/pomodoro/pomodoro.vue";
+import Pomodoro from "@pages/coding/pomodoro/_pomodoro.vue";
 import { render, screen } from "@testing-library/vue";
 import userEvent from "@testing-library/user-event";
 
