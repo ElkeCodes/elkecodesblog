@@ -2,6 +2,7 @@
 import BlogPost from "@components/BlogPost.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getPublishedPosts } from "@utils/get-published-posts";
+import { createOpenGraph } from "@utils/create-open-graph";
 
 export async function getStaticPaths() {
   const posts = await getPublishedPosts();
@@ -18,9 +19,12 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
+const pageTitle: string = `Tag: ${tag}`;
+const description: string = `All blog posts tagged with '${tag}'.`;
+const openGraph = createOpenGraph(pageTitle, `/tags/${tag}`);
 ---
 
-<BaseLayout pageTitle={`Tag: ${tag}`}>
+<BaseLayout pageTitle={pageTitle} description={description} openGraph={openGraph}>
   <ul>
     {
       posts.map((post) => (

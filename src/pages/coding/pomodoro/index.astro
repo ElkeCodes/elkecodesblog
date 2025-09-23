@@ -2,11 +2,14 @@
 import Introduction from "@components/Introduction.astro";
 import Pomodoro from "./pomodoro.vue";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { createOpenGraph } from "@utils/create-open-graph";
 
-const pageTitle = "Pomodoro";
+const pageTitle: string = "Pomodoro";
+const description: string = "The Pomodoro Focus technique explained and a timer tool.";
+const openGraph = createOpenGraph(pageTitle, "/coding/pomodoro");
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} description={description} openGraph={openGraph}>
   <p>
     The Pomodoro Focus technique is a time management method that boosts
     productivity by breaking work into focused, 25-minute intervals (called

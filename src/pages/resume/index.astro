@@ -2,11 +2,14 @@
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { Content as Experience } from "./base.md";
 import ExternalLink from "@components/ExternalLink.astro";
+import { createOpenGraph } from "@utils/create-open-graph";
 
-const pageTitle = "Curriculum Vitae";
+const pageTitle: string = "Curriculum Vitae";
+const description: string = "Elke Heymans - Frontend developer. Full CV, experience, and contact information.";
+const openGraph = createOpenGraph(pageTitle, "/resume", "profile");
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} description={description} openGraph={openGraph}>
   <h2>Summary</h2>
   <p>
     My career started in 2013 after graduating with a Bachelors and Masters in

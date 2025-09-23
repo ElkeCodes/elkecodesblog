@@ -2,9 +2,14 @@
 import ExternalLink from "@components/ExternalLink.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { formatDate } from "@utils/format-date";
+import { createOpenGraph } from "@utils/create-open-graph";
+
+const pageTitle: string = "Now";
+const description: string = "What Elke is currently doing, learning, and working on.";
+const openGraph = createOpenGraph(pageTitle, "/now");
 ---
 
-<BaseLayout pageTitle="Now">
+<BaseLayout pageTitle={pageTitle} description={description} openGraph={openGraph}>
   <p>
     This page is last updated on {formatDate("2025-09-21")} and is based on the <ExternalLink
       href="https://nownownow.com/about">/now idea</ExternalLink

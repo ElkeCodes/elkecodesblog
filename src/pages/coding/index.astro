@@ -1,11 +1,14 @@
 ---
 import Card from "@components/Card.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
+import { createOpenGraph } from "@utils/create-open-graph";
 
-const pageTitle = "Coding projects overview";
+const pageTitle: string = "Coding projects overview";
+const description: string = "Overview of Elke's coding projects and experiments.";
+const openGraph = createOpenGraph(pageTitle, "/coding");
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} description={description} openGraph={openGraph}>
   <p>
     To sharpen my developer skills, I love to create new things from time to
     time. This is an overview of all kinds of coding projects I've done in the

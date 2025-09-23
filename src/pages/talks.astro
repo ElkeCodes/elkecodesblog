@@ -4,8 +4,11 @@ import Introduction from "@components/Introduction.astro";
 import { formatDate } from "@utils/format-date";
 import BackToTop from "@components/BackToTop.svelte";
 import Card from "@components/Card.astro";
+import { createOpenGraph } from "@utils/create-open-graph";
 
-const pageTitle = "Talks";
+const pageTitle: string = "Talks";
+const description: string = "A list of all talks given by Elke, including slides and descriptions.";
+const openGraph = createOpenGraph(pageTitle, "/talks");
 
 const talks = [
   {
@@ -65,7 +68,7 @@ const talks = [
 );
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} description={description} openGraph={openGraph}>
   <p>
     Giving talks as a developer helps me grow in ways coding alone can't. It
     sharpens my communication skills and deepens my understanding of topics.

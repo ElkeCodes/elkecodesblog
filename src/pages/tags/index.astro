@@ -2,8 +2,13 @@
 import Tags from "@components/Tags.astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import { getPublishedPosts } from "@utils/get-published-posts";
-const posts = await getPublishedPosts();
-const tags = posts
+import { createOpenGraph } from "@utils/create-open-graph";
+
+type Post = Awaited<ReturnType<typeof getPublishedPosts>>[number];
+type TagsMap = Record<string, number>;
+
+const posts: Array<Post> = await getPublishedPosts();
+const tags: TagsMap = posts
   .map((post) => post.data.tags)
   .flat()
   .reduce(
@@ -15,11 +20,13 @@ const tags = posts
       }
       return acc;
     },
-    {} as Record<string, number>
+    {} as TagsMap
   );
-const pageTitle = "Tag Index";
+const pageTitle: string = "Tag Index";
+const description: string = "Browse all blog posts by tag.";
+const openGraph = createOpenGraph(pageTitle, "/tags");
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} description={description} openGraph={openGraph}>
   <Tags tags={tags} />
 </BaseLayout>

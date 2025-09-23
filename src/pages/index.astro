@@ -4,13 +4,16 @@ import BlogPost from "@components/BlogPost.astro";
 import Introduction from "@components/Introduction.astro";
 import { getPublishedPosts } from "@utils/get-published-posts";
 import Card from "@components/Card.astro";
+import { createOpenGraph } from "@utils/create-open-graph";
 
-const pageTitle = "Hi there, I'm Elke! 👋";
+const pageTitle: string = "Hi there, I'm Elke! 👋";
+const description: string = "Elke's personal blog: latest post, coding projects, and talks.";
+const openGraph = createOpenGraph(pageTitle, "/");
 
 const post = (await getPublishedPosts()).at(0)!;
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} description={description} openGraph={openGraph}>
   <Introduction />
   <section aria-labelledby="latest-blogpost">
     <h2 id="latest-blogpost">Latest blogpost</h2>

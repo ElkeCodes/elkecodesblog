@@ -3,8 +3,11 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import "../../styles/global.css";
 import { getSecret } from "astro:env/server";
 import ExternalLink from "@components/ExternalLink.astro";
+import { createOpenGraph } from "@utils/create-open-graph";
 
-const pageTitle = "Rendez-vous with Cassidoo";
+const pageTitle: string = "Rendez-vous with Cassidoo";
+const description: string = "Elke's journey solving Cassidoo's weekly interview questions in TypeScript.";
+const openGraph = createOpenGraph(pageTitle, "/coding/rendez-vous-with-cassidoo");
 
 const apiURL = `https://api.github.com/repos/ElkeCodes/rendezvous-with-cassidoo-interview-questions`;
 const options = {
@@ -26,41 +29,7 @@ const solvedWeeks = (
   }>
 ).filter(({ name }) => name !== "shared");
 
-// const getTagsAndPutIntoWeeksData = (
-//   content: string,
-//   name: string
-// ): Array<string> => {
-//   const tagsLine = content
-//     .split("\n")
-//     .find((line) => line.startsWith("Tags: "));
-//   if (tagsLine) {
-//     const tags = tagsLine.replace("Tags: ", "").split(", ");
-//     const week = weeksData.find(({ name: weekName }) => weekName === name);
-//     if (week) {
-//       week.tags = tags;
-//     }
-//     return tags;
-//   }
-//   return [];
-// };
-
-// const tags = [
-//   ...new Set(
-//     (
-//       await Promise.all(
-//         weeksData.slice(0, 3).map(({ name }) =>
-//           fetch(`${apiURL}/readme/src/weeks/${name}`, options)
-//             .then((response) => response.json())
-//             .then(({ content }) => atob(content))
-//             .then((content) => getTagsAndPutIntoWeeksData(content, name))
-//         )
-//       )
-//     ).flat()
-//   ),
-// ];
-
 const getWeek = (name: string): string => name.substring(0, name.indexOf("-"));
-
 const lastWeek = parseInt(
   getWeek(solvedWeeks.at(solvedWeeks.length - 1)!.name),
   10
@@ -68,7 +37,7 @@ const lastWeek = parseInt(
 const completionPercentage = Math.floor((solvedWeeks.length / lastWeek) * 100);
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout pageTitle={pageTitle} description={description} openGraph={openGraph}>
   <p>
     I love challenging myself with code puzzles. After being subscribed for
     years, I've decided to start solving all the interview questions (she sends
@@ -91,9 +60,8 @@ const completionPercentage = Math.floor((solvedWeeks.length / lastWeek) * 100);
   </div>
   <table>
     <thead>
-      <tr
-        ><th>Week</th><th>Code</th>
-        <!-- <th>Tags</th> -->
+      <tr>
+        <th>Week</th><th>Code</th>
       </tr>
     </thead>
     <tbody>
@@ -104,13 +72,6 @@ const completionPercentage = Math.floor((solvedWeeks.length / lastWeek) * 100);
             <td>
               <ExternalLink href={html_url}>{name}</ExternalLink>
             </td>
-            {/* <td>
-              <ul class="tags">
-                {tags.map((tag) => (
-                  <li class="tag">{tag}</li>
-                ))}
-              </ul>
-            </td> */}
           </tr>
         ))
       }
@@ -121,15 +82,5 @@ const completionPercentage = Math.floor((solvedWeeks.length / lastWeek) * 100);
 <style>
   .completion-progress {
     margin-bottom: 2rem;
-  }
-  .tags {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 0.5rem;
-  }
-  .tags .tag {
-    border-radius: 1rem;
   }
 </style>
