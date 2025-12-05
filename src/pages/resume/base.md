@@ -25,6 +25,14 @@ Managed 13 employees in their Ordina career for 16 months, while working for cli
 Returned to fulltime development after that.
 <br /><br />
 
+**Fullstack Vue & Python developer**
+  : Meemoo
+  : **Oct 2025 - Current**
+
+- Developing new features in the GIVE metadata project by extending the existing Vue frontend and Python backend.
+- Overhauled a big part of the frontend by adding TypeScript, unit and integration tests with Vitest & Testing Library.
+- Adding the visualisation of the speech recognition in audio & video and face recognition in images.
+
 **Practice Lead Development**
   : Ordina, team Bold
   : **Sep 2023 - Dec 2024**
@@ -39,9 +47,9 @@ Returned to fulltime development after that.
 
 **Frontend React developer**
   : Securex 
-  : **Apr 2023 - current**
+  : **Apr 2023 - Sep 2025**
 
-- **MyDoc project (Apr 2023 - current)**
+- **MyDoc project (Apr 2023 - Sep 2025)**
   - Migrated existing features of Mendix application to React application
   - Improved mobile friendly version
   - Integrated PDF viewer
