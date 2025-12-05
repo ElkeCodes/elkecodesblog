@@ -1,0 +1,34 @@
+---
+title: "Disabling GitHub Copilot for Advent of Code"
+pubDate: 2025-12-05
+description: "While participating in the yearly Advent of Code, I don't want my GitHub Copilot to start making suggestions and helping me. To disable it in Visual Studio Code, we just need to configure one setting."
+shortDescription: "One setting to deactivate GitHub Copilot in a specific repository"
+author: "Elke Heymans"
+image:
+  url: "build.png"
+  alt: "Wrench as a metaphor to a build"
+tags: ["vscode", "adventofcode"]
+---
+
+Simply create a `settings.json` file in a `.vscode` folder in the root of your repository with these contents:
+
+```
+{
+  "github.copilot.enable": {
+    "*": false
+  }
+}
+```
+
+What this actually does, is that we disable copilot for all file extensions.
+If you still want to have Copilot active for some files, you can enable them after disabling everything.
+For example to have it active on Python files:
+
+```
+{
+  "github.copilot.enable": {
+    "*": false,
+    "*.py": true
+  }
+}
+```
