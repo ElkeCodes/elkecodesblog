@@ -4,7 +4,7 @@ import { normalizeText } from "@utils/normalize-text";
 interface Props extends astroHTML.JSX.AnchorHTMLAttributes {
   href: string;
   title: string;
-  actionLabel: string;
+  actionLabel?: string;
 }
 
 const { href, title, actionLabel, ...rest } = Astro.props;

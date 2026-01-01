@@ -1,0 +1,135 @@
+---
+import Card from "@components/Card.astro";
+import BaseLayout from "@layouts/BaseLayout.astro";
+import { formatDate } from "@utils/format-date";
+import Parser from "rss-parser";
+const parser = new Parser();
+
+const feedSources = [
+  //   {
+  //     source: "https://tweakers.net/feeds/mixed.xml",
+  //     filter: (item: { categories: string[] }) =>
+  //       !["Software", "Firmware"].some((category) =>
+  //         item.categories.includes(category)
+  //       ),
+  //   },
+  {
+    source: "https://cassidoo.co/rss.xml",
+  },
+  {
+    source: "https://css-tricks.com/feed/",
+    format: (item) => stripHtml(item["contentSnippet"]),
+  },
+  {
+    source: "https://www.smashingmagazine.com/feed/",
+  },
+  {
+    source: "https://web.dev/static/blog/feed.xml",
+  },
+  {
+    source: "https://www.bram.us/category/original-content/feed/",
+  },
+];
+interface FeedItem {
+  feed?: string;
+  title: string;
+  link: string;
+  date: Date;
+  content?: string;
+}
+const feedItems: FeedItem[] = [];
+
+function stripHtml(html: string): string {
+  return html.replace(/(<([^>]+)>)/gi, "");
+  //   let tmp = document.createElement("div");
+  //   tmp.innerHTML = html;
+  //   return tmp.textContent || tmp.innerText || "";
+}
+
+const cutoff = (s: string): string => {
+  if (s.length <= 250) {
+    return s;
+  }
+  return s.slice(0, 250) + "...";
+};
+
+await Promise.allSettled(
+  feedSources.map(async ({ source, format, filter }) => {
+    try {
+      const feed = await parser.parseURL(source);
+      feed.items.forEach((item) => {
+        const date = item.pubDate ? new Date(item.pubDate) : undefined;
+        if ((filter && !filter(item)) || !date || !item.title || !item.link) {
+          return;
+        }
+        console.log(item);
+        const content = format ? format(item) : item.content || "";
+        feedItems.push({
+          feed: feed.title,
+          title: item.title,
+          link: item.link,
+          date,
+          content: cutoff(content),
+        });
+      });
+    } catch (error) {
+      console.error(`Error fetching feed from ${source}:`, error);
+    }
+  })
+);
+
+const thirtyDaysAgo = new Date();
+thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+const filteredFeedItems = feedItems.filter(
+  (item) => item.date && item.date >= thirtyDaysAgo
+);
+const sortedFeedItems = filteredFeedItems.sort(
+  (a, b) => (b.date ?? new Date()).getTime() - (a.date ?? new Date()).getTime()
+);
+---
+
+<BaseLayout
+  pageTitle="RSS Feed"
+  description="Aggregated RSS feed from multiple sources"
+  openGraph={{
+    basic: {
+      title: "RSS Feed",
+      type: "website",
+      image: "",
+      url: "",
+    },
+  }}
+>
+  <main>
+    {
+      sortedFeedItems.map((item) => (
+        <ul>
+          <li>
+            <Card title={item.title} href={item.link}>
+              <div set:html={item.content} />
+              <small>
+                {item.feed} - {formatDate(item.date)}
+              </small>
+            </Card>
+          </li>
+        </ul>
+      ))
+    }
+  </main>
+</BaseLayout>
+
+<style>
+  ul {
+    list-style: none;
+    margin: 1rem 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  small {
+    clear: both;
+    display: block;
+    color: var(--color-lighter-gray);
+  }
+</style>
