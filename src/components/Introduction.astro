@@ -10,20 +10,23 @@ import profilePicture from "../images/elke.jpg";
     layout="full-width"
     class="picture"
   />
-  <span class="introduction">
-    I'm a fullstack developer specializing in Vue &amp; Python, with a
-    background in React &amp; Angular, and some other backend work (NodeJS &amp;
-    C&num;). When I'm not coding, you'll find me running, enjoying music, taking
+  <div class="introduction">
+    I'm currently building modern web applications with <em
+      >Vue.js and Python</em
+    >, backed by <em>PostgreSQL</em> for reliable data management. My background
+    includes developing multiple <em>React &amp; Angular</em> projects and architecting
+    <em>Node.js and C&num;</em> backends, giving me a versatile perspective on fullstack
+    development.
+  </div>
+  <!-- When I'm not coding, you'll find me running, enjoying music, taking
     pictures, or playing boardgames and tabletop RPGs like Dungeons&amp;Dragons.
     These days, my biggest adventure is raising my amazing son with my beautiful
-    wife. On this blog, I'll share my insights on tech, code snippets, hobbies,
-    and more.
-  </span>
+    wife. On this blog, I'll share my insights on tech, code snippets, hobbies, and
+    more. -->
 </section>
 
 <style>
   .hero {
-    background: var(--color-accent);
     padding: 1rem;
     border-radius: 1rem;
     border: 1px solid var(--color-border);
@@ -40,6 +43,11 @@ import profilePicture from "../images/elke.jpg";
   .hero .introduction {
     margin: 0;
     font-size: var(--font-size-sm);
+  }
+  .hero .introduction em {
+    font-style: normal;
+    text-decoration: underline dashed var(--color-secondary);
+    text-underline-offset: 0.3rem;
   }
   @media screen and (min-width: 636px) {
     .hero {

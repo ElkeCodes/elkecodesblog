@@ -6,19 +6,27 @@ import { getPublishedPosts } from "@utils/get-published-posts";
 import Card from "@components/Card.astro";
 import { createOpenGraph } from "@utils/create-open-graph";
 
-const pageTitle: string = "Hi there, I'm Elke! 👋";
-const description: string = "Elke's personal blog: latest post, coding projects, and talks.";
+const pageTitle: string = "Hi there, I'm Elke, a fullstack developer! 👋";
+const description: string =
+  "Elke's personal blog: latest post, coding projects, and talks.";
 const openGraph = createOpenGraph(pageTitle, "/");
 
 const post = (await getPublishedPosts()).at(0)!;
 ---
 
-<BaseLayout pageTitle={pageTitle} description={description} openGraph={openGraph}>
+<BaseLayout
+  pageTitle={pageTitle}
+  description={description}
+  openGraph={openGraph}
+>
   <Introduction />
   <section aria-labelledby="latest-blogpost">
     <h2 id="latest-blogpost">Latest blogpost</h2>
     <BlogPost id={post.id} data={post.data} />
-    <p class="check-out"><a href="/posts">Check out my other blogposts</a> or <a href="/tags">browse them per tag</a></p>
+    <p class="check-out">
+      <a href="/posts">Check out my other blogposts</a> or <a href="/tags"
+        >browse them per tag</a>
+    </p>
   </section>
   <section aria-labelledby="coding-projects">
     <h2 id="coding-projects">Coding projects</h2>
@@ -49,8 +57,8 @@ const post = (await getPublishedPosts()).at(0)!;
   <section aria-labelledby="now">
     <h2 id="now">What am I doing right now?</h2>
     <p>
-      Beside my career in frontend, I am raising an amazing son with my
-      beautiful wife. I also have a wide range of interests like
+      Beside my career as a fullstack developer, I am raising an amazing son
+      with my beautiful wife. I also have a wide range of interests like
       Dungeons&amp;Dragons, running, and more.
     </p>
     <p class="check-out">

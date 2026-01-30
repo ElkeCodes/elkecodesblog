@@ -13,7 +13,7 @@ tags: ["interviews", "puzzles", "frontend"]
 ## Takeaway #1: being comfortable in the technology helps
 
 The very first time I solved one of Cassidoo's interview questions, I had done it using Rust.
-As I'm a frontend developer, you wouldn't expect a language like Rust in my repertoire.
+As I'm a frontend-focused fullstack developer, you wouldn't expect a language like Rust in my repertoire.
 The cliché of frontend developers is that we can only use JavaScript and hopefully have some knowledge about TypeScript.
 
 After 3 hours battling Rust's ownership model for a simple streak counter, I had an epiphany.
@@ -67,10 +67,10 @@ function badLeyland(n: number) {
   const result = [];
   for (let x = 2; result.length < n; x++) {
     for (let y = 2; y <= x; y++) {
-      result.push(x**y + y**x); 
+      result.push(x ** y + y ** x);
     }
   }
-  return result.sort((a,b) => a-b).slice(0,n); 
+  return result.sort((a, b) => a - b).slice(0, n);
 }
 ```
 
@@ -80,9 +80,9 @@ In the end, I found this cleaner solution with clever use of a Set and building 
 ```typescript
 export function getLeylandNumbersWithSet(n: number): number[] {
   const result = new Set<number>();
-  for (let x = 2; result.size < n**2; x++) {
+  for (let x = 2; result.size < n ** 2; x++) {
     for (let y = 2; y <= x; y++) {
-      result.add(x**y + y**x);
+      result.add(x ** y + y ** x);
     }
   }
   return [...result].sort((a, b) => a - b).slice(0, n);
@@ -94,7 +94,7 @@ I've ended up learning more about certain concepts like [Leyland numbers](https:
 
 ## Takeaway #4: basic algorithms and data structure knowledge comes in handy
 
-In the first 50 interview questions that I solved, I used algorithms like Breadth First Search, Depth First Search, recursion, generators and so on. 
+In the first 50 interview questions that I solved, I used algorithms like Breadth First Search, Depth First Search, recursion, generators and so on.
 I also used data structures like Queue, Stack and BigInt.
 **Having knowledge of these algorithms, principles and data structures really helps**.
 But if you don't know them, solving the interview question is the perfect time to learn more about it!
@@ -128,6 +128,7 @@ Hell yeah!
 Thanks to solving these interview questions, I've deepened my knowledge of JavaScript/TypeScript.
 I've also refreshed my algorithm skills by having to reimplement algorithms like Breadth First Search.
 Lastly, it has made me a better debugger, not just a coder:
+
 - I use the debugger a lot more
 - I avoid using too much `console.log` to debug
 - I write more test cases and try to find edge cases
