@@ -2,7 +2,7 @@
 name: Elke Heymans
 header:
   - text: |
-      <span style="font-size: 1.2em; font-weight: bold;">Frontend developer</span>
+      <span style="font-size: 1.2em; font-weight: bold;">Fullstack developer</span>
   - text: <span class="iconify" data-icon="tabler:phone"></span> (+32) 495 42 78 19
     newLine: true
   - text: <span class="iconify" data-icon="tabler:mail"></span> el.heymans@gmail.com
@@ -15,7 +15,7 @@ header:
 
 ## Experience
 
-### Frontend consultant
+### Fullstack consultant
 Ordina Belgium (a Sopra Steria company)
   : **Mar 2018 - Current**
 <br /><br />

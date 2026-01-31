@@ -5,11 +5,59 @@ import ExternalLink from "@components/ExternalLink.astro";
 import { createOpenGraph } from "@utils/create-open-graph";
 
 const pageTitle: string = "Curriculum Vitae";
-const description: string = "Elke Heymans - Frontend developer. Full CV, experience, and contact information.";
+const description: string =
+  "Elke Heymans - Fullstack developer. Full CV, experience, and contact information.";
 const openGraph = createOpenGraph(pageTitle, "/resume", "profile");
+
+const experience = [
+  {
+    employer: "Sopra Steria Belgium",
+    role: "Fullstack Developer at Meemoo",
+    period: "Oct 2025 - Present",
+    description:
+      "Developing new features in the GIVE metadata project by extending the existing Vue frontend and Python backend. In a first stage, I've overhauled a big part of the frontend by adding TypeScript, unit and integration tests with Vitest & Testing Library. The new features that I'm adding concern the visualisation of the speech recognition in audio & video and face recognition in images.",
+    skills: ["Vue.js", "TypeScript", "Python", "Vitest", "Testing Library"],
+  },
+  {
+    employer: "Sopra Steria Belgium",
+    role: "Practice Lead Development",
+    period: "Sep 2023 - Dec 2024",
+    description:
+      "As Practice Lead of the Bold team, I work alongside our full-stack web development consultants to enhance their professional growth. Together, we strive to deliver exceptional web applications that elevate our clients' customer experiences. Our core commitment lies in cultivating a culture of knowledge exchange, continuous learning, and positive workplace ambiance; thus maximizing the capabilities of our development team by fostering an environment where everyone's talents can flourish.",
+    skills: ["Management", "Knowledge sharing"],
+  },
+  {
+    employer: "Vrije Universiteit Brussel",
+    role: "Android Programmer",
+    period: "Oct 2013 - Jan 2014",
+    description:
+      "Worked on project with Android devices (tablets and smartphones). General goal was creating good user interfaces with dynamic elements in a web application.",
+    skills: [
+      "Java",
+      "Android SDK",
+      "XML",
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "XSLT",
+    ],
+  },
+  {
+    employer: "Self-employed",
+    role: "Photographer",
+    period: "Feb 2017 - Oct 2023",
+    description:
+      "Photography as a second job. I did assignments for clients during my spare time with a focus on event photography, weddings, parties & photoshoots. Assignments can be coverage of weddings, parties, company events or photoshoots. For this job, I had built an online portfolio that is no longer available. It was built in Angular 5 and the code can be found on http://github.com/ElkeCodes/ElkePhotos",
+    skills: ["Photography", "Angular 5", "SASS", "jQuery"],
+  },
+];
 ---
 
-<BaseLayout pageTitle={pageTitle} description={description} openGraph={openGraph}>
+<BaseLayout
+  pageTitle={pageTitle}
+  description={description}
+  openGraph={openGraph}
+>
   <h2>Summary</h2>
   <p>
     My career started in 2013 after graduating with a Bachelors and Masters in
@@ -41,4 +89,99 @@ const openGraph = createOpenGraph(pageTitle, "/resume", "profile");
     >.
   </p>
   <Experience />
+  <!-- <ul class="timeline">
+    {
+      experience.map((item) => (
+        <li>
+          <section>
+            <header>
+              <>
+                <h2>{item.role}</h2>
+                {item.employer && <>{item.employer}</>}
+                <time>{item.period}</time>
+              </>
+            </header>
+            <article>{item.description}</article>
+            <ul class="skills">
+              {item.skills.map((skill) => (
+                <li>{skill}</li>
+              ))}
+            </ul>
+          </section>
+        </li>
+      ))
+    }
+  </ul> -->
 </BaseLayout>
+
+<style>
+  ul {
+    list-style: none;
+    margin: 1rem 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 1rem;
+  }
+
+  ul.timeline::before {
+    content: "";
+    position: absolute;
+    top: 0.5rem;
+    height: 100%;
+    width: 1px;
+    background: var(--color-primary);
+  }
+
+  ul.skills {
+    margin: 0;
+    flex-direction: row;
+    color: var(--color-accent);
+  }
+
+  ul.skills > li {
+    font-size: var(--font-size-sm);
+  }
+
+  ul.skills > li:not(:last-child)::after {
+    content: "•";
+    margin: 0 0.5rem;
+  }
+
+  li {
+    display: flex;
+    align-items: baseline;
+    position: relative;
+    gap: 1rem;
+  }
+
+  ul.timeline > li::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--color-primary);
+    border-radius: 100%;
+    position: absolute;
+    top: 0.5rem;
+    left: -0.5rem;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-left: 1rem;
+  }
+
+  header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  h2 {
+    margin: 0;
+  }
+</style>

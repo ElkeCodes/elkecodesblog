@@ -1,0 +1,57 @@
+---
+title: "Equal width columns in CSS grid"
+pubDate: 2026-02-01
+description: "At first glance, JavaScript's logical OR operator (||) seems like a straightforward way to handle default values and conditional logic. It’s concise, widely used, and often appears in tutorials as a go-to solution for setting fallbacks. But beneath its simplicity lies a range of potential issues that can lead to unexpected behavior, subtle bugs, and confusing code."
+shortDescription: "JavaScript's logical OR operator is problematic and here's why"
+author: "Elke Heymans"
+image:
+  url: "javascript.png"
+  alt: "Letters JS to denote JavaScript"
+tags: ["frontend", "javascript", "operators"]
+---
+
+import "styles.css";
+
+<div class="equal-widths-auto">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+  <div class="item">4</div>
+  <div class="item">5</div>
+</div>
+
+
+<div class="equal-widths-auto">
+  <div class="item">1</div>
+  <div class="item">2</div>
+</div>
+
+<div class="equal-widths-1fr">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+  <div class="item">4</div>
+  <div class="item">5</div>
+</div>
+
+
+<div class="equal-widths-1fr">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+</div>
+
+
+<div class="equal-widths-minmax0-1fr">
+  <div class="item">1</div>
+  <div class="item">2</div>
+  <div class="item">3</div>
+  <div class="item">4</div>
+  <div class="item">5</div>
+</div>
+
+
+<div class="equal-widths-minmax0-1fr">
+  <div class="item">1</div>
+  <div class="item">2</div>
+</div>
