@@ -1,15 +1,11 @@
 ---
-import { getCollection } from "astro:content";
-
-import type { GetStaticPaths, GetStaticPathsOptions } from "astro";
+import type { GetStaticPathsOptions } from "astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BlogPost from "@components/BlogPost.astro";
+import { getPublishedPosts } from "@utils/get-published-posts";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-  const posts = (await getCollection("blog")).sort(
-    ({ data: { pubDate: pubDateA } }, { data: { pubDate: pubDateB } }) =>
-      pubDateB.valueOf() - pubDateA.valueOf()
-  );
+  const posts = await getPublishedPosts();
 
   return paginate(posts, { pageSize: 10 });
 }

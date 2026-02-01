@@ -16,8 +16,9 @@ header:
 ## Experience
 
 ### Fullstack consultant
+
 Ordina Belgium (a Sopra Steria company)
-  : **Mar 2018 - Current**
+: **Mar 2018 - Current**
 <br /><br />
 
 Worked for multiple clients, covering Angular, Vue and React projects.
@@ -26,16 +27,16 @@ Returned to fulltime development after that.
 <br /><br />
 
 **Fullstack Vue & Python developer**
-  : Meemoo
-  : **Oct 2025 - Current**
+: Meemoo
+: **Oct 2025 - Current**
 
 - Developing new features in the GIVE metadata project by extending the existing Vue frontend and Python backend.
 - Overhauled a big part of the frontend by adding TypeScript, unit and integration tests with Vitest & Testing Library.
 - Adding the visualisation of the speech recognition in audio & video and face recognition in images.
 
 **Practice Lead Development**
-  : Ordina, team Bold
-  : **Sep 2023 - Dec 2024**
+: Ordina, team Bold
+: **Sep 2023 - Dec 2024**
 
 - Helped 13 fullstack & frontend developers in their career path
 - Organised knowledge sharing sessions
@@ -46,8 +47,8 @@ Returned to fulltime development after that.
 <!-- As Practice Lead Development at the Bold team, I work alongside our full-stack web development consultants to enhance their professional growth. Together, we strive to deliver exceptional web applications that elevate our clients' customer experiences. Our core commitment lies in cultivating a culture of knowledge exchange, continuous learning, and positive workplace ambiance; thus maximizing the capabilities of our development team by fostering an environment where everyone's talents can flourish. -->
 
 **Frontend React developer**
-  : Securex 
-  : **Apr 2023 - Sep 2025**
+: Securex
+: **Apr 2023 - Sep 2025**
 
 - **MyDoc project (Apr 2023 - Sep 2025)**
   - Migrated existing features of Mendix application to React application
@@ -85,8 +86,8 @@ introduced and the improvements to the NX monorepository configuration. Addition
 significantly improved, allowing us to better assess the impact of shared code changes. -->
 
 **Fullstack React & NodeJS developer**
-  : Politie Zone Antwerpen
-  : **Jul 2022 - Apr 2023**
+: Politie Zone Antwerpen
+: **Jul 2022 - Apr 2023**
 
 - Implemented new features in the React frontend with its own design system
 - Implemented new features in the NodeJS backend and NodeJS backend for frontend, implemented with Express.js, RabbitMQ and PostgreSQL
@@ -94,7 +95,7 @@ significantly improved, allowing us to better assess the impact of shared code c
 - Collaborated with designers and discussed with stakeholders
 
 <!-- Worked on the Casefiles application as a full stack engineer to help with implementing new features to enhance the casefiles data and functionalities.
-She also actively participated in solving bugs, taking architectural decisions and maintaining a consistent and clean implementation by reviewing pull requests. 
+She also actively participated in solving bugs, taking architectural decisions and maintaining a consistent and clean implementation by reviewing pull requests.
 Her roles and responsibilities include:
 - Creating a fully functioning front-end using HTML, CSS, JavavaScript & React
 - Develop the back-end, using Express.js and RabbitMQ
@@ -102,8 +103,8 @@ Her roles and responsibilities include:
 - Participate in scrum ceremonies, such as backlog grooming, sprint planning, restrospectives,... -->
 
 **Frontend Vue developer**
-  : D'Ieteren
-  : **Oct 2019 - Sep 2022**
+: D'Ieteren
+: **Oct 2019 - Sep 2022**
 
 - Coached other frontend developers
 - Introduced unit tests
@@ -116,8 +117,8 @@ Her roles and responsibilities include:
 - Helped the integration of new data to tbe shown on the websites
 
 **Frontend Angular developer**
-  : Port of Antwerp
-  : **Mar 2019 - Jan 2020**
+: Port of Antwerp
+: **Mar 2019 - Jan 2020**
 
 - **Vessel Trafic Image project (Mar 2019 - Jul 2019)**
   - Set up the greenfield project in Angular, working alongside designer and Java backender
@@ -128,19 +129,20 @@ Her roles and responsibilities include:
   - Finalised development of Angular application, used by all ports along the Rhein river in France, Germany and Switzerland
 - **Apics Mobile project (Sep 2019 - Jan 2020)**
   - Continued development of Angular application, used by the port of Antwerp for Belgian vessel traffic
-  - Migrated to Angular PWA 
+  - Migrated to Angular PWA
   - Introduced mobile friendly styling
 
 **Frontend Angular developer**
-  : MLOZ
-  : **Jan 2019 - Feb 2019**
+: MLOZ
+: **Jan 2019 - Feb 2019**
 
 - Worked away the backlog
 - Kickstarted implementation of new features
+- Coached junior developers on the project
 
 **Frontend Angular developer**
-  : Wolters Kluwer
-  : **Aug 2018 - Nov 2018**
+: Wolters Kluwer
+: **Aug 2018 - Nov 2018**
 
 - Code reviewed the existing Angular application
 - Developed new pages with the Syncfusion component library
@@ -157,8 +159,8 @@ to their style guide. During my last weeks, I updated their Angular version, ext
 helped with their in-house npm packages. -->
 
 **Frontend Angular developer**
-  : Liantis
-  : **May 2018 - Jul 2018**
+: Liantis
+: **May 2018 - Jul 2018**
 
 - Developed new design system in scope of rebranding ADMB, Zenito & Provikmo to Liantis
 - Integrated design system into the new Angular website portal for their clients to existing applications
@@ -172,8 +174,9 @@ rebranding, Ordina created a custom pattern library which contains the digital b
 technical documentation -->
 
 ### Fullstack .NET developer
+
 AG Insurance
-  : **Apr 2014 - Mar 2018**
+: **Apr 2014 - Mar 2018**
 <br /><br />
 
 Worked in the IS .NET Expertise Center team where we developed multiple .NET projects as Fullstack developers.
@@ -196,30 +199,29 @@ Worked in the IS .NET Expertise Center team where we developed multiple .NET pro
   - Negotiations with stakeholders
   - Managed the developers on the project
 
-
 ### Android developer
 
 Vrije Universiteit Brussel
-  : **Oct 2013 - Jan 2014**
+: **Oct 2013 - Jan 2014**
 
 ### Photographer
 
 Self employed in secondary occupation
-  : **Feb 2017 - Oct 2023**
+: **Feb 2017 - Oct 2023**
 
 ## Education
 
 **Master of Science: Computer Science**
-  : **Sep 2011 - Aug 2013**
+: **Sep 2011 - Aug 2013**
 
 Vrije Universiteit Brussel
-  : Brussels, Belgium
+: Brussels, Belgium
 
 **Bachelor of Science: Computer Science**
-  : **Sep 2008 - Aug 2011**
+: **Sep 2008 - Aug 2011**
 
 Vrije Universiteit Brussel
-  : Brussels, Belgium
+: Brussels, Belgium
 
 ## Projects
 
@@ -229,7 +231,7 @@ Vrije Universiteit Brussel
 
 **Programming Languages:** JavaScript, TypeScript, HTML, CSS, SQL
 
-**Tools and Frameworks:** Git, Angular, Vue, React, Nx, Express, Webpack, Vite, Astro, Cypress, Jest, Vitest, Tailwind, Tanstack Query, RxJS, NGRX, PostgreSQL 
+**Tools and Frameworks:** Git, Angular, Vue, React, Nx, Express, Webpack, Vite, Astro, Cypress, Jest, Vitest, Tailwind, Tanstack Query, RxJS, NGRX, PostgreSQL
 
 **Languages:** English (full professional proficiency), Dutch (native proficiency), French (professional working proficiency)
 

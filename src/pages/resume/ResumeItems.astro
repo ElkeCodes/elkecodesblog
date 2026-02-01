@@ -1,0 +1,143 @@
+---
+type ResumeItem = {
+  client?: string;
+  employer?: string;
+  title: string;
+  period?: string;
+  description?: string;
+  tasks?: Array<string>;
+  skills?: Array<string>;
+  projects?: Array<ResumeItem>;
+};
+
+type Props = { items: Array<ResumeItem> };
+
+const { items } = Astro.props;
+---
+
+<ul class="timeline">
+  {
+    items.map((item) => (
+      <li>
+        <section>
+          <header>
+            <>
+              <h2>{item.title}</h2>
+              {item.employer && <>{item.employer}</>}
+              {item.client && <>{item.client}</>}
+              {item.period && <time>{item.period}</time>}
+            </>
+          </header>
+          {item.description ? <article>{item.description}</article> : null}
+          {item.tasks && item.tasks.length > 0 ? (
+            <ul class="tasks">
+              {item.tasks.map((task) => (
+                <li>{task}</li>
+              ))}
+            </ul>
+          ) : null}
+          {item.skills && item.skills.length > 0 ? (
+            <ul class="skills">
+              {item.skills.map((skill) => (
+                <li>{skill}</li>
+              ))}
+            </ul>
+          ) : null}
+          {item.projects && item.projects.length > 0 ? (
+            <Astro.self items={item.projects} />
+          ) : null}
+        </section>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul.timeline {
+    list-style: none;
+    margin: 4rem 0rem 4rem 1rem;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 2rem;
+  }
+
+  ul.timeline::before {
+    content: "";
+    position: absolute;
+    top: 0.5rem;
+    height: 100%;
+    width: 1px;
+    background: var(--color-primary);
+  }
+
+  ul.skills {
+    display: flex;
+    margin: 0;
+    flex-direction: row;
+    justify-content: flex-end;
+    color: var(--color-accent);
+    flex-wrap: wrap;
+    column-gap: 0.5rem;
+  }
+
+  ul.skills > li {
+    font-size: var(--font-size-sm);
+  }
+
+  ul.skills > li:not(:last-child)::after {
+    content: "•";
+    margin: 0 0.5rem;
+  }
+
+  ul.tasks {
+    margin: 1rem 0;
+    padding-left: 1.5rem;
+    list-style: disc;
+    gap: 0.5rem;
+  }
+
+  li {
+    display: flex;
+    align-items: baseline;
+    position: relative;
+    gap: 1rem;
+  }
+
+  ul.timeline > li::before {
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--color-primary);
+    border-radius: 100%;
+    position: absolute;
+    top: 0.5rem;
+    left: -0.5rem;
+  }
+
+  section {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    width: 100%;
+  }
+
+  header {
+    background: var(--color-black);
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    align-items: flex-end;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 0.5rem;
+  }
+
+  header time {
+    text-align: right;
+  }
+
+  h2 {
+    margin: 0;
+  }
+</style>

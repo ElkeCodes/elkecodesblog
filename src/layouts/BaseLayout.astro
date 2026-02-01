@@ -15,12 +15,14 @@ type Props = {
     };
   };
   description: string;
+  wide?: boolean;
 };
 
 const {
   pageTitle,
   openGraph,
   description = "I'm a frontend developer currently focusing on React who loves running, photography, and tabletop RPGs when I'm not coding or chasing after my toddler. This blog covers tech insights, hobby adventures, and life as a dev mom.",
+  wide = false,
 } = Astro.props;
 const skipToMainContentId = "main-content";
 ---
@@ -56,7 +58,7 @@ const skipToMainContentId = "main-content";
       )
     }
   </head>
-  <body>
+  <body class={wide ? "wide" : ""}>
     <SkipToMainContent id={skipToMainContentId} />
     <Header />
     <article id={skipToMainContentId}>

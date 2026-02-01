@@ -3,6 +3,7 @@ import BaseLayout from "@layouts/BaseLayout.astro";
 import { Content as Experience } from "./base.md";
 import ExternalLink from "@components/ExternalLink.astro";
 import { createOpenGraph } from "@utils/create-open-graph";
+import ResumeItems from "./ResumeItems.astro";
 
 const pageTitle: string = "Curriculum Vitae";
 const description: string =
@@ -12,23 +13,226 @@ const openGraph = createOpenGraph(pageTitle, "/resume", "profile");
 const experience = [
   {
     employer: "Sopra Steria Belgium",
-    role: "Fullstack Developer at Meemoo",
-    period: "Oct 2025 - Present",
-    description:
-      "Developing new features in the GIVE metadata project by extending the existing Vue frontend and Python backend. In a first stage, I've overhauled a big part of the frontend by adding TypeScript, unit and integration tests with Vitest & Testing Library. The new features that I'm adding concern the visualisation of the speech recognition in audio & video and face recognition in images.",
-    skills: ["Vue.js", "TypeScript", "Python", "Vitest", "Testing Library"],
+    title: "Fullstack development consultant",
+    period: "Apr 2018 - Present",
+    projects: [
+      {
+        client: "Meemoo",
+        title: "Fullstack Vue & Python Developer",
+        period: "Oct 2025 - Present",
+        description:
+          "Developing new features in the GIVE metadata project by extending the existing Vue frontend and Python backend. In a first stage, I've overhauled a big part of the frontend by adding TypeScript, unit and integration tests with Vitest & Testing Library. The new features that I'm adding concern the visualisation of the speech recognition in audio & video and face recognition in images.",
+        tasks: [
+          "Developing new features in the GIVE metadata project by extending the existing Vue frontend and Python backend.",
+          "Overhauled a big part of the frontend by adding TypeScript, unit and integration tests with Vitest & Testing Library.",
+          "Adding the visualisation of the speech recognition in audio & video and face recognition in images.",
+        ],
+        skills: ["Vue.js", "TypeScript", "Python", "Vitest", "Testing Library"],
+      },
+      {
+        client: "Sopra Steria Belgium",
+        title: "Practice Lead Development",
+        period: "Sep 2023 - Dec 2024",
+        description:
+          "As Practice Lead of the Bold team, I work alongside our full-stack web development consultants to enhance their professional growth. Together, we strive to deliver exceptional web applications that elevate our clients' customer experiences. Our core commitment lies in cultivating a culture of knowledge exchange, continuous learning, and positive workplace ambiance; thus maximizing the capabilities of our development team by fostering an environment where everyone's talents can flourish.",
+        skills: ["Management", "Knowledge sharing"],
+      },
+      {
+        client: "Securex",
+        title: "Frontend React Developer",
+        period: "May 2023 - Sep 2025",
+        projects: [
+          {
+            title: "MyDoc project",
+            period: "Apr 2023 - Sep 2025",
+            tasks: [
+              "Migrated existing features of Mendix application to React application",
+              "Improved mobile friendly version",
+              "Integrated PDF viewer",
+            ],
+          },
+          {
+            title: "MyDimona project",
+            tasks: [
+              "Implemented new features in React application",
+              "Improved performance on page with possible 1000+ dynamic input fields",
+              "Redesigned the architecture of the state management",
+            ],
+          },
+          {
+            title: "Onboarding project",
+            tasks: [
+              "Integrated SurveyJS with custom styling",
+              "Negotiated about functionality",
+            ],
+          },
+          {
+            title: "Other projects, NX monorepository and design systems",
+            tasks: [
+              "Code reviewed and coached other frontend developers",
+              "Implemented new features in the 3 design systems and extended the use of Storybook",
+              "Enforced best practices and improved test coverage",
+              "Set up new React applications and setup GitHub Actions",
+              "NX and package upgrades",
+              "Bugfixing and improvements on 15+ other projects in the monorepo",
+            ],
+          },
+        ],
+      },
+      {
+        client: "Politie Zone Antwerpen",
+        title: "Fullstack React & Node.js Developer",
+        period: "Jul 2022 - Apr 2023",
+        tasks: [
+          "Implemented new features in the React frontend with its own design system",
+          "Implemented new features in the NodeJS backend and NodeJS backend for frontend, implemented with Express.js, RabbitMQ and PostgreSQL",
+          "Improved test coverage accross frontend, backend for frontend and backend",
+          "Collaborated with designers and discussed with stakeholders",
+        ],
+      },
+      {
+        client: "D'ieteren",
+        title: "Frontend Vue Developer",
+        period: "Oct 2019 - Sep 2022",
+        tasks: [
+          "Coached other frontend developers",
+          "Introduced unit tests",
+          "Did massive code migrations (Vue 2 to Vue 3, Vuex to Pinia, Webpack to Vite)",
+          "Negotiated with the client about features",
+          "Collaborated with UX/UI designers",
+          "Improved the loading time of the website by using Lighthouse",
+          "Implemented SEO improvements",
+          "Added Google Analytics tracking",
+          "Helped the integration of new data to be shown on the websites",
+        ],
+      },
+      {
+        client: "Port of Antwerp",
+        title: "Frontend Angular Developer",
+        period: "Mar 2019 - Jan 2020",
+        projects: [
+          {
+            title: "Vessel Trafic Image project",
+            period: "Mar 2019 - Jul 2019",
+            tasks: [
+              "Set up the greenfield project in Angular, working alongside designer and Java backender",
+              "Integrated Leaflet to draw map of incoming shipping vessels to port of Antwerp",
+              "Managed data with RxJS that was retrieved via Server-Sent Events",
+              "Achieved live view of all positions, direction, speed and information of shipping vessels",
+            ],
+          },
+          {
+            title: "RheinPorts project",
+            period: "Jun 2019 - Aug 2019",
+            tasks: [
+              "Finalised development of Angular application, used by all ports along the Rhein river in France, Germany and Switzerland",
+            ],
+          },
+          {
+            title: "Apics Mobile project",
+            period: "Sep 2019 - Jan 2020",
+            tasks: [
+              "Continued development of Angular application, used by the port of Antwerp for Belgian vessel traffic",
+              "Migrated to Angular PWA",
+              "Introduced mobile friendly styling",
+            ],
+          },
+        ],
+      },
+      {
+        client: "MLOZ",
+        title: "Frontend Angular Developer",
+        period: "Jan 2019 - Feb 2019",
+        tasks: [
+          "Worked away the backlog",
+          "Kickstarted implementation of new features",
+          "Coached junior developers on the project",
+        ],
+      },
+      {
+        client: "Wolters Kluwer",
+        title: "Frontend Angular Developer",
+        period: "Aug 2018 - Nov 2018",
+        tasks: [
+          "Code reviewed the existing Angular application",
+          "Developed new pages with the Syncfusion component library",
+          "Restyled the application to better fit the style guide",
+          "Increased test coverage and introduced e2e tests",
+        ],
+      },
+      {
+        client: "Liantis",
+        title: "Frontend Angular Developer",
+        period: "May 2018 - Jul 2018",
+        tasks: [
+          "Developed new design system in scope of rebranding ADMB, Zenito & Provikmo to Liantis",
+          "Integrated design system into the new Angular website portal for their clients to existing applications",
+        ],
+      },
+    ],
   },
   {
-    employer: "Sopra Steria Belgium",
-    role: "Practice Lead Development",
-    period: "Sep 2023 - Dec 2024",
+    employer: "AG Insurance",
+    title: "Fullstack Developer",
+    period: "Apr 2014 - Mar 2018",
     description:
-      "As Practice Lead of the Bold team, I work alongside our full-stack web development consultants to enhance their professional growth. Together, we strive to deliver exceptional web applications that elevate our clients' customer experiences. Our core commitment lies in cultivating a culture of knowledge exchange, continuous learning, and positive workplace ambiance; thus maximizing the capabilities of our development team by fostering an environment where everyone's talents can flourish.",
-    skills: ["Management", "Knowledge sharing"],
+      "Worked in the IS .NET Expertise Center team where we developed multiple .NET projects as Fullstack developers for internal use.",
+    skills: [
+      "ASP.Net MVC 5",
+      "C#",
+      "SQL Server",
+      "HTML5",
+      "CSS3",
+      "jQuery",
+      "AngularJS",
+      "Bootstrap",
+      "XML",
+      "JSON",
+      "TFS",
+    ],
+    projects: [
+      {
+        title: "DB2P",
+        role: "Fullstack Developer",
+        tasks: [
+          "Extended the features in the ASP.NET web app",
+          "Extended the features of batch projects that ran every night",
+          "Improved SQL Server queries to decrease the runtime of the batches",
+        ],
+      },
+      {
+        title: "CostModel",
+        role: "",
+        tasks: [
+          "Extended the features in the ASP.NET web app",
+          "Extended the features of batch projects that ran every night",
+          "Managed my own budget and time with stakeholder negotiations and reporting to management",
+        ],
+      },
+      {
+        title: "MyAG",
+        role: "",
+        tasks: [
+          "Extended the features in the ASP.NET MVC 5 web application",
+          "Technical analysis of the integration of COBOL mainframe data into our own SOAP services",
+          "Coached new developers on the project",
+        ],
+      },
+      {
+        title: "HypoSimul",
+        role: "",
+        tasks: [
+          "Greenfield ASP.Net MVC5 web application with AngularJS frontend and SQL Server database",
+          "Designed the architecture",
+          "Negotiations with stakeholders",
+          "Managed the developers on the project",
+        ],
+      },
+    ],
   },
   {
     employer: "Vrije Universiteit Brussel",
-    role: "Android Programmer",
+    title: "Android Programmer",
     period: "Oct 2013 - Jan 2014",
     description:
       "Worked on project with Android devices (tablets and smartphones). General goal was creating good user interfaces with dynamic elements in a web application.",
@@ -44,7 +248,7 @@ const experience = [
   },
   {
     employer: "Self-employed",
-    role: "Photographer",
+    title: "Photographer",
     period: "Feb 2017 - Oct 2023",
     description:
       "Photography as a second job. I did assignments for clients during my spare time with a focus on event photography, weddings, parties & photoshoots. Assignments can be coverage of weddings, parties, company events or photoshoots. For this job, I had built an online portfolio that is no longer available. It was built in Angular 5 and the code can be found on http://github.com/ElkeCodes/ElkePhotos",
@@ -57,6 +261,7 @@ const experience = [
   pageTitle={pageTitle}
   description={description}
   openGraph={openGraph}
+  wide={true}
 >
   <h2>Summary</h2>
   <p>
@@ -88,100 +293,6 @@ const experience = [
       target="_blank">GitHub</ExternalLink
     >.
   </p>
-  <Experience />
-  <!-- <ul class="timeline">
-    {
-      experience.map((item) => (
-        <li>
-          <section>
-            <header>
-              <>
-                <h2>{item.role}</h2>
-                {item.employer && <>{item.employer}</>}
-                <time>{item.period}</time>
-              </>
-            </header>
-            <article>{item.description}</article>
-            <ul class="skills">
-              {item.skills.map((skill) => (
-                <li>{skill}</li>
-              ))}
-            </ul>
-          </section>
-        </li>
-      ))
-    }
-  </ul> -->
+  <!-- <Experience /> -->
+  <ResumeItems items={experience} />
 </BaseLayout>
-
-<style>
-  ul {
-    list-style: none;
-    margin: 1rem 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    gap: 1rem;
-  }
-
-  ul.timeline::before {
-    content: "";
-    position: absolute;
-    top: 0.5rem;
-    height: 100%;
-    width: 1px;
-    background: var(--color-primary);
-  }
-
-  ul.skills {
-    margin: 0;
-    flex-direction: row;
-    color: var(--color-accent);
-  }
-
-  ul.skills > li {
-    font-size: var(--font-size-sm);
-  }
-
-  ul.skills > li:not(:last-child)::after {
-    content: "•";
-    margin: 0 0.5rem;
-  }
-
-  li {
-    display: flex;
-    align-items: baseline;
-    position: relative;
-    gap: 1rem;
-  }
-
-  ul.timeline > li::before {
-    content: "";
-    width: 1rem;
-    height: 1rem;
-    background-color: var(--color-primary);
-    border-radius: 100%;
-    position: absolute;
-    top: 0.5rem;
-    left: -0.5rem;
-  }
-
-  section {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    padding-left: 1rem;
-  }
-
-  header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  h2 {
-    margin: 0;
-  }
-</style>
