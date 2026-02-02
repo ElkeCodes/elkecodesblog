@@ -3,6 +3,7 @@ import type { GetStaticPathsOptions } from "astro";
 import BaseLayout from "@layouts/BaseLayout.astro";
 import BlogPost from "@components/BlogPost.astro";
 import { getPublishedPosts } from "@utils/get-published-posts";
+import { createOpenGraph } from "@utils/create-open-graph";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const posts = await getPublishedPosts();
@@ -14,9 +15,14 @@ const { page } = Astro.props;
 
 const pageNumbers = Array.from({ length: page.lastPage }, (_, i) => i + 1);
 const pageTitle = `Blogposts #${page.start + 1} - #${page.end + 1}, page #${page.currentPage}`;
+const openGraph = createOpenGraph(pageTitle, "/");
 ---
 
-<BaseLayout pageTitle={pageTitle}>
+<BaseLayout
+  pageTitle={pageTitle}
+  description="An overview of all the blog posts I've written down in the past."
+  openGraph={openGraph}
+>
   <p>
     An overview of everything I've written down in the past. These are my
     thoughts, opinions, lessons learned and shared coding knowledge. From time
