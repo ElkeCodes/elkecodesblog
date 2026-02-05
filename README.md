@@ -1,7 +1,8 @@
 # Elkecodes.dev
 
 This is the repository for my personal website that can be found on [https://elkecodes.dev](https://elkecodes.dev).
-I'm a frontend developer specializing in React, with a background in Vue, Angular, and some fullstack work (NodeJS & C#).
+I'm a fullstack developer currently working in Vue and Python. 
+I have a background in React, Angular, and other backend work like NodeJS and C#.
 On this blog, I'm sharing my insights on tech, code snippets, hobbies, and more.
 At the same time, it's a bit of a playground for me to try out new tech such as Svelte while also keeping my other web framework knowledge up to par.
 
