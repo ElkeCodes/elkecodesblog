@@ -46,6 +46,7 @@ Thanks to Cypress, I'm able to write even better tests that go beyond the scope 
 - Add a11y testing with pa11y or an alternative
 - Add page about the blog on /coding
 - Improve external link tests
+- Cleanup resume and make it mroe visually appealing
 
 ## Done TODOs
 
