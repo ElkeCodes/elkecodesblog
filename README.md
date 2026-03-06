@@ -47,6 +47,7 @@ Thanks to Cypress, I'm able to write even better tests that go beyond the scope 
 - Add page about the blog on /coding
 - Improve external link tests
 - Cleanup resume and make it mroe visually appealing
+- Write post about ai usage on the site (/ai on some sites)
 
 ## Done TODOs
 
