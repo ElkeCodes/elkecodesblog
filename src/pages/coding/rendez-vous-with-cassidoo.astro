@@ -6,8 +6,12 @@ import ExternalLink from "@components/ExternalLink.astro";
 import { createOpenGraph } from "@utils/create-open-graph";
 
 const pageTitle: string = "Rendez-vous with Cassidoo";
-const description: string = "Elke's journey solving Cassidoo's weekly interview questions in TypeScript.";
-const openGraph = createOpenGraph(pageTitle, "/coding/rendez-vous-with-cassidoo");
+const description: string =
+  "Elke's journey solving Cassidoo's weekly interview questions in TypeScript.";
+const openGraph = createOpenGraph(
+  pageTitle,
+  "/coding/rendez-vous-with-cassidoo",
+);
 
 const apiURL = `https://api.github.com/repos/ElkeCodes/rendezvous-with-cassidoo-interview-questions`;
 const options = {
@@ -18,26 +22,30 @@ const options = {
   },
 };
 const weeksDirectoryResponse = await fetch(
-  `${apiURL}/contents/src/days/`,
-  options
+  `${apiURL}/contents/src/questions/`,
+  options,
 );
 const solvedWeeks = (
-  (await weeksDirectoryResponse.json()) as Array<{
+  ((await weeksDirectoryResponse.json()) as Array<{
     name: string;
     html_url: string;
     tags: Array<string>;
-  }>
+  }>) || []
 ).filter(({ name }) => name !== "shared");
 
 const getWeek = (name: string): string => name.substring(0, name.indexOf("-"));
 const lastWeek = parseInt(
   getWeek(solvedWeeks.at(solvedWeeks.length - 1)!.name),
-  10
+  10,
 );
 const completionPercentage = Math.floor((solvedWeeks.length / lastWeek) * 100);
 ---
 
-<BaseLayout pageTitle={pageTitle} description={description} openGraph={openGraph}>
+<BaseLayout
+  pageTitle={pageTitle}
+  description={description}
+  openGraph={openGraph}
+>
   <p>
     I love challenging myself with code puzzles. After being subscribed for
     years, I've decided to start solving all the interview questions (she sends

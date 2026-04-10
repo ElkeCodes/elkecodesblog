@@ -17,7 +17,7 @@ const { items } = Astro.props;
 
 <ul class="timeline">
   {
-    items.map((item) => (
+    (items || []).map((item) => (
       <li>
         <section>
           <header>
