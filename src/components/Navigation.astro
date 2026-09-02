@@ -2,7 +2,7 @@
 
 ---
 
-<nav class="menu" aria-hidden="true">
+<nav id="main-nav" class="menu" aria-label="Main navigation">
   <ul>
     <li><a href="/posts/">Blog</a></li>
     <li><a href="/talks/">Talks</a></li>
@@ -10,9 +10,9 @@
     <li><a href="/elke-heymans-senior-fullstack-developer.pdf">Resume</a></li>
     <li><a href="/now/">Now</a></li>
   </ul>
-  <div class="menu-close icon-close"></div>
+  <button type="button" class="menu-close icon-close" aria-label="Close navigation menu"></button>
 </nav>
-<div class="hamburger"></div>
+<button type="button" class="hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="main-nav"></button>
 
 <style>
   nav.menu {
@@ -78,6 +78,15 @@
   .hamburger {
     cursor: pointer;
     display: block;
+    background: none;
+    border: 0;
+    padding: 0;
+  }
+
+  .hamburger:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
   }
 
   .hamburger::after {
@@ -93,10 +102,19 @@
     position: fixed;
     top: 2rem;
     right: 1rem;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+  }
+
+  .menu-close:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 0.25rem;
   }
 
   .icon-close {
-    cursor: pointer;
     display: block;
   }
 

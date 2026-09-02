@@ -2,6 +2,26 @@
 type Props = astroHTML.JSX.AnchorHTMLAttributes;
 
 const props = Astro.props;
+const isNewTab = props.target === "_blank";
+const rel = isNewTab
+  ? [props.rel, "noreferrer noopener"].filter(Boolean).join(" ")
+  : props.rel;
 ---
 
-<a {...props} target="_blank"><slot /></a>
+<a {...props} rel={rel}>
+  <slot />{isNewTab && <span class="visually-hidden"> (opens in new tab)</span>}
+</a>
+
+<style>
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
