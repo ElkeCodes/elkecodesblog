@@ -1,0 +1,87 @@
+---
+// @ts-nocheck (generated types/client appear after your first tinacms dev run)
+import TinaMarkdown from '@tinacms/astro/TinaMarkdown.astro';
+import { tinaField } from '@tinacms/astro/tina-field';
+
+interface Props {
+  data?: {
+    title?: string;
+    description?: string;
+    shortDescription?: string;
+    author?: string;
+    tags?: string[];
+    body?: any;
+  } | null;
+}
+const { data } = Astro.props;
+---
+{
+  data && (
+    <>
+      <p class="eyebrow">Blog post</p>
+      <h1 data-tina-field={tinaField(data, 'title')}>{data.title}</h1>
+      {data.description && (
+        <p class="description" data-tina-field={tinaField(data, 'description')}>
+          {data.description}
+        </p>
+      )}
+      {data.shortDescription && (
+        <p class="short-description" data-tina-field={tinaField(data, 'shortDescription')}>
+          {data.shortDescription}
+        </p>
+      )}
+      {data.tags?.length > 0 && (
+        <ul class="tags" data-tina-field={tinaField(data, 'tags')}>
+          {data.tags.map((tag) => <li>{tag}</li>)}
+        </ul>
+      )}
+      {data.author && (
+        <p class="author" data-tina-field={tinaField(data, 'author')}>By {data.author}</p>
+      )}
+      {data.body && (
+        <div class="body" data-tina-field={tinaField(data, 'body')}>
+          <TinaMarkdown content={data.body} />
+        </div>
+      )}
+    </>
+  )
+}
+
+<style>
+  .eyebrow {
+    margin: 0 0 1rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--tina-primary, #f59e0b);
+  }
+  h1 {
+    margin: 0;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.1;
+  }
+  .description,
+  .short-description,
+  .author {
+    margin-top: 1rem;
+    color: var(--tina-muted, #cbd5e1);
+  }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 0;
+  }
+  .tags li {
+    padding: 0.25rem 0.5rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.06);
+    font-size: 0.8rem;
+  }
+  .body {
+    margin-top: 2rem;
+    text-align: left;
+  }
+</style>
