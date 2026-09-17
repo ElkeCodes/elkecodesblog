@@ -1,0 +1,238 @@
+---
+import "../../styles/global.css";
+import Slideshow from "@components/Slideshow.svelte";
+import { createOpenGraph } from "@utils/create-open-graph";
+
+const pageTitle = "Me in 3 slides";
+const description =
+  "A quick, swipeable introduction to Elke in three slides.";
+const openGraph = createOpenGraph(pageTitle, "/me-in-3-slides");
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>{pageTitle}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap"
+      rel="prefetch"
+      as="font"
+    />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <meta property="og:description" content={description} />
+    <meta property="og:title" content={openGraph.basic.title} />
+    <meta property="og:type" content={openGraph.basic.type} />
+    <meta property="og:image" content={openGraph.basic.image} />
+    <meta property="og:url" content={openGraph.basic.url} />
+    <meta name="robots" content="noindex" />
+  </head>
+  <body class="slideshow-page">
+    <a href="/" class="exit-link" aria-label="Leave slideshow, go to elkecodes.dev">
+      🏠 elkecodes.dev
+    </a>
+    <div class="slides-viewport">
+      <div class="slides">
+        <section class="slide slide-one is-active" aria-label="Slide 1 of 3">
+          <div class="slide-content">
+            <p class="eyebrow">01 · Home</p>
+            <h1>Lorem ipsum, dolor Elke sit amet</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco.
+            </p>
+            <p>
+              Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur.
+            </p>
+          </div>
+        </section>
+        <section class="slide slide-two" aria-label="Slide 2 of 3">
+          <div class="slide-content">
+            <p class="eyebrow">02 · Blog &amp; projects</p>
+            <h2>Excepteur sint occaecat</h2>
+            <p>
+              Cupidatat non proident, sunt in culpa qui officia deserunt
+              mollit anim id est laborum. Sed ut perspiciatis unde omnis iste
+              natus error sit voluptatem accusantium doloremque laudantium.
+            </p>
+            <p class="tags">
+              <span>#lorem</span><span>#ipsum</span><span>#dolor</span>
+            </p>
+          </div>
+        </section>
+        <section class="slide slide-three" aria-label="Slide 3 of 3">
+          <div class="slide-content">
+            <p class="eyebrow">03 · Say hi</p>
+            <h2>Totam rem aperiam</h2>
+            <p>
+              Eaque ipsa quae ab illo inventore veritatis et quasi architecto
+              beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
+              quia voluptas sit aspernatur aut odit aut fugit.
+            </p>
+            <a class="cta" href="mailto:hello@elkecodes.dev">Say hello</a>
+          </div>
+        </section>
+      </div>
+    </div>
+    <Slideshow client:load count={3} />
+  </body>
+</html>
+
+<style is:global>
+  body.slideshow-page {
+    max-width: none;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  body.slideshow-page h1 {
+    margin: 0 0 1rem 0;
+    border-bottom: none;
+  }
+
+  body.slideshow-page h2 {
+    margin: 0 0 1rem 0;
+  }
+</style>
+
+<style>
+  .exit-link {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 20;
+    background: var(--color-primary-dark);
+    border: 1px solid var(--color-primary-dark-hover);
+    border-radius: 2rem;
+    padding: 0.4rem 0.8rem;
+    font-size: var(--font-size-xs);
+    line-height: 1;
+    transition:
+      background-color 0.3s,
+      transform 0.3s;
+  }
+
+  .exit-link:hover {
+    background: var(--color-primary-dark-hover);
+    transform: translateY(-1px);
+  }
+
+  .slides-viewport {
+    height: 100dvh;
+    width: 100vw;
+    overflow: hidden;
+  }
+
+  .slides {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .slides::-webkit-scrollbar {
+    display: none;
+  }
+
+  .slide {
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+
+  .slide-one {
+    background: radial-gradient(
+      circle at 20% 20%,
+      var(--color-primary-dark) 0%,
+      var(--color-black) 70%
+    );
+  }
+
+  .slide-two {
+    background: radial-gradient(
+      circle at 80% 30%,
+      var(--color-dark-gray) 0%,
+      var(--color-black) 70%
+    );
+  }
+
+  .slide-three {
+    background: radial-gradient(
+      circle at 50% 80%,
+      var(--color-primary-dark) 0%,
+      var(--color-black) 70%
+    );
+  }
+
+  .slide-content {
+    max-width: 40ch;
+    opacity: 0;
+    transform: translateY(1.5rem);
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+  }
+
+  .slide.is-active .slide-content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .eyebrow {
+    font-family: var(--font-family-monospace);
+    font-size: var(--font-size-xs);
+    color: var(--color-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tags span {
+    background: var(--color-gray);
+    border-radius: 1rem;
+    padding: 0.2rem 0.6rem;
+    font-size: var(--font-size-xs);
+  }
+
+  .cta {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--color-primary-dark);
+    border: 1px solid var(--color-primary-dark-hover);
+    border-radius: 0.5rem;
+    transition: background-color 0.3s;
+  }
+
+  .cta:hover {
+    background: var(--color-primary-dark-hover);
+  }
+
+  @media screen and (min-width: 636px) {
+    .slide-content {
+      max-width: 50ch;
+    }
+  }
+</style>
