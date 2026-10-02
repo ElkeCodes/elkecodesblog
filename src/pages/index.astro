@@ -11,7 +11,7 @@ const description: string =
   "Elke's personal blog: latest post, coding projects, and talks.";
 const openGraph = createOpenGraph(pageTitle, "/");
 
-const post = (await getPublishedPosts()).at(0)!;
+const posts = (await getPublishedPosts()).slice(0, 3)!;
 ---
 
 <BaseLayout
@@ -20,12 +20,21 @@ const post = (await getPublishedPosts()).at(0)!;
   openGraph={openGraph}
 >
   <Introduction />
-  <section aria-labelledby="latest-blogpost">
-    <h2 id="latest-blogpost">Latest blogpost</h2>
-    <BlogPost id={post.id} data={post.data} />
+  <section aria-labelledby="latest-blogposts">
+    <h2 id="latest-blogposts">Latest blogposts</h2>
+    <ul>
+      {
+        posts.map((post) => (
+          <li>
+            <BlogPost id={post.id} data={post.data} />
+          </li>
+        ))
+      }
+    </ul>
     <p class="check-out">
       <a href="/posts">Check out my other blogposts</a> or <a href="/tags"
-        >browse them per tag</a>
+        >browse them per tag</a
+      >
     </p>
   </section>
   <section aria-labelledby="coding-projects">
